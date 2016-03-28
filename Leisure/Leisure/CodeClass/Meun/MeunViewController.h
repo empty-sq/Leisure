@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MeunViewController.h
 //  Leisure
 //
 //  Created by 沈强 on 16/3/28.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MeunViewController : UIViewController
 
 @end
-

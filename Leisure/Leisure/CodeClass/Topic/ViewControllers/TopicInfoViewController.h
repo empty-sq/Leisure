@@ -6,8 +6,8 @@
 //  Copyright © 2016年 SQ. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "BaseViewController.h"
 
-@interface TopicInfoViewController : ViewController
+@interface TopicInfoViewController : BaseViewController
 
 @end

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 SQ. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface BaseViewController : ViewController
+@interface BaseViewController : UIViewController
 
 @end

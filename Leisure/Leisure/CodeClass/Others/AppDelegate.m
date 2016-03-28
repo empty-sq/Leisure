@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "ReadViewController.h"
+#import "MeunViewController.h"
+#import "DrawerViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +19,27 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    // 默认功能是阅读
+    ReadViewController *readViewController = [[ReadViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:readViewController];
+    
+    // 创建抽屉对象
+    DrawerViewController *rootController = [[DrawerViewController alloc] initWithRootViewController:navigationController];
+    _drawerViewController = rootController;
+    
+    // 创建菜单对象
+    MeunViewController *leftController = [[MeunViewController alloc] init];
+    rootController.leftViewController = leftController;
+    
+    // 将抽屉对象设置成window的主视图控制器
+    self.window.rootViewController = rootController;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

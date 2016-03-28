@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class DrawerViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) DrawerViewController *drawerViewController;
 
 @end
 

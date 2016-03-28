@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor = [UIColor yellowColor];
+    self.navigationItem.title = @"阅读";
 }
 
 - (void)didReceiveMemoryWarning {

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 SQ. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "BaseViewController.h"
 
-@interface RadioDetailViewController : ViewController
+@interface RadioDetailViewController : BaseViewController
 
 @end
