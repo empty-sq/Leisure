@@ -1,0 +1,820 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B10182C91CA92A5800E47F0D /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B10182C81CA92A5800E47F0D /* BaseModel.m */; };
+		B10182CD1CA92A9700E47F0D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10182CB1CA92A9700E47F0D /* BaseViewController.m */; };
+		B10182CE1CA92A9700E47F0D /* BaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10182CC1CA92A9700E47F0D /* BaseViewController.xib */; };
+		B101834D1CA92C4D00E47F0D /* ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B101834B1CA92C4D00E47F0D /* ProductViewController.m */; };
+		B101834E1CA92C4D00E47F0D /* ProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B101834C1CA92C4D00E47F0D /* ProductViewController.xib */; };
+		B10183521CA92D5F00E47F0D /* ProductInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183501CA92D5F00E47F0D /* ProductInfoViewController.m */; };
+		B10183531CA92D5F00E47F0D /* ProductInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10183511CA92D5F00E47F0D /* ProductInfoViewController.xib */; };
+		B10183571CA92D7300E47F0D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183551CA92D7300E47F0D /* RadioViewController.m */; };
+		B10183581CA92D7300E47F0D /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10183561CA92D7300E47F0D /* RadioViewController.xib */; };
+		B101835C1CA92D7F00E47F0D /* RadioDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B101835A1CA92D7F00E47F0D /* RadioDetailViewController.m */; };
+		B101835D1CA92D7F00E47F0D /* RadioDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B101835B1CA92D7F00E47F0D /* RadioDetailViewController.xib */; };
+		B10183611CA92D8A00E47F0D /* RadioPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B101835F1CA92D8A00E47F0D /* RadioPlayViewController.m */; };
+		B10183621CA92D8A00E47F0D /* RadioPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10183601CA92D8A00E47F0D /* RadioPlayViewController.xib */; };
+		B10183661CA92D9600E47F0D /* ReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183641CA92D9600E47F0D /* ReadViewController.m */; };
+		B10183671CA92D9600E47F0D /* ReadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10183651CA92D9600E47F0D /* ReadViewController.xib */; };
+		B101836B1CA92DA200E47F0D /* ReadDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183691CA92DA200E47F0D /* ReadDetailViewController.m */; };
+		B101836C1CA92DA200E47F0D /* ReadDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B101836A1CA92DA200E47F0D /* ReadDetailViewController.xib */; };
+		B10183701CA92DAB00E47F0D /* ReadInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B101836E1CA92DAB00E47F0D /* ReadInfoViewController.m */; };
+		B10183711CA92DAB00E47F0D /* ReadInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B101836F1CA92DAB00E47F0D /* ReadInfoViewController.xib */; };
+		B10183751CA92DB900E47F0D /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183731CA92DB900E47F0D /* TopicViewController.m */; };
+		B10183761CA92DB900E47F0D /* TopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10183741CA92DB900E47F0D /* TopicViewController.xib */; };
+		B101837A1CA92DC300E47F0D /* TopicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183781CA92DC300E47F0D /* TopicInfoViewController.m */; };
+		B101837B1CA92DC300E47F0D /* TopicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10183791CA92DC300E47F0D /* TopicInfoViewController.xib */; };
+		B10183CF1CA934BE00E47F0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183CD1CA934BE00E47F0D /* AppDelegate.m */; };
+		B10183D01CA934BE00E47F0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183CE1CA934BE00E47F0D /* main.m */; };
+		B1054E521CA9283E005C0989 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1054E511CA9283E005C0989 /* ViewController.m */; };
+		B1054E551CA9283E005C0989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1054E531CA9283E005C0989 /* Main.storyboard */; };
+		B1054E571CA9283E005C0989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1054E561CA9283E005C0989 /* Assets.xcassets */; };
+		B1054E5A1CA9283E005C0989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1054E581CA9283E005C0989 /* LaunchScreen.storyboard */; };
+		B1054E651CA9283E005C0989 /* LeisureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1054E641CA9283E005C0989 /* LeisureTests.m */; };
+		B1054E701CA9283E005C0989 /* LeisureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1054E6F1CA9283E005C0989 /* LeisureUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1054E611CA9283E005C0989 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1054E3F1CA9283E005C0989 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1054E461CA9283E005C0989;
+			remoteInfo = Leisure;
+		};
+		B1054E6C1CA9283E005C0989 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1054E3F1CA9283E005C0989 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1054E461CA9283E005C0989;
+			remoteInfo = Leisure;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B10182C71CA92A5800E47F0D /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		B10182C81CA92A5800E47F0D /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		B10182CA1CA92A9700E47F0D /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		B10182CB1CA92A9700E47F0D /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		B10182CC1CA92A9700E47F0D /* BaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseViewController.xib; sourceTree = "<group>"; };
+		B101834A1CA92C4D00E47F0D /* ProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductViewController.h; path = Leisure/CodeClass/Product/ViewControllers/ProductViewController.h; sourceTree = SOURCE_ROOT; };
+		B101834B1CA92C4D00E47F0D /* ProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductViewController.m; path = Leisure/CodeClass/Product/ViewControllers/ProductViewController.m; sourceTree = SOURCE_ROOT; };
+		B101834C1CA92C4D00E47F0D /* ProductViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProductViewController.xib; path = Leisure/CodeClass/Product/ViewControllers/ProductViewController.xib; sourceTree = SOURCE_ROOT; };
+		B101834F1CA92D5F00E47F0D /* ProductInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductInfoViewController.h; path = Leisure/CodeClass/Product/ViewControllers/ProductInfoViewController.h; sourceTree = SOURCE_ROOT; };
+		B10183501CA92D5F00E47F0D /* ProductInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductInfoViewController.m; path = Leisure/CodeClass/Product/ViewControllers/ProductInfoViewController.m; sourceTree = SOURCE_ROOT; };
+		B10183511CA92D5F00E47F0D /* ProductInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProductInfoViewController.xib; path = Leisure/CodeClass/Product/ViewControllers/ProductInfoViewController.xib; sourceTree = SOURCE_ROOT; };
+		B10183541CA92D7300E47F0D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioViewController.h; path = Leisure/CodeClass/Radio/ViewControllers/RadioViewController.h; sourceTree = SOURCE_ROOT; };
+		B10183551CA92D7300E47F0D /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioViewController.m; path = Leisure/CodeClass/Radio/ViewControllers/RadioViewController.m; sourceTree = SOURCE_ROOT; };
+		B10183561CA92D7300E47F0D /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioViewController.xib; path = Leisure/CodeClass/Radio/ViewControllers/RadioViewController.xib; sourceTree = SOURCE_ROOT; };
+		B10183591CA92D7F00E47F0D /* RadioDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioDetailViewController.h; path = Leisure/CodeClass/Radio/ViewControllers/RadioDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		B101835A1CA92D7F00E47F0D /* RadioDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioDetailViewController.m; path = Leisure/CodeClass/Radio/ViewControllers/RadioDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		B101835B1CA92D7F00E47F0D /* RadioDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioDetailViewController.xib; path = Leisure/CodeClass/Radio/ViewControllers/RadioDetailViewController.xib; sourceTree = SOURCE_ROOT; };
+		B101835E1CA92D8A00E47F0D /* RadioPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioPlayViewController.h; path = Leisure/CodeClass/Radio/ViewControllers/RadioPlayViewController.h; sourceTree = SOURCE_ROOT; };
+		B101835F1CA92D8A00E47F0D /* RadioPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioPlayViewController.m; path = Leisure/CodeClass/Radio/ViewControllers/RadioPlayViewController.m; sourceTree = SOURCE_ROOT; };
+		B10183601CA92D8A00E47F0D /* RadioPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioPlayViewController.xib; path = Leisure/CodeClass/Radio/ViewControllers/RadioPlayViewController.xib; sourceTree = SOURCE_ROOT; };
+		B10183631CA92D9600E47F0D /* ReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadViewController.h; path = Leisure/CodeClass/Read/ViewControllers/ReadViewController.h; sourceTree = SOURCE_ROOT; };
+		B10183641CA92D9600E47F0D /* ReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadViewController.m; path = Leisure/CodeClass/Read/ViewControllers/ReadViewController.m; sourceTree = SOURCE_ROOT; };
+		B10183651CA92D9600E47F0D /* ReadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReadViewController.xib; path = Leisure/CodeClass/Read/ViewControllers/ReadViewController.xib; sourceTree = SOURCE_ROOT; };
+		B10183681CA92DA200E47F0D /* ReadDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadDetailViewController.h; path = Leisure/CodeClass/Read/ViewControllers/ReadDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		B10183691CA92DA200E47F0D /* ReadDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadDetailViewController.m; path = Leisure/CodeClass/Read/ViewControllers/ReadDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		B101836A1CA92DA200E47F0D /* ReadDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReadDetailViewController.xib; path = Leisure/CodeClass/Read/ViewControllers/ReadDetailViewController.xib; sourceTree = SOURCE_ROOT; };
+		B101836D1CA92DAB00E47F0D /* ReadInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadInfoViewController.h; path = Leisure/CodeClass/Read/ViewControllers/ReadInfoViewController.h; sourceTree = SOURCE_ROOT; };
+		B101836E1CA92DAB00E47F0D /* ReadInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadInfoViewController.m; path = Leisure/CodeClass/Read/ViewControllers/ReadInfoViewController.m; sourceTree = SOURCE_ROOT; };
+		B101836F1CA92DAB00E47F0D /* ReadInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReadInfoViewController.xib; path = Leisure/CodeClass/Read/ViewControllers/ReadInfoViewController.xib; sourceTree = SOURCE_ROOT; };
+		B10183721CA92DB900E47F0D /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicViewController.h; path = Leisure/CodeClass/Topic/ViewControllers/TopicViewController.h; sourceTree = SOURCE_ROOT; };
+		B10183731CA92DB900E47F0D /* TopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicViewController.m; path = Leisure/CodeClass/Topic/ViewControllers/TopicViewController.m; sourceTree = SOURCE_ROOT; };
+		B10183741CA92DB900E47F0D /* TopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicViewController.xib; path = Leisure/CodeClass/Topic/ViewControllers/TopicViewController.xib; sourceTree = SOURCE_ROOT; };
+		B10183771CA92DC300E47F0D /* TopicInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicInfoViewController.h; path = Leisure/CodeClass/Topic/ViewControllers/TopicInfoViewController.h; sourceTree = SOURCE_ROOT; };
+		B10183781CA92DC300E47F0D /* TopicInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicInfoViewController.m; path = Leisure/CodeClass/Topic/ViewControllers/TopicInfoViewController.m; sourceTree = SOURCE_ROOT; };
+		B10183791CA92DC300E47F0D /* TopicInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopicInfoViewController.xib; path = Leisure/CodeClass/Topic/ViewControllers/TopicInfoViewController.xib; sourceTree = SOURCE_ROOT; };
+		B10183CC1CA934BE00E47F0D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B10183CD1CA934BE00E47F0D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B10183CE1CA934BE00E47F0D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B1054E471CA9283E005C0989 /* Leisure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leisure.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1054E501CA9283E005C0989 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B1054E511CA9283E005C0989 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B1054E541CA9283E005C0989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B1054E561CA9283E005C0989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1054E591CA9283E005C0989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B1054E5B1CA9283E005C0989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1054E601CA9283E005C0989 /* LeisureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeisureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1054E641CA9283E005C0989 /* LeisureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeisureTests.m; sourceTree = "<group>"; };
+		B1054E661CA9283E005C0989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1054E6B1CA9283E005C0989 /* LeisureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeisureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1054E6F1CA9283E005C0989 /* LeisureUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeisureUITests.m; sourceTree = "<group>"; };
+		B1054E711CA9283E005C0989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B1054E441CA9283E005C0989 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1054E5D1CA9283E005C0989 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1054E681CA9283E005C0989 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B10182B21CA92A2D00E47F0D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B10182C71CA92A5800E47F0D /* BaseModel.h */,
+				B10182C81CA92A5800E47F0D /* BaseModel.m */,
+				B10182CA1CA92A9700E47F0D /* BaseViewController.h */,
+				B10182CB1CA92A9700E47F0D /* BaseViewController.m */,
+				B10182CC1CA92A9700E47F0D /* BaseViewController.xib */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B10182B31CA92A2D00E47F0D /* CodeClass */ = {
+			isa = PBXGroup;
+			children = (
+				B10183CB1CA934BE00E47F0D /* Others */,
+				B10182B41CA92A2D00E47F0D /* Meun */,
+				B10182B51CA92A2D00E47F0D /* Product */,
+				B10182B91CA92A2D00E47F0D /* Radio */,
+				B10182BD1CA92A2D00E47F0D /* Read */,
+				B10182C11CA92A2D00E47F0D /* Topic */,
+			);
+			path = CodeClass;
+			sourceTree = "<group>";
+		};
+		B10182B41CA92A2D00E47F0D /* Meun */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Meun;
+			sourceTree = "<group>";
+		};
+		B10182B51CA92A2D00E47F0D /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				B10182B61CA92A2D00E47F0D /* Models */,
+				B10182B71CA92A2D00E47F0D /* ViewControllers */,
+				B10182B81CA92A2D00E47F0D /* Views */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		B10182B61CA92A2D00E47F0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B10182B71CA92A2D00E47F0D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B101834A1CA92C4D00E47F0D /* ProductViewController.h */,
+				B101834B1CA92C4D00E47F0D /* ProductViewController.m */,
+				B101834C1CA92C4D00E47F0D /* ProductViewController.xib */,
+				B101834F1CA92D5F00E47F0D /* ProductInfoViewController.h */,
+				B10183501CA92D5F00E47F0D /* ProductInfoViewController.m */,
+				B10183511CA92D5F00E47F0D /* ProductInfoViewController.xib */,
+			);
+			name = ViewControllers;
+			path = ViewCOntrollers;
+			sourceTree = "<group>";
+		};
+		B10182B81CA92A2D00E47F0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B10182B91CA92A2D00E47F0D /* Radio */ = {
+			isa = PBXGroup;
+			children = (
+				B10182BA1CA92A2D00E47F0D /* Models */,
+				B10182BB1CA92A2D00E47F0D /* ViewControllers */,
+				B10182BC1CA92A2D00E47F0D /* Views */,
+			);
+			path = Radio;
+			sourceTree = "<group>";
+		};
+		B10182BA1CA92A2D00E47F0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B10182BB1CA92A2D00E47F0D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B10183541CA92D7300E47F0D /* RadioViewController.h */,
+				B10183551CA92D7300E47F0D /* RadioViewController.m */,
+				B10183561CA92D7300E47F0D /* RadioViewController.xib */,
+				B10183591CA92D7F00E47F0D /* RadioDetailViewController.h */,
+				B101835A1CA92D7F00E47F0D /* RadioDetailViewController.m */,
+				B101835B1CA92D7F00E47F0D /* RadioDetailViewController.xib */,
+				B101835E1CA92D8A00E47F0D /* RadioPlayViewController.h */,
+				B101835F1CA92D8A00E47F0D /* RadioPlayViewController.m */,
+				B10183601CA92D8A00E47F0D /* RadioPlayViewController.xib */,
+			);
+			name = ViewControllers;
+			path = ViewCOntrollers;
+			sourceTree = "<group>";
+		};
+		B10182BC1CA92A2D00E47F0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B10182BD1CA92A2D00E47F0D /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				B10182BE1CA92A2D00E47F0D /* Models */,
+				B10182BF1CA92A2D00E47F0D /* ViewCOntrollers */,
+				B10182C01CA92A2D00E47F0D /* Views */,
+			);
+			path = Read;
+			sourceTree = "<group>";
+		};
+		B10182BE1CA92A2D00E47F0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B10182BF1CA92A2D00E47F0D /* ViewCOntrollers */ = {
+			isa = PBXGroup;
+			children = (
+				B10183631CA92D9600E47F0D /* ReadViewController.h */,
+				B10183641CA92D9600E47F0D /* ReadViewController.m */,
+				B10183651CA92D9600E47F0D /* ReadViewController.xib */,
+				B10183681CA92DA200E47F0D /* ReadDetailViewController.h */,
+				B10183691CA92DA200E47F0D /* ReadDetailViewController.m */,
+				B101836A1CA92DA200E47F0D /* ReadDetailViewController.xib */,
+				B101836D1CA92DAB00E47F0D /* ReadInfoViewController.h */,
+				B101836E1CA92DAB00E47F0D /* ReadInfoViewController.m */,
+				B101836F1CA92DAB00E47F0D /* ReadInfoViewController.xib */,
+			);
+			path = ViewCOntrollers;
+			sourceTree = "<group>";
+		};
+		B10182C01CA92A2D00E47F0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B10182C11CA92A2D00E47F0D /* Topic */ = {
+			isa = PBXGroup;
+			children = (
+				B10182C21CA92A2D00E47F0D /* Models */,
+				B10182C31CA92A2D00E47F0D /* ViewControllers */,
+				B10182C41CA92A2D00E47F0D /* Views */,
+			);
+			path = Topic;
+			sourceTree = "<group>";
+		};
+		B10182C21CA92A2D00E47F0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B10182C31CA92A2D00E47F0D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B10183721CA92DB900E47F0D /* TopicViewController.h */,
+				B10183731CA92DB900E47F0D /* TopicViewController.m */,
+				B10183741CA92DB900E47F0D /* TopicViewController.xib */,
+				B10183771CA92DC300E47F0D /* TopicInfoViewController.h */,
+				B10183781CA92DC300E47F0D /* TopicInfoViewController.m */,
+				B10183791CA92DC300E47F0D /* TopicInfoViewController.xib */,
+			);
+			name = ViewControllers;
+			path = ViewCOntrollers;
+			sourceTree = "<group>";
+		};
+		B10182C41CA92A2D00E47F0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B10182C51CA92A2D00E47F0D /* Document */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Document;
+			sourceTree = "<group>";
+		};
+		B10182C61CA92A2D00E47F0D /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		B10183CB1CA934BE00E47F0D /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				B10183CC1CA934BE00E47F0D /* AppDelegate.h */,
+				B10183CD1CA934BE00E47F0D /* AppDelegate.m */,
+				B10183CE1CA934BE00E47F0D /* main.m */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		B1054E3E1CA9283E005C0989 = {
+			isa = PBXGroup;
+			children = (
+				B1054E491CA9283E005C0989 /* Leisure */,
+				B1054E631CA9283E005C0989 /* LeisureTests */,
+				B1054E6E1CA9283E005C0989 /* LeisureUITests */,
+				B1054E481CA9283E005C0989 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B1054E481CA9283E005C0989 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1054E471CA9283E005C0989 /* Leisure.app */,
+				B1054E601CA9283E005C0989 /* LeisureTests.xctest */,
+				B1054E6B1CA9283E005C0989 /* LeisureUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1054E491CA9283E005C0989 /* Leisure */ = {
+			isa = PBXGroup;
+			children = (
+				B10182B21CA92A2D00E47F0D /* Base */,
+				B10182B31CA92A2D00E47F0D /* CodeClass */,
+				B10182C51CA92A2D00E47F0D /* Document */,
+				B10182C61CA92A2D00E47F0D /* Tools */,
+				B1054E501CA9283E005C0989 /* ViewController.h */,
+				B1054E511CA9283E005C0989 /* ViewController.m */,
+				B1054E531CA9283E005C0989 /* Main.storyboard */,
+				B1054E581CA9283E005C0989 /* LaunchScreen.storyboard */,
+				B1054E4A1CA9283E005C0989 /* Supporting Files */,
+			);
+			path = Leisure;
+			sourceTree = "<group>";
+		};
+		B1054E4A1CA9283E005C0989 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B1054E561CA9283E005C0989 /* Assets.xcassets */,
+				B1054E5B1CA9283E005C0989 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B1054E631CA9283E005C0989 /* LeisureTests */ = {
+			isa = PBXGroup;
+			children = (
+				B1054E641CA9283E005C0989 /* LeisureTests.m */,
+				B1054E661CA9283E005C0989 /* Info.plist */,
+			);
+			path = LeisureTests;
+			sourceTree = "<group>";
+		};
+		B1054E6E1CA9283E005C0989 /* LeisureUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B1054E6F1CA9283E005C0989 /* LeisureUITests.m */,
+				B1054E711CA9283E005C0989 /* Info.plist */,
+			);
+			path = LeisureUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B1054E461CA9283E005C0989 /* Leisure */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1054E741CA9283E005C0989 /* Build configuration list for PBXNativeTarget "Leisure" */;
+			buildPhases = (
+				B1054E431CA9283E005C0989 /* Sources */,
+				B1054E441CA9283E005C0989 /* Frameworks */,
+				B1054E451CA9283E005C0989 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Leisure;
+			productName = Leisure;
+			productReference = B1054E471CA9283E005C0989 /* Leisure.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1054E5F1CA9283E005C0989 /* LeisureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1054E771CA9283E005C0989 /* Build configuration list for PBXNativeTarget "LeisureTests" */;
+			buildPhases = (
+				B1054E5C1CA9283E005C0989 /* Sources */,
+				B1054E5D1CA9283E005C0989 /* Frameworks */,
+				B1054E5E1CA9283E005C0989 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1054E621CA9283E005C0989 /* PBXTargetDependency */,
+			);
+			name = LeisureTests;
+			productName = LeisureTests;
+			productReference = B1054E601CA9283E005C0989 /* LeisureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B1054E6A1CA9283E005C0989 /* LeisureUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1054E7A1CA9283E005C0989 /* Build configuration list for PBXNativeTarget "LeisureUITests" */;
+			buildPhases = (
+				B1054E671CA9283E005C0989 /* Sources */,
+				B1054E681CA9283E005C0989 /* Frameworks */,
+				B1054E691CA9283E005C0989 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1054E6D1CA9283E005C0989 /* PBXTargetDependency */,
+			);
+			name = LeisureUITests;
+			productName = LeisureUITests;
+			productReference = B1054E6B1CA9283E005C0989 /* LeisureUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1054E3F1CA9283E005C0989 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = SQ;
+				TargetAttributes = {
+					B1054E461CA9283E005C0989 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = WB6FNA5UM2;
+					};
+					B1054E5F1CA9283E005C0989 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = WB6FNA5UM2;
+						TestTargetID = B1054E461CA9283E005C0989;
+					};
+					B1054E6A1CA9283E005C0989 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = WB6FNA5UM2;
+						TestTargetID = B1054E461CA9283E005C0989;
+					};
+				};
+			};
+			buildConfigurationList = B1054E421CA9283E005C0989 /* Build configuration list for PBXProject "Leisure" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B1054E3E1CA9283E005C0989;
+			productRefGroup = B1054E481CA9283E005C0989 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1054E461CA9283E005C0989 /* Leisure */,
+				B1054E5F1CA9283E005C0989 /* LeisureTests */,
+				B1054E6A1CA9283E005C0989 /* LeisureUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1054E451CA9283E005C0989 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10183531CA92D5F00E47F0D /* ProductInfoViewController.xib in Resources */,
+				B1054E5A1CA9283E005C0989 /* LaunchScreen.storyboard in Resources */,
+				B10183711CA92DAB00E47F0D /* ReadInfoViewController.xib in Resources */,
+				B10182CE1CA92A9700E47F0D /* BaseViewController.xib in Resources */,
+				B1054E571CA9283E005C0989 /* Assets.xcassets in Resources */,
+				B1054E551CA9283E005C0989 /* Main.storyboard in Resources */,
+				B101834E1CA92C4D00E47F0D /* ProductViewController.xib in Resources */,
+				B10183621CA92D8A00E47F0D /* RadioPlayViewController.xib in Resources */,
+				B101837B1CA92DC300E47F0D /* TopicInfoViewController.xib in Resources */,
+				B10183581CA92D7300E47F0D /* RadioViewController.xib in Resources */,
+				B101836C1CA92DA200E47F0D /* ReadDetailViewController.xib in Resources */,
+				B10183671CA92D9600E47F0D /* ReadViewController.xib in Resources */,
+				B101835D1CA92D7F00E47F0D /* RadioDetailViewController.xib in Resources */,
+				B10183761CA92DB900E47F0D /* TopicViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1054E5E1CA9283E005C0989 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1054E691CA9283E005C0989 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1054E431CA9283E005C0989 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10183701CA92DAB00E47F0D /* ReadInfoViewController.m in Sources */,
+				B10183611CA92D8A00E47F0D /* RadioPlayViewController.m in Sources */,
+				B101834D1CA92C4D00E47F0D /* ProductViewController.m in Sources */,
+				B1054E521CA9283E005C0989 /* ViewController.m in Sources */,
+				B10183521CA92D5F00E47F0D /* ProductInfoViewController.m in Sources */,
+				B10182CD1CA92A9700E47F0D /* BaseViewController.m in Sources */,
+				B10183D01CA934BE00E47F0D /* main.m in Sources */,
+				B10183661CA92D9600E47F0D /* ReadViewController.m in Sources */,
+				B101835C1CA92D7F00E47F0D /* RadioDetailViewController.m in Sources */,
+				B101837A1CA92DC300E47F0D /* TopicInfoViewController.m in Sources */,
+				B101836B1CA92DA200E47F0D /* ReadDetailViewController.m in Sources */,
+				B10183751CA92DB900E47F0D /* TopicViewController.m in Sources */,
+				B10182C91CA92A5800E47F0D /* BaseModel.m in Sources */,
+				B10183571CA92D7300E47F0D /* RadioViewController.m in Sources */,
+				B10183CF1CA934BE00E47F0D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1054E5C1CA9283E005C0989 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1054E651CA9283E005C0989 /* LeisureTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1054E671CA9283E005C0989 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1054E701CA9283E005C0989 /* LeisureUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1054E621CA9283E005C0989 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1054E461CA9283E005C0989 /* Leisure */;
+			targetProxy = B1054E611CA9283E005C0989 /* PBXContainerItemProxy */;
+		};
+		B1054E6D1CA9283E005C0989 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1054E461CA9283E005C0989 /* Leisure */;
+			targetProxy = B1054E6C1CA9283E005C0989 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B1054E531CA9283E005C0989 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1054E541CA9283E005C0989 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B1054E581CA9283E005C0989 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1054E591CA9283E005C0989 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B1054E721CA9283E005C0989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B1054E731CA9283E005C0989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1054E751CA9283E005C0989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Leisure/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CN.SQ.Leisure;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B1054E761CA9283E005C0989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Leisure/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CN.SQ.Leisure;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B1054E781CA9283E005C0989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LeisureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CN.SQ.LeisureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Leisure.app/Leisure";
+			};
+			name = Debug;
+		};
+		B1054E791CA9283E005C0989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LeisureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CN.SQ.LeisureTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Leisure.app/Leisure";
+			};
+			name = Release;
+		};
+		B1054E7B1CA9283E005C0989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LeisureUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CN.SQ.LeisureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Leisure;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		B1054E7C1CA9283E005C0989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LeisureUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CN.SQ.LeisureUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Leisure;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1054E421CA9283E005C0989 /* Build configuration list for PBXProject "Leisure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1054E721CA9283E005C0989 /* Debug */,
+				B1054E731CA9283E005C0989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1054E741CA9283E005C0989 /* Build configuration list for PBXNativeTarget "Leisure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1054E751CA9283E005C0989 /* Debug */,
+				B1054E761CA9283E005C0989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1054E771CA9283E005C0989 /* Build configuration list for PBXNativeTarget "LeisureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1054E781CA9283E005C0989 /* Debug */,
+				B1054E791CA9283E005C0989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1054E7A1CA9283E005C0989 /* Build configuration list for PBXNativeTarget "LeisureUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1054E7B1CA9283E005C0989 /* Debug */,
+				B1054E7C1CA9283E005C0989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1054E3F1CA9283E005C0989 /* Project object */;
+}
