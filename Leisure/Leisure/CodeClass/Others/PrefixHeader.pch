@@ -12,6 +12,10 @@
 #import "UIView+Custom.h"
 #import "UIBarButtonItem+Custom.h"
 
+#import "URLHeaderDefine.h"
+#import "ConstansDefine.h"
+#import "NetWorkRequestManager.h"
+
 #ifdef DEBUG
 #define SQLog(...) NSLog(__VA_ARGS__)
 #else

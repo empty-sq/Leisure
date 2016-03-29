@@ -8,6 +8,10 @@
 
 #import "BaseViewController.h"
 
+@class RadioAlllistModel;
+
 @interface RadioDetailViewController : BaseViewController
+
+@property (nonatomic, strong) RadioAlllistModel *model;
 
 @end

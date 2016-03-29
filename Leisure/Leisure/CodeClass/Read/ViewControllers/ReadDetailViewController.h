@@ -10,4 +10,6 @@
 
 @interface ReadDetailViewController : BaseViewController
 
+@property (nonatomic, strong) NSString *typeID;
+
 @end
