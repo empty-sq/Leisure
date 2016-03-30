@@ -61,11 +61,13 @@ static NSString * const ReadCellID = @"CollectionViewCell";
             [self.carouselArray addObject:model];
         }
         
-        // 创建滚动列表视图
-        [self createCycleScrollView];
-        
-        // 创建主题列表视图
-        [self createListView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 创建滚动列表视图
+            [self createCycleScrollView];
+            
+            // 创建主题列表视图
+            [self createListView];
+        });
         
         // 获取列表数据源
         NSArray *listArray = dataDict[@"data"][@"list"];

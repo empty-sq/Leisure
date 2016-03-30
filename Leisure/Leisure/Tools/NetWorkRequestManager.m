@@ -31,24 +31,24 @@
         }
     }
     
-//    NSURLSession *session = [NSURLSession sharedSession];
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        if (!error) {
-//            finish(data);
-//        } else {
-//            requsetError(error);
-//        }
-//    }];
-//    [task resume];
-    
-    
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (data) {
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
             finish(data);
         } else {
-            requsetError(connectionError);
+            requsetError(error);
         }
     }];
+    [task resume];
+    
+    
+//    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+//        if (data) {
+//            finish(data);
+//        } else {
+//            requsetError(connectionError);
+//        }
+//    }];
 }
 
 /** 把参数字典转为POST请求所需要的参数体 */
