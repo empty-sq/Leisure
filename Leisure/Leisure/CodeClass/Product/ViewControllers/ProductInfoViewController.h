@@ -10,4 +10,7 @@
 
 @interface ProductInfoViewController : BaseViewController
 
+/** 商品id */
+@property (nonatomic, copy) NSString *contentid;
+
 @end

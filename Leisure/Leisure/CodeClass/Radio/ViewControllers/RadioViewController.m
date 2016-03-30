@@ -21,7 +21,7 @@
 /** 电台主题列表 */
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 /** 滚动列表根视图 */
-@property (nonatomic, strong) UIView *headView; 
+@property (nonatomic, strong) UIView *headView;
 
 @end
 

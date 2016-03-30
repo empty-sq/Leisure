@@ -37,6 +37,8 @@
 //  良品模块
 /** 良品列表 */
 #define SHOPLIST_URL           @"http://api2.pianke.me/pub/shop"
+/** 良品详情 */
+#define SHOPINFO_URL           @"http://api2.pianke.me/group/posts_info"
 
 //  话题模块
 /** 话题列表 */
