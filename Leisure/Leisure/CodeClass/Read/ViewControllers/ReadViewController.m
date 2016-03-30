@@ -77,9 +77,10 @@ static NSString * const ReadCellID = @"CollectionViewCell";
             [self.listArray addObject:model];
         }
         
-        // 刷新数据
-        [_collectionView reloadData];
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 刷新数据
+            [_collectionView reloadData];
+        });
         
     } error:^(NSError *error) {
         SQLog(@"error is %@", error);

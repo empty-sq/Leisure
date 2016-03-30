@@ -74,9 +74,7 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
         NSArray *listArray = dataDict[@"data"][@"list"];
         for (NSDictionary *dict in listArray) {
             ReadDetailListModel *model = [[ReadDetailListModel alloc] init];
-            SQLog(@"创建了");
             [model setValuesForKeysWithDictionary:dict];
-            SQLog(@"model is %@, name is %@", model.content, model.name);
             model.contentid = dict[@"id"];
             if (0 == sortType) {
                 [self.addtimeDetailListArray addObject:model];
@@ -85,12 +83,15 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
             }
         }
         
-        // 刷新数据
-        if (0 == sortType) {
-            [self.addtimeTableView reloadData];
-        } else {
-            [self.hotTableView reloadData];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 刷新数据
+            if (0 == sortType) {
+                [self.addtimeTableView reloadData];
+            } else {
+                [self.hotTableView reloadData];
+            }
+        });
+        
     } error:^(NSError *error) {
         SQLog(@"error : %@", error);
     }];
@@ -150,7 +151,6 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
 #pragma mark -<UITableViewDelegate>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%ld", self.addtimeDetailListArray.count);
     return sortType == 0 ? self.addtimeDetailListArray.count : self.hotDetailListArray.count;
 }
 
