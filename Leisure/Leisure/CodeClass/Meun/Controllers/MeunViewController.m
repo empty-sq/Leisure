@@ -13,52 +13,79 @@
 #import "RadioViewController.h"
 #import "TopicViewController.h"
 #import "ProductViewController.h"
+#import "MeunHeaderView.h"
+#import "MeunFooterView.h"
 
-@interface MeunViewController ()
-{
-    /** 菜单列表数据源 */
-    NSMutableArray *list;
-}
+@interface MeunViewController ()<UITableViewDataSource, UITableViewDelegate>
 
+/** 菜单列表数据 */
+@property (nonatomic, strong) NSArray *list;
 @property (nonatomic, strong) UITableView *tableView;
+/** 头部View */
+@property (nonatomic, strong) MeunHeaderView *headView;
+/** 尾部View */
+@property (nonatomic, strong) MeunFooterView *footerView;
 
 @end
 
 @implementation MeunViewController
 
-static NSString * const CustomCellID = @"CellIdentifier";
+static NSString * const MeunCellID = @"TableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    list = [[NSMutableArray alloc] initWithCapacity:0];
-    [list addObject:@"阅读"];
-    [list addObject:@"电台"];
-    [list addObject:@"话题"];
-    [list addObject:@"良品"];
+    
+    // 添加tableView
+    [self setupTableView];
 }
 
-/** 改变行高 */
-- (CGFloat)tableVIew:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+#pragma mark -添加tableView、实现点击事件
+/**
+ *  添加tableView
+ */
+- (void)setupTableView {
+    // 添加表头
+    _headView = [[MeunHeaderView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth * 2 / 3, 160)];
+    [_headView.loginButton addTarget:self action:@selector(loginButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_headView];
+    
+    /** 添加列表数据 */
+    _list = @[@"阅读", @"电台", @"话题", @"良品"];
+     
+    // 创建显示模块标题的列表
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 180, kScreenWidth * 2 / 3, kScreenHeight - 240 + 60) style:UITableViewStylePlain];
+    _tableView.backgroundColor = kColor(40, 40, 40);
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.rowHeight = 50;
+    
+    // 注册单元格
+    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MeunCellID];
+    [self.view addSubview:_tableView];
+    
+    // 添加表尾
+    _footerView = [[MeunFooterView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 60, kScreenWidth * 2 / 3, 60)];
+    [self.view addSubview:_footerView];
 }
 
-/** 返回有多少个tableView */
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+/**
+ *  登录按钮
+ */
+- (void)loginButtonClick {
+    
 }
 
-/** 返回tableView中有多少数据 */
+#pragma mark -<UITableViewDelegate, UITableViewDataSource>
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [list count];
+    return self.list.count;
 }
 
-/** 组装每一条数据 */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CustomCellID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CustomCellID];
-    }
-    cell.textLabel.text = [list objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MeunCellID];
+    cell.textLabel.text = _list[indexPath.row];
+    cell.textLabel.textColor = [UIColor grayColor];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
@@ -89,17 +116,6 @@ static NSString * const CustomCellID = @"CellIdentifier";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

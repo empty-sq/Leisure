@@ -7,6 +7,7 @@
 //
 
 #import "MeunHeaderView.h"
+#import "MeunHeaderView.h"
 
 #define kMargin 10
 
@@ -44,7 +45,7 @@
         [_writeButton setImage:[UIImage imageNamed:@"写字"] forState:(UIControlStateNormal)];
         
         _searchBar = [[MenuSearchBar alloc] initWithFrame:CGRectMake(_downloadButton.left, _downloadButton.bottom + kMargin * 2, kWidth - kMargin * 4, 30)];
-                [self addSubview:_searchBar];
+//                [self addSubview:_searchBar];
     }
     return self;
 }

@@ -8,6 +8,8 @@
 
 #import "DrawerViewController.h"
 
+#define kLeftViewWidth kMenuFullWidth * 2 / 3
+
 @interface DrawerViewController ()
 
 {
@@ -34,6 +36,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.leftViewController.view.frame = CGRectMake(0, 0, kScreenWidth * 2 / 3, kScreenHeight);
+//    self.leftViewController.view.backgroundColor = [UIColor blueColor];
     
     [self setRootViewController:_root];
     
@@ -141,7 +145,7 @@
     
     UIView *view = self.leftViewController.view;
     CGRect frame = self.view.bounds;
-    frame.size.width = kMenuFullWidth;
+    frame.size.width = kLeftViewWidth;
     view.frame = frame;
     [self.view insertSubview:view atIndex:0];
     
@@ -154,7 +158,7 @@
     
     _root.view.userInteractionEnabled = NO;
     [UIView animateWithDuration:.3 animations:^{
-        _root.view.x = CGRectGetMaxX(view.frame) - (kMenuFullWidth - kMenuDisplayedWidth);
+        _root.view.x = kLeftViewWidth;
     } completion:^(BOOL finished) {
         // 激活单击手势
         [_tap setEnabled:YES];
