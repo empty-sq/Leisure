@@ -18,6 +18,7 @@
 #import "ConstansDefine.h"
 #import "NetWorkRequestManager.h"
 #import "CustomNavigationBar.h"
+#import <UIImageView+WebCache.h>
 
 #ifdef DEBUG
 #define SQLog(...) NSLog(__VA_ARGS__)

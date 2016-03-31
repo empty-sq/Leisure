@@ -56,6 +56,8 @@
 		B151C2981CABB1BE00555E76 /* TopicUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B151C2971CABB1BE00555E76 /* TopicUserInfoModel.m */; };
 		B17E133B1CAD14FE003B7E8A /* ReadInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B17E133A1CAD14FE003B7E8A /* ReadInfoModel.m */; };
 		B17E133E1CAD181C003B7E8A /* UIButton+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B17E133D1CAD181C003B7E8A /* UIButton+Custom.m */; };
+		B17E13421CAD5403003B7E8A /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B17E13401CAD5403003B7E8A /* ProductTableViewCell.m */; };
+		B17E13431CAD5403003B7E8A /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17E13411CAD5403003B7E8A /* ProductTableViewCell.xib */; };
 		B1E6C2CB1CABF0F00008EE51 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */; };
 		B1E6C2D21CAC0F3F0008EE51 /* ReadHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D11CAC0F3F0008EE51 /* ReadHeaderView.m */; };
 		B1E6C2D51CAC0FDE0008EE51 /* ReadFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D41CAC0FDE0008EE51 /* ReadFooterView.m */; };
@@ -185,6 +187,9 @@
 		B17E133A1CAD14FE003B7E8A /* ReadInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadInfoModel.m; sourceTree = "<group>"; };
 		B17E133C1CAD181C003B7E8A /* UIButton+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Custom.h"; sourceTree = "<group>"; };
 		B17E133D1CAD181C003B7E8A /* UIButton+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Custom.m"; sourceTree = "<group>"; };
+		B17E133F1CAD5403003B7E8A /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
+		B17E13401CAD5403003B7E8A /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
+		B17E13411CAD5403003B7E8A /* ProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		B1E6C2C91CABF0F00008EE51 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		B1E6C2D01CAC0F3F0008EE51 /* ReadHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadHeaderView.h; sourceTree = "<group>"; };
@@ -355,6 +360,9 @@
 		B10182B81CA92A2D00E47F0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B17E133F1CAD5403003B7E8A /* ProductTableViewCell.h */,
+				B17E13401CAD5403003B7E8A /* ProductTableViewCell.m */,
+				B17E13411CAD5403003B7E8A /* ProductTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -774,6 +782,7 @@
 				B1054E5A1CA9283E005C0989 /* LaunchScreen.storyboard in Resources */,
 				B10183711CA92DAB00E47F0D /* ReadInfoViewController.xib in Resources */,
 				B10182CE1CA92A9700E47F0D /* BaseViewController.xib in Resources */,
+				B17E13431CAD5403003B7E8A /* ProductTableViewCell.xib in Resources */,
 				B1054E571CA9283E005C0989 /* Assets.xcassets in Resources */,
 				B1F26D2A1CACF8FE00497F5D /* ReadTableViewCell.xib in Resources */,
 				B1F26D021CACB80200497F5D /* BaseTableViewCell.xib in Resources */,
@@ -858,6 +867,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B17E13421CAD5403003B7E8A /* ProductTableViewCell.m in Sources */,
 				B151C28F1CAB868100555E76 /* ProductUserInfoModel.m in Sources */,
 				B10183DC1CA94C1D00E47F0D /* UIView+Custom.m in Sources */,
 				B12EB64C1CAA9EBB00193FBA /* ReadListModel.m in Sources */,

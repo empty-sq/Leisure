@@ -10,6 +10,7 @@
 #import "RadioDetailViewController.h"
 #import "RadioCarouselModel.h"
 #import "RadioAlllistModel.h"
+#import <SDCycleScrollView.h>
 
 @interface RadioViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -55,7 +56,6 @@ static NSString * const RadioCellID = @"radioCell";
     parDic[@"client"] = @"1";
     parDic[@"deviceid"] = @"63A94D37-33F9-40FF-9EBB-481182338873";
     parDic[@"auth"] = @"";
-    parDic[@"version"] = @"3.0.2";
     [NetWorkRequestManager requestWithType:POST urlString:RADIOLIST_URL parDic:parDic finish:^(NSData *data) {
         if (data == nil) return ;
         
@@ -100,13 +100,11 @@ static NSString * const RadioCellID = @"radioCell";
     // 设置tableView的headView
     CGFloat width = self.view.width;
     self.headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 230)];
-    self.headView.backgroundColor = [UIColor purpleColor];
     self.mainTableView.tableHeaderView = self.headView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.view.backgroundColor = [UIColor blackColor];
     self.navigationItem.title = @"电台";
     
     // 创建tableView
@@ -122,10 +120,10 @@ static NSString * const RadioCellID = @"radioCell";
 }
 
 /**
- *  创建滚动视图
+ *  通过第三方框架SDCycleScrollView实现自动轮播图
  */
 - (void)createCycleScrollView {
-//    SQLog(@"%s", __func__);
+//    SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:<#(CGRect)#> imageURLStringsGroup:<#(NSArray *)#>]
 }
 
 #pragma mark -<UITableViewDelegate>

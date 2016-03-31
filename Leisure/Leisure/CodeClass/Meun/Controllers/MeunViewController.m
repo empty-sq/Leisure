@@ -86,6 +86,7 @@ static NSString * const MeunCellID = @"TableViewCell";
     cell.textLabel.text = _list[indexPath.row];
     cell.textLabel.textColor = [UIColor grayColor];
     cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

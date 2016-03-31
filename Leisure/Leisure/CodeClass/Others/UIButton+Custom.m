@@ -17,4 +17,12 @@
     return button;
 }
 
++ (UIButton *)buttonWithFrame:(CGRect)frame image:(NSString *)image target:(id)target action:(SEL)aciton {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [button addTarget:target action:aciton forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
 @end

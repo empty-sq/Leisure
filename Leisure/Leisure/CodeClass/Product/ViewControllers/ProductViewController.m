@@ -8,9 +8,10 @@
 
 #import "ProductViewController.h"
 #import "ProductListModel.h"
+#import "ProductTableViewCell.h"
 #import "ProductInfoViewController.h"
 
-@interface ProductViewController ()
+@interface ProductViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 /** 请求开始位置 */
 @property (nonatomic, assign) NSInteger start;
@@ -18,10 +19,14 @@
 @property (nonatomic, assign) NSInteger limit;
 /** 良品列表数据 */
 @property (nonatomic, strong) NSMutableArray *listArray;
+/** 良品列表 */
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
 @implementation ProductViewController
+
+static NSString * const ProductCellID = @"ProductCell";
 
 #pragma mark -懒加载
 - (NSMutableArray *)listArray {
@@ -52,10 +57,8 @@
         
         // 返回主线程
         dispatch_async(dispatch_get_main_queue(), ^{
-            ProductInfoViewController *infoVC = [[ProductInfoViewController alloc] init];
-            ProductListModel *model = self.listArray[0];
-            infoVC.contentid = model.contentid;
-            [self.navigationController pushViewController:infoVC animated:YES];
+            // 刷新数据
+            [_tableView reloadData];
         });
         
     } error:^(NSError *error) {
@@ -63,10 +66,26 @@
     }];
 }
 
+/**
+ *  创建tableView
+ */
+- (void)setupTableView {
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44, kScreenWidth, kScreenHeight - 44)];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.rowHeight = (kScreenWidth - 20) * 300 / 608 + 50;
+    
+    // 注册自定义单元格
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ProductTableViewCell class]) bundle:nil] forCellReuseIdentifier:ProductCellID];
+    
+    [self.view addSubview:_tableView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor purpleColor];
-    self.navigationItem.title = @"良品";
+    
+    // 创建tableView
+    [self setupTableView];
     
     // 加载数据
     [self loadData];
@@ -74,17 +93,35 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark <UITableViewDelegate, UITableViewDataSource>
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _listArray.count;
 }
-*/
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ProductCellID];
+    ProductListModel *model = _listArray[indexPath.row];
+    [cell.buyBtn addTarget:self action:@selector(buyClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.buyBtn.tag = indexPath.row + 1000;
+    cell.model = model;
+    return cell;
+}
+
+/**
+ *  点击购买触发的事件
+ */
+- (void)buyClick:(UIButton *)button {
+    ProductListModel *model = _listArray[button.tag - 1000];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:model.buyurl]];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    ProductInfoViewController *infoVC = [[ProductInfoViewController alloc] init];
+    ProductListModel *model = _listArray[indexPath.row];
+    infoVC.contentid = model.contentid;
+    [self.navigationController pushViewController:infoVC animated:YES];
+}
 
 @end

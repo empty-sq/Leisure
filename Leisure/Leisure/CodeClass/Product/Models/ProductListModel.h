@@ -15,7 +15,7 @@
 /** 标题 */
 @property (nonatomic, copy) NSString *title;
 /** 图片地址 */
-@property (nonatomic, copy) NSString *covering;
+@property (nonatomic, copy) NSString *coverimg;
 /** 商品id */
 @property (nonatomic, copy) NSString *contentid;
 

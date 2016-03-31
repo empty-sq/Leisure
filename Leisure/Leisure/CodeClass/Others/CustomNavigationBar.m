@@ -16,7 +16,7 @@
         
         _menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _menuButton.frame = CGRectMake(0, 0, kHeight, kHeight);
-        [_menuButton setBackgroundImage:[UIImage imageNamed:@"菜单"] forState:UIControlStateNormal];
+        [_menuButton setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
         [self addSubview:_menuButton];
         
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(_menuButton.right + 5, 13, 100, kHeight)];
