@@ -9,6 +9,7 @@
 #import "DrawerViewController.h"
 
 @interface DrawerViewController ()
+
 {
     /** 判断左菜单是否能够显示 */
     BOOL canShowLeft;
@@ -63,7 +64,20 @@
     
     // 在根视图导航栏上添加左按钮
     if (canShowLeft) {
-        topController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"chouti" highImage:@"choutiClick" target:self action:@selector(showLeft:)];
+        [topController.navigationController setNavigationBarHidden:YES];
+        CustomNavigationBar *bar = [[CustomNavigationBar alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
+        [topController.view addSubview:bar];
+        [bar.menuButton setBackgroundImage:[UIImage imageNamed:@"菜单"] forState:UIControlStateNormal];
+        [bar.menuButton addTarget:self action:@selector(showLeft:) forControlEvents:UIControlEventTouchUpInside];
+        if ([@"ReadViewController" isEqualToString:NSStringFromClass([topController class])]) {
+            bar.titleLabel.text = @"阅读";
+        } else if ([@"RadioViewController" isEqualToString:NSStringFromClass([topController class])]) {
+            bar.titleLabel.text = @"电台";
+        } else if ([@"ProductViewController" isEqualToString:NSStringFromClass([topController class])]) {
+            bar.titleLabel.text = @"良品";
+        } else if ([@"TopicViewController" isEqualToString:NSStringFromClass([topController class])]) {
+            bar.titleLabel.text = @"话题";
+        }
     } else {
         topController.navigationItem.leftBarButtonItem = nil;
     }

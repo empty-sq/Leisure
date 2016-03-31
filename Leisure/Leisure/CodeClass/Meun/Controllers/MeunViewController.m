@@ -13,7 +13,6 @@
 #import "RadioViewController.h"
 #import "TopicViewController.h"
 #import "ProductViewController.h"
-#import "BaseNavigationController.h"
 
 @interface MeunViewController ()
 {
@@ -36,9 +35,6 @@ static NSString * const CustomCellID = @"CellIdentifier";
     [list addObject:@"电台"];
     [list addObject:@"话题"];
     [list addObject:@"良品"];
-    
-    // 默认选中阅读
-   [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
 
 /** 改变行高 */
@@ -56,7 +52,7 @@ static NSString * const CustomCellID = @"CellIdentifier";
     return [list count];
 }
 
-/** 组装每一条数据 J*/
+/** 组装每一条数据 */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CustomCellID];
     if (cell == nil) {
@@ -66,7 +62,7 @@ static NSString * const CustomCellID = @"CellIdentifier";
     return cell;
 }
 
-/** 选中Cell响应时间 */
+/** 选中Cell响应事件 */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     // 获取抽屉对象
     DrawerViewController *menuController = (DrawerViewController *)((AppDelegate *)[[UIApplication sharedApplication] delegate]).drawerViewController;
@@ -84,6 +80,10 @@ static NSString * const CustomCellID = @"CellIdentifier";
 
 - (void)setRootViewController:(BaseViewController *)viewController menuController:(DrawerViewController *)menuController {
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    // 点击选中单元格时，先删除原来视图，再添加新视图
+    [navigationController.view removeFromSuperview];
+    // 隐藏系统自带的导航栏
+    navigationController.navigationBarHidden = YES;
     [menuController setRootController:navigationController animated:YES];
 }
 
