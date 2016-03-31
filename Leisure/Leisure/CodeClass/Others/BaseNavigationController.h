@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomNavigationBar.h"
 
 @interface BaseNavigationController : UINavigationController
+
+@property (nonatomic, strong) CustomNavigationBar *bar;
 
 @end

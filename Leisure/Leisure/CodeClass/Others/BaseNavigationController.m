@@ -10,28 +10,34 @@
 
 @interface BaseNavigationController ()
 
+
+
 @end
 
 @implementation BaseNavigationController
 
+- (void)initNavigationBar {
+    // 隐藏自带的NavigationBar
+    [self setNavigationBarHidden:YES];
+    // 设置view的大小
+    UIView *navView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenHeight, 64)];
+    navView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:navView];
+    // 创建自定义NavigationBar
+    _bar = [[CustomNavigationBar alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
+//    _bar.titleLabel.text = @"测试";
+    [navView addSubview:_bar];
+}
+
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+//    [super viewDidLoad];
+    
+    // 添加自定义NavigationBar
+    [self initNavigationBar];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

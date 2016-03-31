@@ -13,12 +13,16 @@
 #import "RadioViewController.h"
 #import "TopicViewController.h"
 #import "ProductViewController.h"
+#import "BaseNavigationController.h"
 
 @interface MeunViewController ()
 {
     /** 菜单列表数据源 */
     NSMutableArray *list;
 }
+
+@property (nonatomic, strong) UITableView *tableView;
+
 @end
 
 @implementation MeunViewController
@@ -32,6 +36,9 @@ static NSString * const CustomCellID = @"CellIdentifier";
     [list addObject:@"电台"];
     [list addObject:@"话题"];
     [list addObject:@"良品"];
+    
+    // 默认选中阅读
+   [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
 
 /** 改变行高 */

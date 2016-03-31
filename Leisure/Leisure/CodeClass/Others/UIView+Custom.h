@@ -18,6 +18,14 @@
 @property (nonatomic, assign) CGFloat width;
 /** 高度 */
 @property (nonatomic, assign) CGFloat height;
+/** 左边界 */
+@property (nonatomic, assign) CGFloat left;
+/** 右边界 */
+@property (nonatomic, assign) CGFloat right;
+/** 上边界 */
+@property (nonatomic, assign) CGFloat top;
+/** 下边界 */
+@property (nonatomic, assign) CGFloat bottom;
 /** 尺寸 */
 @property (nonatomic, assign) CGSize size;
 

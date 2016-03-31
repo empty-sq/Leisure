@@ -33,9 +33,6 @@
 		B101837B1CA92DC300E47F0D /* TopicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10183791CA92DC300E47F0D /* TopicInfoViewController.xib */; };
 		B10183CF1CA934BE00E47F0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183CD1CA934BE00E47F0D /* AppDelegate.m */; };
 		B10183D01CA934BE00E47F0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183CE1CA934BE00E47F0D /* main.m */; };
-		B10183D31CA9493900E47F0D /* DrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183D21CA9493900E47F0D /* DrawerViewController.m */; };
-		B10183D71CA9494B00E47F0D /* MeunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183D51CA9494B00E47F0D /* MeunViewController.m */; };
-		B10183D81CA9494B00E47F0D /* MeunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10183D61CA9494B00E47F0D /* MeunViewController.xib */; };
 		B10183DC1CA94C1D00E47F0D /* UIView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183DB1CA94C1D00E47F0D /* UIView+Custom.m */; };
 		B10183E01CA950D000E47F0D /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183DF1CA950D000E47F0D /* UIBarButtonItem+Custom.m */; };
 		B1054E571CA9283E005C0989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1054E561CA9283E005C0989 /* Assets.xcassets */; };
@@ -57,7 +54,28 @@
 		B151C2921CABAEF100555E76 /* TopicListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B151C2911CABAEF100555E76 /* TopicListModel.m */; };
 		B151C2951CABB04D00555E76 /* TopicCounterListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B151C2941CABB04D00555E76 /* TopicCounterListModel.m */; };
 		B151C2981CABB1BE00555E76 /* TopicUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B151C2971CABB1BE00555E76 /* TopicUserInfoModel.m */; };
+		B17E133B1CAD14FE003B7E8A /* ReadInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B17E133A1CAD14FE003B7E8A /* ReadInfoModel.m */; };
+		B17E133E1CAD181C003B7E8A /* UIButton+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B17E133D1CAD181C003B7E8A /* UIButton+Custom.m */; };
 		B1E6C2CB1CABF0F00008EE51 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */; };
+		B1E6C2D21CAC0F3F0008EE51 /* ReadHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D11CAC0F3F0008EE51 /* ReadHeaderView.m */; };
+		B1E6C2D51CAC0FDE0008EE51 /* ReadFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D41CAC0FDE0008EE51 /* ReadFooterView.m */; };
+		B1E6C2DD1CAC137B0008EE51 /* ReadCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2DC1CAC137B0008EE51 /* ReadCollectionViewCell.m */; };
+		B1E6C2E01CAC207F0008EE51 /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2DF1CAC207F0008EE51 /* CustomNavigationBar.m */; };
+		B1E6C2E31CAC322D0008EE51 /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2E21CAC322D0008EE51 /* BaseCollectionViewCell.m */; };
+		B1F26D011CACB80200497F5D /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26CFF1CACB80200497F5D /* BaseTableViewCell.m */; };
+		B1F26D021CACB80200497F5D /* BaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1F26D001CACB80200497F5D /* BaseTableViewCell.xib */; };
+		B1F26D051CACB91D00497F5D /* FactoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D041CACB91D00497F5D /* FactoryTableViewCell.m */; };
+		B1F26D081CACBBDE00497F5D /* FactoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D071CACBBDE00497F5D /* FactoryCollectionViewCell.m */; };
+		B1F26D111CACC1B200497F5D /* DrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D0B1CACC1B200497F5D /* DrawerViewController.m */; };
+		B1F26D121CACC1B200497F5D /* MeunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D0D1CACC1B200497F5D /* MeunViewController.m */; };
+		B1F26D131CACC1B200497F5D /* MeunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1F26D0E1CACC1B200497F5D /* MeunViewController.xib */; };
+		B1F26D161CACC21900497F5D /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D151CACC21900497F5D /* BaseView.m */; };
+		B1F26D191CACC24500497F5D /* MeunHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D181CACC24500497F5D /* MeunHeaderView.m */; };
+		B1F26D1C1CACC25300497F5D /* MeunFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D1B1CACC25300497F5D /* MeunFooterView.m */; };
+		B1F26D1F1CACC2D700497F5D /* MenuSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D1E1CACC2D700497F5D /* MenuSearchBar.m */; };
+		B1F26D251CACC66500497F5D /* UIImage+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D241CACC66500497F5D /* UIImage+Custom.m */; };
+		B1F26D291CACF8FE00497F5D /* ReadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F26D271CACF8FE00497F5D /* ReadTableViewCell.m */; };
+		B1F26D2A1CACF8FE00497F5D /* ReadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1F26D281CACF8FE00497F5D /* ReadTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,11 +135,6 @@
 		B10183CC1CA934BE00E47F0D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B10183CD1CA934BE00E47F0D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B10183CE1CA934BE00E47F0D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B10183D11CA9493900E47F0D /* DrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerViewController.h; sourceTree = "<group>"; };
-		B10183D21CA9493900E47F0D /* DrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerViewController.m; sourceTree = "<group>"; };
-		B10183D41CA9494B00E47F0D /* MeunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeunViewController.h; sourceTree = "<group>"; };
-		B10183D51CA9494B00E47F0D /* MeunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeunViewController.m; sourceTree = "<group>"; };
-		B10183D61CA9494B00E47F0D /* MeunViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeunViewController.xib; sourceTree = "<group>"; };
 		B10183DA1CA94C1D00E47F0D /* UIView+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Custom.h"; sourceTree = "<group>"; };
 		B10183DB1CA94C1D00E47F0D /* UIView+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Custom.m"; sourceTree = "<group>"; };
 		B10183DD1CA94D2E00E47F0D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -168,8 +181,47 @@
 		B151C2941CABB04D00555E76 /* TopicCounterListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicCounterListModel.m; sourceTree = "<group>"; };
 		B151C2961CABB1BE00555E76 /* TopicUserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicUserInfoModel.h; sourceTree = "<group>"; };
 		B151C2971CABB1BE00555E76 /* TopicUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicUserInfoModel.m; sourceTree = "<group>"; };
+		B17E13391CAD14FE003B7E8A /* ReadInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadInfoModel.h; sourceTree = "<group>"; };
+		B17E133A1CAD14FE003B7E8A /* ReadInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadInfoModel.m; sourceTree = "<group>"; };
+		B17E133C1CAD181C003B7E8A /* UIButton+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Custom.h"; sourceTree = "<group>"; };
+		B17E133D1CAD181C003B7E8A /* UIButton+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Custom.m"; sourceTree = "<group>"; };
 		B1E6C2C91CABF0F00008EE51 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		B1E6C2D01CAC0F3F0008EE51 /* ReadHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadHeaderView.h; sourceTree = "<group>"; };
+		B1E6C2D11CAC0F3F0008EE51 /* ReadHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadHeaderView.m; sourceTree = "<group>"; };
+		B1E6C2D31CAC0FDE0008EE51 /* ReadFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadFooterView.h; sourceTree = "<group>"; };
+		B1E6C2D41CAC0FDE0008EE51 /* ReadFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadFooterView.m; sourceTree = "<group>"; };
+		B1E6C2DB1CAC137B0008EE51 /* ReadCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadCollectionViewCell.h; sourceTree = "<group>"; };
+		B1E6C2DC1CAC137B0008EE51 /* ReadCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadCollectionViewCell.m; sourceTree = "<group>"; };
+		B1E6C2DE1CAC207F0008EE51 /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationBar.h; sourceTree = "<group>"; };
+		B1E6C2DF1CAC207F0008EE51 /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBar.m; sourceTree = "<group>"; };
+		B1E6C2E11CAC322D0008EE51 /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
+		B1E6C2E21CAC322D0008EE51 /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
+		B1F26CFE1CACB80200497F5D /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
+		B1F26CFF1CACB80200497F5D /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		B1F26D001CACB80200497F5D /* BaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTableViewCell.xib; sourceTree = "<group>"; };
+		B1F26D031CACB91D00497F5D /* FactoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTableViewCell.h; sourceTree = "<group>"; };
+		B1F26D041CACB91D00497F5D /* FactoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTableViewCell.m; sourceTree = "<group>"; };
+		B1F26D061CACBBDE00497F5D /* FactoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryCollectionViewCell.h; sourceTree = "<group>"; };
+		B1F26D071CACBBDE00497F5D /* FactoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryCollectionViewCell.m; sourceTree = "<group>"; };
+		B1F26D0A1CACC1B200497F5D /* DrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerViewController.h; sourceTree = "<group>"; };
+		B1F26D0B1CACC1B200497F5D /* DrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerViewController.m; sourceTree = "<group>"; };
+		B1F26D0C1CACC1B200497F5D /* MeunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeunViewController.h; sourceTree = "<group>"; };
+		B1F26D0D1CACC1B200497F5D /* MeunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeunViewController.m; sourceTree = "<group>"; };
+		B1F26D0E1CACC1B200497F5D /* MeunViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeunViewController.xib; sourceTree = "<group>"; };
+		B1F26D141CACC21900497F5D /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
+		B1F26D151CACC21900497F5D /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		B1F26D171CACC24500497F5D /* MeunHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeunHeaderView.h; sourceTree = "<group>"; };
+		B1F26D181CACC24500497F5D /* MeunHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeunHeaderView.m; sourceTree = "<group>"; };
+		B1F26D1A1CACC25300497F5D /* MeunFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeunFooterView.h; sourceTree = "<group>"; };
+		B1F26D1B1CACC25300497F5D /* MeunFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeunFooterView.m; sourceTree = "<group>"; };
+		B1F26D1D1CACC2D700497F5D /* MenuSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSearchBar.h; sourceTree = "<group>"; };
+		B1F26D1E1CACC2D700497F5D /* MenuSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSearchBar.m; sourceTree = "<group>"; };
+		B1F26D231CACC66500497F5D /* UIImage+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Custom.h"; sourceTree = "<group>"; };
+		B1F26D241CACC66500497F5D /* UIImage+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Custom.m"; sourceTree = "<group>"; };
+		B1F26D261CACF8FE00497F5D /* ReadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadTableViewCell.h; sourceTree = "<group>"; };
+		B1F26D271CACF8FE00497F5D /* ReadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadTableViewCell.m; sourceTree = "<group>"; };
+		B1F26D281CACF8FE00497F5D /* ReadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadTableViewCell.xib; sourceTree = "<group>"; };
 		D30DD0F0774615369D0672F9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F07D1C07AF2138A874D5D9BA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -222,9 +274,20 @@
 			children = (
 				B10182C71CA92A5800E47F0D /* BaseModel.h */,
 				B10182C81CA92A5800E47F0D /* BaseModel.m */,
+				B1F26D141CACC21900497F5D /* BaseView.h */,
+				B1F26D151CACC21900497F5D /* BaseView.m */,
 				B10182CA1CA92A9700E47F0D /* BaseViewController.h */,
 				B10182CB1CA92A9700E47F0D /* BaseViewController.m */,
 				B10182CC1CA92A9700E47F0D /* BaseViewController.xib */,
+				B1E6C2E11CAC322D0008EE51 /* BaseCollectionViewCell.h */,
+				B1E6C2E21CAC322D0008EE51 /* BaseCollectionViewCell.m */,
+				B1F26CFE1CACB80200497F5D /* BaseTableViewCell.h */,
+				B1F26CFF1CACB80200497F5D /* BaseTableViewCell.m */,
+				B1F26D001CACB80200497F5D /* BaseTableViewCell.xib */,
+				B1F26D031CACB91D00497F5D /* FactoryTableViewCell.h */,
+				B1F26D041CACB91D00497F5D /* FactoryTableViewCell.m */,
+				B1F26D061CACBBDE00497F5D /* FactoryCollectionViewCell.h */,
+				B1F26D071CACBBDE00497F5D /* FactoryCollectionViewCell.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -245,11 +308,9 @@
 		B10182B41CA92A2D00E47F0D /* Meun */ = {
 			isa = PBXGroup;
 			children = (
-				B10183D11CA9493900E47F0D /* DrawerViewController.h */,
-				B10183D21CA9493900E47F0D /* DrawerViewController.m */,
-				B10183D41CA9494B00E47F0D /* MeunViewController.h */,
-				B10183D51CA9494B00E47F0D /* MeunViewController.m */,
-				B10183D61CA9494B00E47F0D /* MeunViewController.xib */,
+				B1F26D091CACC1B200497F5D /* Controllers */,
+				B1F26D0F1CACC1B200497F5D /* Models */,
+				B1F26D101CACC1B200497F5D /* Views */,
 			);
 			path = Meun;
 			sourceTree = "<group>";
@@ -360,12 +421,14 @@
 		B10182BE1CA92A2D00E47F0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B12EB6471CAA9E5200193FBA /* ReadCarouselModel.h */,
-				B12EB6481CAA9E5200193FBA /* ReadCarouselModel.m */,
 				B12EB64A1CAA9EBB00193FBA /* ReadListModel.h */,
 				B12EB64B1CAA9EBB00193FBA /* ReadListModel.m */,
+				B12EB6471CAA9E5200193FBA /* ReadCarouselModel.h */,
+				B12EB6481CAA9E5200193FBA /* ReadCarouselModel.m */,
 				B12EB64D1CAA9FAA00193FBA /* ReadDetailListModel.h */,
 				B12EB64E1CAA9FAA00193FBA /* ReadDetailListModel.m */,
+				B17E13391CAD14FE003B7E8A /* ReadInfoModel.h */,
+				B17E133A1CAD14FE003B7E8A /* ReadInfoModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -389,6 +452,15 @@
 		B10182C01CA92A2D00E47F0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B1E6C2D01CAC0F3F0008EE51 /* ReadHeaderView.h */,
+				B1E6C2D11CAC0F3F0008EE51 /* ReadHeaderView.m */,
+				B1E6C2D31CAC0FDE0008EE51 /* ReadFooterView.h */,
+				B1E6C2D41CAC0FDE0008EE51 /* ReadFooterView.m */,
+				B1E6C2DB1CAC137B0008EE51 /* ReadCollectionViewCell.h */,
+				B1E6C2DC1CAC137B0008EE51 /* ReadCollectionViewCell.m */,
+				B1F26D261CACF8FE00497F5D /* ReadTableViewCell.h */,
+				B1F26D271CACF8FE00497F5D /* ReadTableViewCell.m */,
+				B1F26D281CACF8FE00497F5D /* ReadTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -476,6 +548,10 @@
 				B10183DB1CA94C1D00E47F0D /* UIView+Custom.m */,
 				B10183DE1CA950D000E47F0D /* UIBarButtonItem+Custom.h */,
 				B10183DF1CA950D000E47F0D /* UIBarButtonItem+Custom.m */,
+				B1F26D231CACC66500497F5D /* UIImage+Custom.h */,
+				B1F26D241CACC66500497F5D /* UIImage+Custom.m */,
+				B17E133C1CAD181C003B7E8A /* UIButton+Custom.h */,
+				B17E133D1CAD181C003B7E8A /* UIButton+Custom.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -547,8 +623,42 @@
 			children = (
 				B1E6C2C91CABF0F00008EE51 /* BaseNavigationController.h */,
 				B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */,
+				B1E6C2DE1CAC207F0008EE51 /* CustomNavigationBar.h */,
+				B1E6C2DF1CAC207F0008EE51 /* CustomNavigationBar.m */,
 			);
 			name = NavigationController;
+			sourceTree = "<group>";
+		};
+		B1F26D091CACC1B200497F5D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B1F26D0A1CACC1B200497F5D /* DrawerViewController.h */,
+				B1F26D0B1CACC1B200497F5D /* DrawerViewController.m */,
+				B1F26D0C1CACC1B200497F5D /* MeunViewController.h */,
+				B1F26D0D1CACC1B200497F5D /* MeunViewController.m */,
+				B1F26D0E1CACC1B200497F5D /* MeunViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B1F26D0F1CACC1B200497F5D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B1F26D101CACC1B200497F5D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1F26D171CACC24500497F5D /* MeunHeaderView.h */,
+				B1F26D181CACC24500497F5D /* MeunHeaderView.m */,
+				B1F26D1A1CACC25300497F5D /* MeunFooterView.h */,
+				B1F26D1B1CACC25300497F5D /* MeunFooterView.m */,
+				B1F26D1D1CACC2D700497F5D /* MenuSearchBar.h */,
+				B1F26D1E1CACC2D700497F5D /* MenuSearchBar.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -665,7 +775,8 @@
 				B10183711CA92DAB00E47F0D /* ReadInfoViewController.xib in Resources */,
 				B10182CE1CA92A9700E47F0D /* BaseViewController.xib in Resources */,
 				B1054E571CA9283E005C0989 /* Assets.xcassets in Resources */,
-				B10183D81CA9494B00E47F0D /* MeunViewController.xib in Resources */,
+				B1F26D2A1CACF8FE00497F5D /* ReadTableViewCell.xib in Resources */,
+				B1F26D021CACB80200497F5D /* BaseTableViewCell.xib in Resources */,
 				B101834E1CA92C4D00E47F0D /* ProductViewController.xib in Resources */,
 				B10183621CA92D8A00E47F0D /* RadioPlayViewController.xib in Resources */,
 				B101837B1CA92DC300E47F0D /* TopicInfoViewController.xib in Resources */,
@@ -674,6 +785,7 @@
 				B10183671CA92D9600E47F0D /* ReadViewController.xib in Resources */,
 				B101835D1CA92D7F00E47F0D /* RadioDetailViewController.xib in Resources */,
 				B10183761CA92DB900E47F0D /* TopicViewController.xib in Resources */,
+				B1F26D131CACC1B200497F5D /* MeunViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,26 +861,36 @@
 				B151C28F1CAB868100555E76 /* ProductUserInfoModel.m in Sources */,
 				B10183DC1CA94C1D00E47F0D /* UIView+Custom.m in Sources */,
 				B12EB64C1CAA9EBB00193FBA /* ReadListModel.m in Sources */,
+				B1E6C2E01CAC207F0008EE51 /* CustomNavigationBar.m in Sources */,
+				B1E6C2DD1CAC137B0008EE51 /* ReadCollectionViewCell.m in Sources */,
 				B12EB6441CAA72BC00193FBA /* RadioDetailListModel.m in Sources */,
 				B151C2981CABB1BE00555E76 /* TopicUserInfoModel.m in Sources */,
 				B151C28C1CAB858900555E76 /* ProductCommentlistModel.m in Sources */,
+				B17E133E1CAD181C003B7E8A /* UIButton+Custom.m in Sources */,
+				B1E6C2D21CAC0F3F0008EE51 /* ReadHeaderView.m in Sources */,
 				B10183701CA92DAB00E47F0D /* ReadInfoViewController.m in Sources */,
 				B10183611CA92D8A00E47F0D /* RadioPlayViewController.m in Sources */,
 				B12EB63E1CAA72A900193FBA /* RadioAlllistModel.m in Sources */,
+				B17E133B1CAD14FE003B7E8A /* ReadInfoModel.m in Sources */,
+				B1E6C2E31CAC322D0008EE51 /* BaseCollectionViewCell.m in Sources */,
 				B101834D1CA92C4D00E47F0D /* ProductViewController.m in Sources */,
-				B10183D71CA9494B00E47F0D /* MeunViewController.m in Sources */,
-				B10183D31CA9493900E47F0D /* DrawerViewController.m in Sources */,
+				B1F26D081CACBBDE00497F5D /* FactoryCollectionViewCell.m in Sources */,
 				B10183521CA92D5F00E47F0D /* ProductInfoViewController.m in Sources */,
 				B12EB6411CAA72B200193FBA /* RadioDetailInfoModel.m in Sources */,
+				B1E6C2D51CAC0FDE0008EE51 /* ReadFooterView.m in Sources */,
 				B151C2891CAB7E6500555E76 /* ProductListModel.m in Sources */,
 				B10182CD1CA92A9700E47F0D /* BaseViewController.m in Sources */,
 				B10183D01CA934BE00E47F0D /* main.m in Sources */,
+				B1F26D161CACC21900497F5D /* BaseView.m in Sources */,
 				B12EB6381CAA673B00193FBA /* NetWorkRequestManager.m in Sources */,
 				B10183661CA92D9600E47F0D /* ReadViewController.m in Sources */,
+				B1F26D191CACC24500497F5D /* MeunHeaderView.m in Sources */,
 				B101835C1CA92D7F00E47F0D /* RadioDetailViewController.m in Sources */,
 				B101837A1CA92DC300E47F0D /* TopicInfoViewController.m in Sources */,
+				B1F26D121CACC1B200497F5D /* MeunViewController.m in Sources */,
 				B101836B1CA92DA200E47F0D /* ReadDetailViewController.m in Sources */,
 				B10183E01CA950D000E47F0D /* UIBarButtonItem+Custom.m in Sources */,
+				B1F26D1F1CACC2D700497F5D /* MenuSearchBar.m in Sources */,
 				B10183751CA92DB900E47F0D /* TopicViewController.m in Sources */,
 				B12EB6491CAA9E5200193FBA /* ReadCarouselModel.m in Sources */,
 				B10182C91CA92A5800E47F0D /* BaseModel.m in Sources */,
@@ -776,8 +898,14 @@
 				B12EB63B1CAA729800193FBA /* RadioCarouselModel.m in Sources */,
 				B1E6C2CB1CABF0F00008EE51 /* BaseNavigationController.m in Sources */,
 				B12EB64F1CAA9FAA00193FBA /* ReadDetailListModel.m in Sources */,
+				B1F26D051CACB91D00497F5D /* FactoryTableViewCell.m in Sources */,
 				B10183571CA92D7300E47F0D /* RadioViewController.m in Sources */,
+				B1F26D011CACB80200497F5D /* BaseTableViewCell.m in Sources */,
 				B10183CF1CA934BE00E47F0D /* AppDelegate.m in Sources */,
+				B1F26D111CACC1B200497F5D /* DrawerViewController.m in Sources */,
+				B1F26D1C1CACC25300497F5D /* MeunFooterView.m in Sources */,
+				B1F26D251CACC66500497F5D /* UIImage+Custom.m in Sources */,
+				B1F26D291CACF8FE00497F5D /* ReadTableViewCell.m in Sources */,
 				B151C2951CABB04D00555E76 /* TopicCounterListModel.m in Sources */,
 				B12EB6461CAA9A5200193FBA /* Foundation+Log.m in Sources */,
 			);

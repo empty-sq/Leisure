@@ -7,9 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "ReadListModel.h"
 
 @interface ReadDetailViewController : BaseViewController
 
-@property (nonatomic, strong) NSString *typeID;
+/** 阅读主界面model */
+@property (nonatomic, strong) ReadListModel *listModel;
 
 @end

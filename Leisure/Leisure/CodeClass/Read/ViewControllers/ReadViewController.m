@@ -10,11 +10,19 @@
 #import "ReadDetailViewController.h"
 #import "ReadCarouselModel.h"
 #import "ReadListModel.h"
+#import "ReadFooterView.h"
+#import "ReadCollectionViewCell.h"
+#import "ReadHeaderView.h"
+#import <SDCycleScrollView.h>
 
-@interface ReadViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ReadViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, SDCycleScrollViewDelegate>
 
 /** 阅读主题列表 */
 @property (nonatomic, strong) UICollectionView *collectionView;
+/** 阅读头部的轮播图 */
+@property (nonatomic, strong) UICollectionReusableView *headerView;
+/** 轮播图图片 */
+@property (nonatomic, strong) NSMutableArray *imageUrlArray;
 /** 阅读主题数据源 */
 @property (nonatomic, strong) NSMutableArray *listArray;
 /** 滚动列表数据源 */
@@ -24,7 +32,9 @@
 
 @implementation ReadViewController
 
-static NSString * const ReadCellID = @"CollectionViewCell";
+static NSString * const ReadCellID = @"ReadCollectionViewCell";
+static NSString * const ReadHeaderViewID = @"ReadHeaderView";
+static NSString * const ReadFooterViewID = @"ReadFooterView";
 
 #pragma mark -懒加载
 - (NSMutableArray *)listArray {
@@ -39,6 +49,13 @@ static NSString * const ReadCellID = @"CollectionViewCell";
         self.carouselArray = [NSMutableArray arrayWithCapacity:0];
     }
     return _carouselArray;
+}
+
+- (NSMutableArray *)imageUrlArray {
+    if (_imageUrlArray == nil) {
+        _imageUrlArray = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return _imageUrlArray;
 }
 
 #pragma mark -加载数据
@@ -59,14 +76,12 @@ static NSString * const ReadCellID = @"CollectionViewCell";
             ReadCarouselModel *model = [[ReadCarouselModel alloc] init];
             [model setValuesForKeysWithDictionary:dict];
             [self.carouselArray addObject:model];
+            [self.imageUrlArray addObject:model.img];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            // 创建滚动列表视图
-            [self createCycleScrollView];
-            
-            // 创建主题列表视图
-            [self createListView];
+            // 添加自动轮播图
+            [self addCarouselView];
         });
         
         // 获取列表数据源
@@ -81,7 +96,6 @@ static NSString * const ReadCellID = @"CollectionViewCell";
             // 刷新数据
             [_collectionView reloadData];
         });
-        
     } error:^(NSError *error) {
         SQLog(@"error is %@", error);
     }];
@@ -89,8 +103,9 @@ static NSString * const ReadCellID = @"CollectionViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor yellowColor];
-    self.navigationItem.title = @"阅读";
+    
+    // 添加轮播图
+    [self createListView];
     
     // 加载数据
     [self loadData];
@@ -102,42 +117,38 @@ static NSString * const ReadCellID = @"CollectionViewCell";
 
 #pragma mark -创建视图
 /**
- *  创建轮播图
- */
-- (void)createCycleScrollView {
-    SQLog(@"轮播图");
-}
-
-/**
  *  创建阅读首页下面的主题列表视图，用的是一个UICollectionView
  */
 - (void)createListView {
     // 创建flowLayout
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     // 设置行之间的最小间隔
-    layout.minimumLineSpacing = 2;
+    layout.minimumLineSpacing = 5;
     // 设置列之间的最小间隔
-    layout.minimumInteritemSpacing = 2;
+    layout.minimumInteritemSpacing = 5;
+    // 设置分区上下左右的边距
+    layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
     // 设置item (cell)的大小
-    CGFloat layoutH = self.view.width / 3;
-    CGFloat layoutW = layoutH - 10;
+    CGFloat layoutH = (kScreenWidth - 30) / 3;
+    CGFloat layoutW = layoutH;
     layout.itemSize = CGSizeMake(layoutW, layoutH);
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    
-    // 设置分区上下左右的边距
-    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    layout.headerReferenceSize = CGSizeMake(0, 150);
+    layout.footerReferenceSize = CGSizeMake(0, layoutH);
     
     // 创建collectionView对象，设置代理，设置数据源
-    CGFloat collectionViewW = self.view.width;
-    CGFloat collectionViewH = self.view.height - 164;
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 164, collectionViewW, collectionViewH) collectionViewLayout:layout];
+    CGFloat collectionViewH = ScreenHeight - 44;
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 44, kScreenWidth, collectionViewH) collectionViewLayout:layout];
     _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
-    
-    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ReadCellID];
-    
     [self.view addSubview:self.collectionView];
+    
+    // 注册单元 表头 表尾;
+    [_collectionView registerClass:[ReadCollectionViewCell class] forCellWithReuseIdentifier:ReadCellID];
+    [_collectionView registerClass:[ReadHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ReadHeaderViewID];
+    [_collectionView registerClass:[ReadFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:ReadFooterViewID];
+    
 }
 
 #pragma mark - UICollectionViewDelegate、UICollectionViewDataSource
@@ -146,20 +157,48 @@ static NSString * const ReadCellID = @"CollectionViewCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ReadCellID forIndexPath:indexPath];
-    ReadListModel *model = _listArray[indexPath.item];
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:cell.bounds];
-    nameLabel.text = model.name;
-    [cell addSubview:nameLabel];
-    cell.backgroundColor = [UIColor redColor];
+    ReadCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ReadCellID forIndexPath:indexPath];
+    cell.model = _listArray[indexPath.row];
     return cell;
 }
 
+/**
+ *  选中单元格的方法
+ */
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ReadDetailViewController *readDetailVC = [[ReadDetailViewController alloc] init];
-    ReadListModel *model = _listArray[indexPath.item];
-    readDetailVC.typeID = model.type;
+    readDetailVC.listModel = _listArray[indexPath.item];
     [self.navigationController pushViewController:readDetailVC animated:YES];
+}
+
+/**
+ *  设置表头，表尾
+ */
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        _headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ReadHeaderViewID forIndexPath:indexPath];
+        // 添加自动轮播图
+        [self addCarouselView];
+        return _headerView;
+    } else {
+        ReadFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:ReadFooterViewID forIndexPath:indexPath];
+        return footerView;
+    }
+}
+
+/**
+ *  通过第三方框架SDCycleScrollView实现自动轮播图
+ */
+- (void)addCarouselView {
+    SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, 150) imageNamesGroup:_imageUrlArray];
+    // 设置分页控件位置
+    scrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+    // pageControl样式
+    scrollView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
+    // 设置滚动间隔
+    scrollView.autoScrollTimeInterval = 5;
+    scrollView.delegate = self;
+    [_headerView addSubview:scrollView];
 }
 
 @end
