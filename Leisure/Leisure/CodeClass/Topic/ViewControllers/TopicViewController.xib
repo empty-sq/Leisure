@@ -40,13 +40,16 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="fxs-ZD-xR4" firstAttribute="width" secondItem="7UN-SX-0Fz" secondAttribute="width" id="3kz-9N-CMr"/>
+                        <constraint firstAttribute="bottom" secondItem="fxs-ZD-xR4" secondAttribute="bottom" id="6Cg-7b-Bg1"/>
                         <constraint firstItem="fxs-ZD-xR4" firstAttribute="top" secondItem="Thc-sd-4gf" secondAttribute="top" id="7FU-bQ-U3a"/>
                         <constraint firstItem="fxs-ZD-xR4" firstAttribute="leading" secondItem="7UN-SX-0Fz" secondAttribute="trailing" id="J6p-kq-wfG"/>
                         <constraint firstAttribute="bottom" secondItem="7UN-SX-0Fz" secondAttribute="bottom" id="Ooc-CJ-Prm"/>
+                        <constraint firstItem="fxs-ZD-xR4" firstAttribute="leading" secondItem="7UN-SX-0Fz" secondAttribute="trailing" id="QqC-e5-uwa"/>
                         <constraint firstItem="7UN-SX-0Fz" firstAttribute="top" secondItem="Thc-sd-4gf" secondAttribute="top" id="Tjn-S7-DGc"/>
                         <constraint firstItem="7UN-SX-0Fz" firstAttribute="centerX" secondItem="Thc-sd-4gf" secondAttribute="centerX" id="WH9-KG-wkr"/>
                         <constraint firstAttribute="bottom" secondItem="fxs-ZD-xR4" secondAttribute="bottom" id="X1v-4T-afu"/>
                         <constraint firstItem="fxs-ZD-xR4" firstAttribute="leading" secondItem="7UN-SX-0Fz" secondAttribute="trailing" id="Zpb-ZI-74Y"/>
+                        <constraint firstItem="fxs-ZD-xR4" firstAttribute="top" secondItem="Thc-sd-4gf" secondAttribute="top" id="ee6-JF-qLn"/>
                         <constraint firstItem="fxs-ZD-xR4" firstAttribute="height" secondItem="7UN-SX-0Fz" secondAttribute="height" id="p1U-q4-rC0"/>
                         <constraint firstItem="7UN-SX-0Fz" firstAttribute="leading" secondItem="Thc-sd-4gf" secondAttribute="leading" id="t1Y-hZ-oCz"/>
                         <constraint firstItem="7UN-SX-0Fz" firstAttribute="centerY" secondItem="Thc-sd-4gf" secondAttribute="centerY" id="xwG-C7-Cfp"/>

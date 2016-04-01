@@ -201,18 +201,18 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     // 判断ScrollView偏移量调整右上按钮状态;
-    if (scrollView.contentOffset.x < kScreenWidth / 2) {
-        _leftButton.selected = YES;
-        _rightButton.selected = NO;
-        [_leftButton setImage:[UIImage imageNamed:@"NEW1"] forState:(UIControlStateNormal)];
-        [_rightButton setImage:[UIImage imageNamed:@"HOT2"] forState:(UIControlStateNormal)];
-    }
-    if (scrollView.contentOffset.x > kScreenWidth / 2) {
-        _leftButton.selected = NO;
-        _rightButton.selected = YES;
-        [_leftButton setImage:[UIImage imageNamed:@"NEW2"] forState:(UIControlStateNormal)];
-        [_rightButton setImage:[UIImage imageNamed:@"HOT1"] forState:(UIControlStateNormal)];
-    }
+//    if (scrollView.contentOffset.x < kScreenWidth / 2) {
+//        _leftButton.selected = YES;
+//        _rightButton.selected = NO;
+//        [_leftButton setImage:[UIImage imageNamed:@"NEW1"] forState:(UIControlStateNormal)];
+//        [_rightButton setImage:[UIImage imageNamed:@"HOT2"] forState:(UIControlStateNormal)];
+//    }
+//    if (scrollView.contentOffset.x > kScreenWidth / 2) {
+//        _leftButton.selected = NO;
+//        _rightButton.selected = YES;
+//        [_leftButton setImage:[UIImage imageNamed:@"NEW2"] forState:(UIControlStateNormal)];
+//        [_rightButton setImage:[UIImage imageNamed:@"HOT1"] forState:(UIControlStateNormal)];
+//    }
 }
 
 #pragma mark -<UITableViewDelegate>
