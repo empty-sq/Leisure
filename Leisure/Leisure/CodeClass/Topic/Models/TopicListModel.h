@@ -12,6 +12,9 @@
 
 @interface TopicListModel : BaseModel
 
+@property (nonatomic, assign) BOOL isshot;
+/** 是否是推荐贴 */
+@property (nonatomic, assign) BOOL isrecommend;
 /** 时间戳 */
 @property (nonatomic, copy) NSString *addtime;
 /** 时间间隔 */
@@ -24,6 +27,7 @@
 @property (nonatomic, copy) NSString *coverimg;
 /** 标题 */
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *songid;
 
 /** 计数对象 */
 @property (nonatomic, strong) TopicCounterListModel *counter;

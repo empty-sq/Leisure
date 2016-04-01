@@ -7,8 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReadDetailViewController">
             <connections>
-                <outlet property="addtimeTableView" destination="wKM-WY-cGV" id="zya-WL-t51"/>
-                <outlet property="hotTableView" destination="zsE-Oh-kca" id="R5J-Q2-XsN"/>
+                <outlet property="HotTableView" destination="zsE-Oh-kca" id="ipc-7e-sIT"/>
+                <outlet property="addtimeTableView" destination="wKM-WY-cGV" id="rJr-de-x0C"/>
+                <outlet property="hotTableView" destination="zsE-Oh-kca" id="Ngg-rg-hrb"/>
                 <outlet property="rootScrollView" destination="ocN-FE-Cdo" id="jvp-LJ-bG9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,20 +22,20 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocN-FE-Cdo">
                     <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zsE-Oh-kca" userLabel="Hot Table View">
-                            <rect key="frame" x="600" y="0.0" width="600" height="556"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zsE-Oh-kca" userLabel="Hot Table View">
+                            <rect key="frame" x="600" y="0.0" width="600" height="536"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <outlet property="dataSource" destination="-1" id="QEf-me-WF7"/>
-                                <outlet property="delegate" destination="-1" id="NMg-pr-Cs9"/>
+                                <outlet property="dataSource" destination="-1" id="msr-qU-g0K"/>
+                                <outlet property="delegate" destination="-1" id="FeU-sg-l3j"/>
                             </connections>
                         </tableView>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wKM-WY-cGV" userLabel="Addtime Table View">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wKM-WY-cGV" userLabel="Addtime Table View">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <outlet property="dataSource" destination="-1" id="sdd-1h-nmK"/>
-                                <outlet property="delegate" destination="-1" id="50M-Pe-WOK"/>
+                                <outlet property="dataSource" destination="-1" id="byh-H5-eOJ"/>
+                                <outlet property="delegate" destination="-1" id="dCX-PZ-DJE"/>
                             </connections>
                         </tableView>
                     </subviews>
@@ -60,6 +61,7 @@
                 <constraint firstAttribute="trailing" secondItem="ocN-FE-Cdo" secondAttribute="trailing" id="n1V-Gz-i5x"/>
                 <constraint firstAttribute="bottom" secondItem="ocN-FE-Cdo" secondAttribute="bottom" id="sJb-RA-lc4"/>
             </constraints>
+            <point key="canvasLocation" x="141" y="374"/>
         </view>
     </objects>
 </document>

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopicViewController">
             <connections>
+                <outlet property="addtimeTableView" destination="7UN-SX-0Fz" id="WCp-HS-J2l"/>
+                <outlet property="hotTableView" destination="fxs-ZD-xR4" id="CQe-rq-EyW"/>
+                <outlet property="rootScrollView" destination="Thc-sd-4gf" id="xVm-pa-8lt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +17,50 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Thc-sd-4gf">
+                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7UN-SX-0Fz">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="nod-ff-1x1"/>
+                                <outlet property="delegate" destination="-1" id="ubo-ef-YVG"/>
+                            </connections>
+                        </tableView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fxs-ZD-xR4">
+                            <rect key="frame" x="600" y="0.0" width="600" height="536"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="kjX-om-pmY"/>
+                                <outlet property="delegate" destination="-1" id="dnL-Y9-Tj6"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="fxs-ZD-xR4" firstAttribute="width" secondItem="7UN-SX-0Fz" secondAttribute="width" id="3kz-9N-CMr"/>
+                        <constraint firstItem="fxs-ZD-xR4" firstAttribute="top" secondItem="Thc-sd-4gf" secondAttribute="top" id="7FU-bQ-U3a"/>
+                        <constraint firstItem="fxs-ZD-xR4" firstAttribute="leading" secondItem="7UN-SX-0Fz" secondAttribute="trailing" id="J6p-kq-wfG"/>
+                        <constraint firstAttribute="bottom" secondItem="7UN-SX-0Fz" secondAttribute="bottom" id="Ooc-CJ-Prm"/>
+                        <constraint firstItem="7UN-SX-0Fz" firstAttribute="top" secondItem="Thc-sd-4gf" secondAttribute="top" id="Tjn-S7-DGc"/>
+                        <constraint firstItem="7UN-SX-0Fz" firstAttribute="centerX" secondItem="Thc-sd-4gf" secondAttribute="centerX" id="WH9-KG-wkr"/>
+                        <constraint firstAttribute="bottom" secondItem="fxs-ZD-xR4" secondAttribute="bottom" id="X1v-4T-afu"/>
+                        <constraint firstItem="fxs-ZD-xR4" firstAttribute="leading" secondItem="7UN-SX-0Fz" secondAttribute="trailing" id="Zpb-ZI-74Y"/>
+                        <constraint firstItem="fxs-ZD-xR4" firstAttribute="height" secondItem="7UN-SX-0Fz" secondAttribute="height" id="p1U-q4-rC0"/>
+                        <constraint firstItem="7UN-SX-0Fz" firstAttribute="leading" secondItem="Thc-sd-4gf" secondAttribute="leading" id="t1Y-hZ-oCz"/>
+                        <constraint firstItem="7UN-SX-0Fz" firstAttribute="centerY" secondItem="Thc-sd-4gf" secondAttribute="centerY" id="xwG-C7-Cfp"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Thc-sd-4gf" secondAttribute="trailing" id="1u2-FG-oOe"/>
+                <constraint firstAttribute="bottom" secondItem="Thc-sd-4gf" secondAttribute="bottom" id="UM4-I2-ZPW"/>
+                <constraint firstItem="Thc-sd-4gf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="bqH-Sf-jdq"/>
+                <constraint firstItem="Thc-sd-4gf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x7N-LF-DqO"/>
+            </constraints>
+            <point key="canvasLocation" x="226" y="417"/>
         </view>
     </objects>
 </document>

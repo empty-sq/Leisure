@@ -110,7 +110,7 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     [self.hotTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ReadTableViewCell class]) bundle:nil] forCellReuseIdentifier:ReadDetailCellID];
     
     self.addtimeTableView.rowHeight = 160;
-    self.hotTableView.rowHeight = 160;
+    self.hotTableView.rowHeight = self.addtimeTableView.rowHeight;
 }
 
 - (void)viewDidLoad {

@@ -58,6 +58,7 @@
 		B17E133E1CAD181C003B7E8A /* UIButton+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B17E133D1CAD181C003B7E8A /* UIButton+Custom.m */; };
 		B17E13421CAD5403003B7E8A /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B17E13401CAD5403003B7E8A /* ProductTableViewCell.m */; };
 		B17E13431CAD5403003B7E8A /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17E13411CAD5403003B7E8A /* ProductTableViewCell.xib */; };
+		B1AFF8A11CAE0C4D0092665A /* TopicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AFF8A01CAE0C4D0092665A /* TopicTableViewCell.m */; };
 		B1E6C2CB1CABF0F00008EE51 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */; };
 		B1E6C2D21CAC0F3F0008EE51 /* ReadHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D11CAC0F3F0008EE51 /* ReadHeaderView.m */; };
 		B1E6C2D51CAC0FDE0008EE51 /* ReadFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D41CAC0FDE0008EE51 /* ReadFooterView.m */; };
@@ -190,6 +191,8 @@
 		B17E133F1CAD5403003B7E8A /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
 		B17E13401CAD5403003B7E8A /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
 		B17E13411CAD5403003B7E8A /* ProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
+		B1AFF89F1CAE0C4D0092665A /* TopicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTableViewCell.h; sourceTree = "<group>"; };
+		B1AFF8A01CAE0C4D0092665A /* TopicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicTableViewCell.m; sourceTree = "<group>"; };
 		B1E6C2C91CABF0F00008EE51 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		B1E6C2D01CAC0F3F0008EE51 /* ReadHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadHeaderView.h; sourceTree = "<group>"; };
@@ -513,6 +516,8 @@
 		B10182C41CA92A2D00E47F0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B1AFF89F1CAE0C4D0092665A /* TopicTableViewCell.h */,
+				B1AFF8A01CAE0C4D0092665A /* TopicTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -876,6 +881,7 @@
 				B12EB6441CAA72BC00193FBA /* RadioDetailListModel.m in Sources */,
 				B151C2981CABB1BE00555E76 /* TopicUserInfoModel.m in Sources */,
 				B151C28C1CAB858900555E76 /* ProductCommentlistModel.m in Sources */,
+				B1AFF8A11CAE0C4D0092665A /* TopicTableViewCell.m in Sources */,
 				B17E133E1CAD181C003B7E8A /* UIButton+Custom.m in Sources */,
 				B1E6C2D21CAC0F3F0008EE51 /* ReadHeaderView.m in Sources */,
 				B10183701CA92DAB00E47F0D /* ReadInfoViewController.m in Sources */,
