@@ -10,6 +10,7 @@
 #import "TopicListModel.h"
 #import "topicTableViewCell.h"
 #import "DrawerViewController.h"
+#import "TopicInfoViewController.h"
 
 @interface TopicViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 {
@@ -216,6 +217,7 @@ static NSString * const TopicCellID = @"topicCell";
     } else {
         model = self.hotListArray[indexPath.row];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = model;
     return cell;
 }
@@ -231,6 +233,14 @@ static NSString * const TopicCellID = @"topicCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    TopicInfoViewController *infoVC = [[TopicInfoViewController alloc] init];
+    TopicListModel *model = nil;
+    if (sortType == 0) {
+        model = self.addtimeListArray[indexPath.row];
+    } else {
+        model = self.hotListArray[indexPath.row];
+    }
+    [self.navigationController pushViewController:infoVC animated:YES];
 }
 
 @end

@@ -87,15 +87,20 @@
         timeY = CGRectGetMaxY(_coverImage.frame) + kMargin;
     }
     
-    CGFloat contentH = [_model.content boundingRectWithSize:CGSizeMake(kScreenWidth - 20, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
-    contentH = contentH <= kCoverImageW ? contentH : kCoverImageW;
-    CGFloat contentX = CGRectGetMaxX(_coverImage.frame) + kMargin;
-    CGFloat contentY = CGRectGetMaxY(_titleLabel.frame) + kMargin;
-    CGFloat contentW = kScreenWidth - contentX - kMargin;
-    _contentLabel.frame = CGRectMake(contentX, contentY, contentW, contentH);
-    if (timeY == 0) {
-        timeY = CGRectGetMaxY(_contentLabel.frame) + kMargin;
+    if (![_model.content isEqualToString:@""]) {
+        CGFloat contentH = [_model.content boundingRectWithSize:CGSizeMake(kScreenWidth - 20, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
+        contentH = contentH <= kCoverImageW ? contentH : kCoverImageW;
+        CGFloat contentX = CGRectGetMaxX(_coverImage.frame) + kMargin;
+        CGFloat contentY = CGRectGetMaxY(_titleLabel.frame) + kMargin;
+        CGFloat contentW = kScreenWidth - contentX - kMargin;
+        _contentLabel.frame = CGRectMake(contentX, contentY, contentW, contentH);
+        if (timeY == 0) {
+            timeY = CGRectGetMaxY(_contentLabel.frame) + kMargin;
+        }
+    } else {
+        timeY = CGRectGetMaxY(_titleLabel.frame) + kMargin;
     }
+    
     _timeLabel.frame = CGRectMake(kMargin, timeY, 100, 20);
     
     CGFloat topicImgX = kScreenWidth - 80;
@@ -121,13 +126,18 @@
 
 + (CGFloat)cellHeightForModel:(TopicListModel *)model {
     CGFloat height = 0;
+    CGFloat otherH = 75;
     if (![model.coverimg isEqualToString:@""]) {
         height = kCoverImageW;
     } else {
-        height = [model.content boundingRectWithSize:CGSizeMake(kScreenWidth - 20, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
-        height = height <= kCoverImageW ? height : kCoverImageW;
+        if (![model.content isEqualToString:@""]) {
+            height = [model.content boundingRectWithSize:CGSizeMake(kScreenWidth - 20, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height;
+            height = height <= kCoverImageW ? height : kCoverImageW;
+        } else {
+            otherH = 65;
+        }
     }
-    return height + 80;
+    return height + otherH;
 }
 
 - (void)awakeFromNib {
