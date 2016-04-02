@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *desc;
 @property (nonatomic, copy) NSNumber *musicvisitnum;
 @property (nonatomic, copy) NSString *uname;
+@property (nonatomic, copy) NSString *icon;
 @property (nonatomic, copy) NSString *title;
 
 @end

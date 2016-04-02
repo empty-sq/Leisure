@@ -12,6 +12,6 @@
 
 @interface RadioDetailViewController : BaseViewController
 
-@property (nonatomic, strong) RadioAlllistModel *model;
+@property (nonatomic, copy) NSString *radioid;
 
 @end

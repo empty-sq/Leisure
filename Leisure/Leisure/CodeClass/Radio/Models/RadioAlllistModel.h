@@ -20,6 +20,8 @@
 @property (nonatomic, copy) NSString *desc;
 /** 作者 */
 @property (nonatomic, copy) NSString *uname;
+/**  作者头像 */
+@property (nonatomic, copy) NSString *icon;
 /** 电台id */
 @property (nonatomic, copy) NSString *radioid;
 

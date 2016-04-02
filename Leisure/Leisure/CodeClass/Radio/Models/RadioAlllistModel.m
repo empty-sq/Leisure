@@ -13,6 +13,7 @@
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     if ([key isEqualToString:@"userinfo"]) {
         self.uname = value[@"uname"];
+        self.icon = value[@"icon"];
     } 
 }
 

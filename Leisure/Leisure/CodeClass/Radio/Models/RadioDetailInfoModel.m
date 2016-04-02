@@ -13,13 +13,8 @@
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     if ([key isEqualToString:@"userinfo"]) {
         self.uname = value[@"uname"];
+        self.icon = value[@"icon"];
     } 
-}
-
-- (NSString *)description
-{
-    // 包含对象类型名称，以及对象的指针地址
-    return [NSString stringWithFormat:@"<%@: %p> {coverimg: %@, title: %@, desc: %@, uname: %@, musicvisitnum: %@}", [self class], self, self.coverimg, self.title, self.desc, self.uname, self.musicvisitnum];
 }
 
 @end

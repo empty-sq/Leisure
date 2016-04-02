@@ -17,7 +17,7 @@
 
 @interface RadioViewController ()<UITableViewDataSource, UITableViewDelegate, SDCycleScrollViewDelegate>
 
-/** 滚动视图列表数据源 */
+/** 轮播图列表数据源 */
 @property (nonatomic, strong) NSMutableArray *carouselArray;
 /** 电台主题列表数据源 */
 @property (nonatomic, strong) NSMutableArray *alllistArray;
@@ -144,7 +144,11 @@ static NSString * const RadioCellID = @"radioCell";
  *  表头按钮的点击方法
  */
 - (void)btnClick:(UIButton *)button {
-    
+    int index = (int)button.tag - 101;
+    RadioAlllistModel *model = self.hotArray[index];
+    RadioDetailViewController *detailVC = [[RadioDetailViewController alloc] init];
+    detailVC.radioid = model.radioid;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 #pragma mark 创建tableView和第三方轮播图
@@ -167,7 +171,10 @@ static NSString * const RadioCellID = @"radioCell";
  *  第三方自动轮播图代理方法，点击选中事件
  */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-    
+    RadioDetailViewController *detailVC = [[RadioDetailViewController alloc] init];
+    RadioCarouselModel *model = self.carouselArray[index];
+    detailVC.radioid = [model.url substringFromIndex:12];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 /**
@@ -223,7 +230,7 @@ static NSString * const RadioCellID = @"radioCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RadioAlllistModel *model = self.alllistArray[indexPath.row];
     RadioDetailViewController *radioDetailVC = [[RadioDetailViewController alloc] init];
-    radioDetailVC.model = model;
+    radioDetailVC.radioid = model.radioid;
     [self.navigationController pushViewController:radioDetailVC animated:YES];
 }
 

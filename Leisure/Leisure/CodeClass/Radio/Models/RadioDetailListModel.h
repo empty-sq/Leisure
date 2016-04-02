@@ -10,8 +10,11 @@
 
 @interface RadioDetailListModel : BaseModel
 
-@property (nonatomic, copy) NSString *icon;
-@property (nonatomic, assign) NSInteger musicVisit;
+/** 图标 */
+@property (nonatomic, copy) NSString *coverimg;
+/** 播放量 */
+@property (nonatomic, strong) NSString *musicVisit;
+/** 标题 */
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *musicUrl;
 @property (nonatomic, assign) bool isnew;
