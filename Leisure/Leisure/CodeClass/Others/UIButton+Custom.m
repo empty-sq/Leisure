@@ -25,4 +25,10 @@
     return button;
 }
 
++ (UIButton *)buttonWithFrame:(CGRect)frame {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = frame;
+    return button;
+}
+
 @end

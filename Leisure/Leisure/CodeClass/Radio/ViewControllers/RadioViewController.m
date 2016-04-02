@@ -10,19 +10,25 @@
 #import "RadioDetailViewController.h"
 #import "RadioCarouselModel.h"
 #import "RadioAlllistModel.h"
+#import "RadioHeaderView.h"
+#import "RadioTableViewCell.h"
+#import <UIButton+WebCache.h>
 #import <SDCycleScrollView.h>
 
-@interface RadioViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface RadioViewController ()<UITableViewDataSource, UITableViewDelegate, SDCycleScrollViewDelegate>
 
 /** 滚动视图列表数据源 */
 @property (nonatomic, strong) NSMutableArray *carouselArray;
 /** 电台主题列表数据源 */
 @property (nonatomic, strong) NSMutableArray *alllistArray;
-
-/** 电台主题列表 */
-@property (weak, nonatomic) IBOutlet UITableView *mainTableView;
-/** 滚动列表根视图 */
-@property (nonatomic, strong) UIView *headView;
+/** 热门列表数据 */
+@property (nonatomic, strong) NSMutableArray *hotArray;
+/** 轮播图图片 */
+@property (nonatomic, strong) NSMutableArray *imgArray;
+/** 电台列表 */
+@property (nonatomic, strong) UITableView *tableView;
+/** tableView的头部 */
+@property (nonatomic, strong) RadioHeaderView *headView;
 
 @end
 
@@ -46,6 +52,20 @@ static NSString * const RadioCellID = @"radioCell";
     return _alllistArray;
 }
 
+- (NSMutableArray *)imgArray {
+    if (_imgArray == nil) {
+        _imgArray = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return _imgArray;
+}
+
+- (NSMutableArray *)hotArray {
+    if (_hotArray == nil) {
+        _hotArray = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return _hotArray;
+}
+
 #pragma mark -数据请求-
 
 /**
@@ -67,6 +87,7 @@ static NSString * const RadioCellID = @"radioCell";
             for (NSDictionary *dic in carouselArr) {
                 RadioCarouselModel *model = [[RadioCarouselModel alloc] init];
                 [model setValuesForKeysWithDictionary:dic];
+                [self.imgArray addObject:model.img];
                 [self.carouselArray addObject:model];
             }
             
@@ -78,34 +99,101 @@ static NSString * const RadioCellID = @"radioCell";
                 [self.alllistArray addObject:model];
             }
             
+            // 获取电台热门列表数据
+            NSArray *hotArr = dataDict[@"data"][@"hotlist"];
+            for (NSDictionary *dic in hotArr) {
+                RadioAlllistModel *model = [[RadioAlllistModel alloc] init];
+                [model setValuesForKeysWithDictionary:dic];
+                [self.hotArray addObject:model];
+            }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 // 创建滚动视图
                 [self createCycleScrollView];
+                
+                // 创建headview上面的按钮背景
+                [self setupHeadViewBtnByBackGroundImage];
+                
                 // 刷新主题列表
-                [self.mainTableView reloadData];
+                [self.tableView reloadData];
             });
         });
     } error:^(NSError *error) {
-        
+        SQLog(@"电台界面加载失败");
     }];
+}
+
+#pragma mark -tableView的headview中的按钮实现
+/**
+ *  给表头按钮添加背景图片
+*/
+- (void)setupHeadViewBtnByBackGroundImage {
+    [self setupBtn:_headView.leftBtn tag:101 index:0];
+    [self setupBtn:_headView.midBtn tag:102 index:1];
+    [self setupBtn:_headView.rightBtn tag:103 index:2];
+}
+
+- (void)setupBtn:(UIButton *)button tag:(int)tag index:(int)index {
+    RadioAlllistModel *model = self.hotArray[index];
+    button.tag = tag;
+    [button addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchDown];
+    [button sd_setBackgroundImageWithURL:[NSURL URLWithString:model.coverimg] forState:UIControlStateNormal placeholderImage:kImage];
+}
+
+/**
+ *  表头按钮的点击方法
+ */
+- (void)btnClick:(UIButton *)button {
+    
+}
+
+#pragma mark 创建tableView和第三方轮播图
+/**
+ *  通过第三方框架SDCycleScrollView实现自动轮播图
+ */
+- (void)createCycleScrollView {
+    SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:_headView.scrollView.frame imageURLStringsGroup:_imgArray];
+    // 分页控件的位置
+    scrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+    // 翻页样式
+    scrollView.pageControlStyle = SDCycleScrollViewPageContolStyleClassic;
+    // 自动翻滚时间
+    scrollView.autoScrollTimeInterval = 5;
+    scrollView.delegate = self;
+    [_headView.scrollView addSubview:scrollView];
+}
+
+/**
+ *  第三方自动轮播图代理方法，点击选中事件
+ */
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
+    
 }
 
 /**
  *  创建tableView
  */
 - (void)setupTableView {
-    // 注册cell
-    [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:RadioCellID];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.rowHeight = 100;
     
-    // 设置tableView的headView
-    CGFloat width = self.view.width;
-    self.headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 230)];
-    self.mainTableView.tableHeaderView = self.headView;
+    // 初始化headView
+    _headView = [[RadioHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300)];
+    // 设置tableView的headview
+    _tableView.tableHeaderView = _headView;
+    
+    // 注册cell
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([RadioTableViewCell class]) bundle:nil] forCellReuseIdentifier:RadioCellID];
+    
+    // 添加tableView
+    [self.view addSubview:_tableView];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"电台";
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     // 创建tableView
     [self setupTableView];
@@ -119,26 +207,16 @@ static NSString * const RadioCellID = @"radioCell";
     // Dispose of any resources that can be recreated.
 }
 
-/**
- *  通过第三方框架SDCycleScrollView实现自动轮播图
- */
-- (void)createCycleScrollView {
-//    SDCycleScrollView *scrollView = [SDCycleScrollView cycleScrollViewWithFrame:<#(CGRect)#> imageURLStringsGroup:<#(NSArray *)#>]
-}
-
 #pragma mark -<UITableViewDelegate>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.alllistArray.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    return 120;
-}
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:RadioCellID forIndexPath:indexPath];
+    RadioTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:RadioCellID forIndexPath:indexPath];
     RadioAlllistModel *model = self.alllistArray[indexPath.row];
-    cell.textLabel.text = model.title;
+    cell.model = model;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

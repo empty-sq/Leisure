@@ -10,11 +10,17 @@
 
 @interface RadioAlllistModel : BaseModel
 
+@property (nonatomic, assign) BOOL isnew;
 @property (nonatomic, copy) NSNumber *count;
+/** 电台图片 */
 @property (nonatomic, copy) NSString *coverimg;
+/** 标题 */
 @property (nonatomic, copy) NSString *title;
+/** 描述 */
 @property (nonatomic, copy) NSString *desc;
+/** 作者 */
 @property (nonatomic, copy) NSString *uname;
+/** 电台id */
 @property (nonatomic, copy) NSString *radioid;
 
 @end

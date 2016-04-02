@@ -109,8 +109,6 @@
     CGFloat commentX = CGRectGetMaxX(_topicImage.frame) + kMargin;
     _commentLabel.frame = CGRectMake(commentX, timeY + 3, kCoverImageW, 20);
     [_commentLabel sizeToFit];
-    
-    
 }
 
 - (void)setModel:(TopicListModel *)model {
@@ -141,13 +139,11 @@
 }
 
 - (void)awakeFromNib {
-    // Initialization code
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

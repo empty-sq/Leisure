@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="111" id="KGk-i7-Jjw" customClass="RadioTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Suo-iS-B83">
+                        <rect key="frame" x="10" y="10" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="hCi-lS-Xdf"/>
+                            <constraint firstAttribute="height" constant="80" id="oWg-qI-D72"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHu-LZ-kV5" userLabel="标题">
+                        <rect key="frame" x="95" y="17" width="200" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Qr0-cI-qHS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlo-tq-h3w" userLabel="介绍">
+                        <rect key="frame" x="95" y="67" width="260" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pn-T1-krh" userLabel="播放量">
+                        <rect key="frame" x="338" y="10" width="26.5" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="播放量" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-XV-nIe">
+                        <rect key="frame" x="323" y="12" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="diP-Y6-qCP"/>
+                            <constraint firstAttribute="height" constant="10" id="nHS-hJ-qOy"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jH-tm-rH8" userLabel="作者">
+                        <rect key="frame" x="95" y="47" width="260" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="MyZ-Gh-7lx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.0097689759880000004" green="0.27867959250000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2pn-T1-krh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="2Yj-3b-YQO"/>
+                    <constraint firstItem="dlo-tq-h3w" firstAttribute="leading" secondItem="9jH-tm-rH8" secondAttribute="leading" id="3bA-dC-7pi"/>
+                    <constraint firstItem="9jH-tm-rH8" firstAttribute="leading" secondItem="sHu-LZ-kV5" secondAttribute="leading" id="4Wh-IH-i1q"/>
+                    <constraint firstItem="sHu-LZ-kV5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="8kJ-OQ-fJu"/>
+                    <constraint firstAttribute="trailing" secondItem="9jH-tm-rH8" secondAttribute="trailing" constant="20" id="9w0-ol-nsS"/>
+                    <constraint firstItem="uj7-XV-nIe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Iqp-B1-qvH"/>
+                    <constraint firstItem="dlo-tq-h3w" firstAttribute="width" secondItem="9jH-tm-rH8" secondAttribute="width" id="JB5-nW-hlX"/>
+                    <constraint firstItem="9jH-tm-rH8" firstAttribute="top" secondItem="sHu-LZ-kV5" secondAttribute="bottom" constant="10" id="P45-Xc-d4P"/>
+                    <constraint firstItem="dlo-tq-h3w" firstAttribute="top" secondItem="9jH-tm-rH8" secondAttribute="bottom" constant="10" id="RfR-dM-zFA"/>
+                    <constraint firstAttribute="trailing" secondItem="2pn-T1-krh" secondAttribute="trailing" constant="10" id="SB0-qg-Ezb"/>
+                    <constraint firstItem="2pn-T1-krh" firstAttribute="leading" secondItem="uj7-XV-nIe" secondAttribute="trailing" constant="5" id="Uwa-dV-NpV"/>
+                    <constraint firstItem="Suo-iS-B83" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="WKF-ef-fzX"/>
+                    <constraint firstAttribute="trailing" secondItem="sHu-LZ-kV5" secondAttribute="trailing" constant="80" id="Xbu-mx-Ss9"/>
+                    <constraint firstItem="dlo-tq-h3w" firstAttribute="height" secondItem="9jH-tm-rH8" secondAttribute="height" id="ZUu-ew-AjR"/>
+                    <constraint firstItem="Suo-iS-B83" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="q6s-3z-bgW"/>
+                    <constraint firstItem="sHu-LZ-kV5" firstAttribute="leading" secondItem="Suo-iS-B83" secondAttribute="trailing" constant="5" id="uRX-pn-QkZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="headImageView" destination="Suo-iS-B83" id="sJF-zR-pMM"/>
+                <outlet property="introudeLabel" destination="dlo-tq-h3w" id="Ohs-Ip-0iC"/>
+                <outlet property="playCountLabel" destination="2pn-T1-krh" id="k47-y3-hSm"/>
+                <outlet property="titleLabel" destination="sHu-LZ-kV5" id="09i-a1-RI3"/>
+                <outlet property="unameLabel" destination="9jH-tm-rH8" id="hI7-9s-YDu"/>
+            </connections>
+            <point key="canvasLocation" x="-1414.5" y="396"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="播放量" width="18" height="22"/>
+    </resources>
+</document>

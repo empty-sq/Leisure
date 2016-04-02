@@ -14,4 +14,6 @@
 
 + (UIButton *)buttonWithFrame:(CGRect)frame image:(NSString *)image target:(id)target action:(SEL)aciton;
 
++ (UIButton *)buttonWithFrame:(CGRect)frame;
+
 @end

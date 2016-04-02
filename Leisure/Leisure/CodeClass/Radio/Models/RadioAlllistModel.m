@@ -16,12 +16,4 @@
     } 
 }
 
- /**
- *  重写描述方法
- */
-- (NSString *)description {
-    // 包含对象类型名称，以及对象的指针地址
-    return [NSString stringWithFormat:@"<%@: %p> {count: %@, coverimg: %@, title: %@, desc: %@, uname: %@, radioid: %@}", [self class], self, self.count, self.coverimg, self.title, self.desc, self.uname, self.radioid];
-}
-
 @end
