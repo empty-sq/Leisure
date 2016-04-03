@@ -12,6 +12,7 @@
 #import "RadioDetailListModel.h"
 #import "RadioDetailCell.h"
 #import "RadioDetailHeaderView.h"
+#import "RadioPlayViewController.h"
 
 @interface RadioDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -156,7 +157,8 @@ static NSString * const DetailCellID = @"detailTableViewCell";
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RadioDetailListModel *model = self.detailListArray[indexPath.row];
-    SQLog(@"model = %@", model);
+    RadioPlayViewController *playVC = [[RadioPlayViewController alloc] init];
+    [self.navigationController pushViewController:playVC animated:YES];
 }
 
 @end

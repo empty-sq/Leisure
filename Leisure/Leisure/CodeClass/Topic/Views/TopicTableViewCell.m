@@ -79,9 +79,8 @@
     _titleLabel.frame = CGRectMake(titleX, kMargin, titleW, 20);
     
     CGFloat timeY = 0;
-    self.coverImage.hidden = YES;
-    if (![_model.coverimg  isEqual: @""]) {
-        self.coverImage.hidden = NO;
+    _coverImage.frame = CGRectZero;
+    if (![_model.coverimg  isEqual:@""]) {
         CGFloat coverY = CGRectGetMaxY(_titleLabel.frame) + kMargin;
         _coverImage.frame = CGRectMake(kMargin, coverY, kCoverImageW, kCoverImageW);
         timeY = CGRectGetMaxY(_coverImage.frame) + kMargin;
@@ -98,7 +97,9 @@
             timeY = CGRectGetMaxY(_contentLabel.frame) + kMargin;
         }
     } else {
-        timeY = CGRectGetMaxY(_titleLabel.frame) + kMargin;
+        if (timeY == 0) {
+            timeY = CGRectGetMaxY(_titleLabel.frame) + kMargin;
+        }
     }
     
     _timeLabel.frame = CGRectMake(kMargin, timeY, 100, 20);

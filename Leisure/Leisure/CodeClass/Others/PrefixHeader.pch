@@ -19,6 +19,7 @@
 #import "NetWorkRequestManager.h"
 #import "CustomNavigationBar.h"
 #import <UIImageView+WebCache.h>
+#import <MJRefresh/MJRefresh.h>
 
 #ifdef DEBUG
 #define SQLog(...) NSLog(__VA_ARGS__)
