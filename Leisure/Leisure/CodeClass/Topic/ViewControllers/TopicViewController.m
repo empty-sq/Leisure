@@ -11,7 +11,6 @@
 #import "topicTableViewCell.h"
 #import "DrawerViewController.h"
 #import "TopicInfoViewController.h"
-#import <MJRefresh/MJRefresh.h>
 
 @interface TopicViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 {
@@ -43,7 +42,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *hotTableView;
 /** 请求参数 */
 @property (nonatomic, strong) NSMutableDictionary *params;
+/** 判断是否已经加载过最新数据 */
 @property (nonatomic, assign) BOOL isAddtime;
+/** 判断是否已经加载过热门数据 */
 @property (nonatomic, assign) BOOL isHot;
 
 @end
@@ -132,7 +133,7 @@ static NSString * const TopicCellID = @"topicCell";
             }
         });
     } error:^(NSError *error) {
-        
+       SQLog(@"error : %@", error);
     }];
 }
 

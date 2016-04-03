@@ -48,6 +48,8 @@ static NSString * const ProductCellID = @"ProductCell";
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments | NSJSONReadingMutableLeaves error:nil];
         NSArray *array = dataDict[@"data"][@"list"];
         
+        if (_start == 0) [self.listArray removeAllObjects];
+        
         // 解析数据
         for (NSDictionary *dict in array) {
             ProductListModel *model = [[ProductListModel alloc] init];
@@ -57,6 +59,11 @@ static NSString * const ProductCellID = @"ProductCell";
         
         // 返回主线程
         dispatch_async(dispatch_get_main_queue(), ^{
+            // 显示下拉刷新
+            _tableView.mj_footer.hidden = NO;
+            // 结束刷新
+            [_tableView.mj_header endRefreshing];
+            [_tableView.mj_footer endRefreshing];
             // 刷新数据
             [_tableView reloadData];
         });
@@ -75,10 +82,30 @@ static NSString * const ProductCellID = @"ProductCell";
     _tableView.delegate = self;
     _tableView.rowHeight = (kScreenWidth - 20) * 300 / 608 + 50;
     
+    _limit = 10;
+    
     // 注册自定义单元格
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ProductTableViewCell class]) bundle:nil] forCellReuseIdentifier:ProductCellID];
     
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    _tableView.mj_footer.hidden = YES;
+    [_tableView.mj_header beginRefreshing];
+    
     [self.view addSubview:_tableView];
+    
+}
+
+- (void)loadNewData {
+    _start = 0;
+    // 加载数据
+    [self loadData];
+}
+
+- (void)loadMoreData {
+    _start += 10;
+    // 加载数据
+    [self loadData];
 }
 
 - (void)viewDidLoad {
@@ -88,7 +115,7 @@ static NSString * const ProductCellID = @"ProductCell";
     [self setupTableView];
     
     // 加载数据
-    [self loadData];
+    [self loadNewData];
 }
 
 - (void)didReceiveMemoryWarning {

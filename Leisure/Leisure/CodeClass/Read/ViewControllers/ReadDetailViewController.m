@@ -34,6 +34,16 @@
 @property (nonatomic, strong) UIButton *leftButton;
 /** navigationBar的item */
 @property (nonatomic, strong) UIButton *rightButton;
+/** 加载最新数据起始位置 */
+@property (nonatomic, assign) NSInteger startAddtime;
+/** 加载人们数据起始位置 */
+@property (nonatomic, assign) NSInteger startHot;
+/** 判断是否已经加载过最新数据 */
+@property (nonatomic, assign) BOOL isAddtime;
+/** 判断是否已经加载过热门数据 */
+@property (nonatomic, assign) BOOL isHot;
+/** 请求参数 */
+@property (nonatomic, strong) NSMutableDictionary *params;
 
 @end
 
@@ -70,10 +80,20 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
 - (void)loadDataWithSort:(NSString *)sort {
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
     parDic[@"typeid"] = _listModel.type;
-    parDic[@"start"] = @"0";
+    if ([sort isEqualToString:@"addtime"]) {
+        parDic[@"start"] = @(_startAddtime);
+    } else {
+        parDic[@"start"] = @(_startHot);
+    }
+    parDic[@"limit"] = @"10";
     parDic[@"sort"] = sort;
+    self.params = parDic;
     [NetWorkRequestManager requestWithType:POST urlString:READDETAILLIST_URL parDic:parDic finish:^(NSData *data) {
+        if (self.params != parDic) return ;
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+        
+        if (0 ==_startHot) [self.hotDetailListArray removeAllObjects];
+        if (0 == _startAddtime) [self.addtimeDetailListArray removeAllObjects];
         
         // 获取数据列表
         NSArray *listArray = dataDict[@"data"][@"list"];
@@ -91,8 +111,20 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
         dispatch_async(dispatch_get_main_queue(), ^{
             // 刷新数据
             if (0 == sortType) {
+                _isAddtime = 1;
+                // 显示footer
+                self.addtimeTableView.mj_footer.hidden = NO;
+                // 结束刷新
+                [self.addtimeTableView.mj_header endRefreshing];
+                [self.addtimeTableView.mj_footer endRefreshing];
                 [self.addtimeTableView reloadData];
             } else {
+                _isHot = 1;
+                // 显示footer
+                self.hotTableView.mj_footer.hidden = NO;
+                // 结束刷新
+                [self.hotTableView.mj_header endRefreshing];
+                [self.hotTableView.mj_footer endRefreshing];
                 [self.hotTableView reloadData];
             }
         });
@@ -103,7 +135,7 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
 }
 
 /**
- *  注册tableViewCell
+ *  注册tableViewCell，加载刷新
  */
 - (void)registTableViewCell {
     [self.addtimeTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ReadTableViewCell class]) bundle:nil] forCellReuseIdentifier:ReadDetailCellID];
@@ -111,6 +143,58 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     
     self.addtimeTableView.rowHeight = 160;
     self.hotTableView.rowHeight = self.addtimeTableView.rowHeight;
+    
+    // 上拉刷新
+    self.addtimeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadAddtimeData)];
+    self.hotTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadHotData)];
+    
+    // 下拉刷新
+    self.addtimeTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreAddtimeData)];
+    self.hotTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreHotData)];
+    
+    self.addtimeTableView.mj_footer.hidden = YES;
+    
+    // 进入刷新状态
+    [self.addtimeTableView.mj_header beginRefreshing];
+    [self loadAddtimeData];
+}
+
+/**
+ *  加载最新数据
+ */
+- (void)loadAddtimeData {
+    // 隐藏下拉刷新
+    self.addtimeTableView.mj_footer.hidden = YES;
+    _startAddtime = 0;
+    // 请求最新数据
+    [self loadDataWithSort:@"addtime"];
+}
+
+/**
+ *  加载更多最新数据
+ */
+- (void)loadMoreAddtimeData {
+    _startAddtime += 10;
+    [self loadDataWithSort:@"addtime"];
+}
+
+/**
+ *  加载热门数据
+ */
+- (void)loadHotData {
+    // 隐藏下拉刷新
+    self.hotTableView.mj_footer.hidden = YES;
+    _startHot = 0;
+    // 请求热门数据
+    [self loadDataWithSort:@"hot"];
+}
+
+/**
+ *  加载更多热门数据
+ */
+- (void)loadMoreHotData {
+    _startHot += 10;
+    [self loadDataWithSort:@"hot"];
 }
 
 - (void)viewDidLoad {
@@ -121,9 +205,6 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     // 注册TableViewCell
     [self registTableViewCell];
     
-    // 隐藏导航栏自带NavigationBar
-    self.navigationController.navigationBarHidden = YES;
-    
     // 默认是最新列表
     sortType = 0;
     
@@ -132,9 +213,6 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     
     // 添加自定义导航栏
     [self addCustomNavigationBar];
-    
-    // 请求数据 默认第一次请求 addtime
-    [self loadDataWithSort:@"addtime"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -171,8 +249,10 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
 
 - (void)leftButtonClick {
     if (_leftButton.selected) return;
-    if (self.addtimeDetailListArray.count == 0) {
-        [self loadDataWithSort:@"addtime"];
+    if (!_isAddtime) {
+        // 进入刷新状态
+        [self.addtimeTableView.mj_header beginRefreshing];
+        [self loadAddtimeData];
     }
     sortType = 0;
     _leftButton.selected = YES;
@@ -185,8 +265,10 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
 
 - (void)rightButtonClick {
     if (_rightButton.selected) return ;
-    if (self.hotDetailListArray.count == 0) {
-        [self loadDataWithSort:@"hot"];
+    if (!_isHot) {
+        // 进入刷新状态
+        [self.hotTableView.mj_header beginRefreshing];
+        [self loadHotData];
     }
     sortType = 1;
     _leftButton.selected = NO;
@@ -197,23 +279,6 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     [_rootScrollView setContentOffset:CGPointMake(kScreenWidth, 0) animated:YES];
 }
 
-#pragma mark -UIScrollViewDelegate
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    // 判断ScrollView偏移量调整右上按钮状态;
-//    if (scrollView.contentOffset.x < kScreenWidth / 2) {
-//        _leftButton.selected = YES;
-//        _rightButton.selected = NO;
-//        [_leftButton setImage:[UIImage imageNamed:@"NEW1"] forState:(UIControlStateNormal)];
-//        [_rightButton setImage:[UIImage imageNamed:@"HOT2"] forState:(UIControlStateNormal)];
-//    }
-//    if (scrollView.contentOffset.x > kScreenWidth / 2) {
-//        _leftButton.selected = NO;
-//        _rightButton.selected = YES;
-//        [_leftButton setImage:[UIImage imageNamed:@"NEW2"] forState:(UIControlStateNormal)];
-//        [_rightButton setImage:[UIImage imageNamed:@"HOT1"] forState:(UIControlStateNormal)];
-//    }
-}
 
 #pragma mark -<UITableViewDelegate>
 
@@ -229,6 +294,7 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     } else {
         model = self.hotDetailListArray[indexPath.row];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = model;
     return cell;
 }
@@ -246,43 +312,3 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
