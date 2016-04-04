@@ -11,7 +11,10 @@
 @implementation RadioDetailListModel
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-
+    if ([key isEqualToString:@"playInfo"]) {
+        _imgUrl = value[@"imgUrl"];
+        _imgTitle = value[@"title"];
+    }
 }
 
 @end

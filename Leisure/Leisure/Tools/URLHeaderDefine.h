@@ -32,7 +32,8 @@
 #define RADIOMLISTORE_URL      @"http://api2.pianke.me/ting/radio_list"
 /** 电台详细列表 */
 #define RADIODETAILLIST_URL    @"http://api2.pianke.me/ting/radio_detail"
-#define RADIODETAILMORE_URL    @"http://api2.pianke.me/ting/radio_detail_list "
+#define RADIODETAILMORE_URL    @"http://api2.pianke.me/ting/radio_detail_list"
+#define RADIOPLAYERINFO_URL    @"http://api2.pianke.me/ting/info"
 
 //  良品模块
 /** 良品列表 */

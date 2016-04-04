@@ -25,12 +25,18 @@
     _model = model;
     [_iconImageView sd_setImageWithURL:[NSURL URLWithString:model.coverimg] placeholderImage:kImage];
     _titleLabel.text = model.title;
-//    SQLog(@"count = %@", model.musicVisit);
     _playLabel.text = model.musicVisit;
 }
 
 - (void)awakeFromNib {
-    // Initialization code
+    
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    self.playBtn.layer.cornerRadius = 15;
+    self.playBtn.layer.masksToBounds = YES;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

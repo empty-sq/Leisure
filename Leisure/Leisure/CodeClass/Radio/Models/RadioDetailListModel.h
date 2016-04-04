@@ -7,6 +7,7 @@
 //
 
 #import "BaseModel.h"
+#import "RadioPlayOtherModel.h"
 
 @interface RadioDetailListModel : BaseModel
 
@@ -20,5 +21,7 @@
 @property (nonatomic, assign) bool isnew;
 @property (nonatomic, copy) NSString *tingid;
 @property (nonatomic, assign) bool isSelect;
+@property (nonatomic, copy) NSString *imgUrl;
+@property (nonatomic, copy) NSString *imgTitle;
 
 @end

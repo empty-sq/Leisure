@@ -7,7 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "RadioDetailListModel.h"
 
 @interface RadioPlayViewController : BaseViewController
+
+@property (nonatomic, strong) RadioDetailListModel *model;
+@property (nonatomic, strong) NSArray *listDataArray;
 
 @end

@@ -149,6 +149,7 @@ static NSString * const DetailCellID = @"detailTableViewCell";
     RadioDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:DetailCellID forIndexPath:indexPath];
     RadioDetailListModel *model = self.detailListArray[indexPath.row];
     cell.model = model;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -158,6 +159,8 @@ static NSString * const DetailCellID = @"detailTableViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     RadioDetailListModel *model = self.detailListArray[indexPath.row];
     RadioPlayViewController *playVC = [[RadioPlayViewController alloc] init];
+    playVC.model = model;
+    playVC.listDataArray = self.detailListArray;
     [self.navigationController pushViewController:playVC animated:YES];
 }
 
