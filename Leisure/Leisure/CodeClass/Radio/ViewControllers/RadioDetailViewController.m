@@ -110,7 +110,7 @@ static NSString * const DetailCellID = @"detailTableViewCell";
     parDic[@"client"] = @"1";
     parDic[@"deviceid"] = @"6D4DD967-5EB2-40E2-A202-37E64F3BEA31";
     parDic[@"limit"] = @"10";
-    parDic[@"radioid"] = @"56012217723125e2668b45d0";
+    parDic[@"radioid"] = _radioid;
     parDic[@"start"] = @(_start);
     [NetWorkRequestManager requestWithType:POST urlString:RADIODETAILMORE_URL parDic:parDic finish:^(NSData *data) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
@@ -127,6 +127,7 @@ static NSString * const DetailCellID = @"detailTableViewCell";
         
         dispatch_async(dispatch_get_main_queue(), ^{
             RadioDetailListModel *model = self.detailListArray[self.detailListArray.count - 1];
+            SQLog(@"count = %ld, all = %ld",self.detailListArray.count, model.total);
             if (model.total == self.detailListArray.count) { // 如果已经获取到全部数据，上拉刷新变成提示没有更多信息
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             } else { // 否则结束刷新
