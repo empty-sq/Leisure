@@ -38,6 +38,8 @@
 		B1054E5A1CA9283E005C0989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1054E581CA9283E005C0989 /* LaunchScreen.storyboard */; };
 		B1054E651CA9283E005C0989 /* LeisureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1054E641CA9283E005C0989 /* LeisureTests.m */; };
 		B1054E701CA9283E005C0989 /* LeisureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1054E6F1CA9283E005C0989 /* LeisureUITests.m */; };
+		B105F4A71CB354430016D89B /* RadioPlayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B105F4A51CB354430016D89B /* RadioPlayCell.m */; };
+		B105F4A81CB354430016D89B /* RadioPlayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B105F4A61CB354430016D89B /* RadioPlayCell.xib */; };
 		B12EB6381CAA673B00193FBA /* NetWorkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B12EB6371CAA673B00193FBA /* NetWorkRequestManager.m */; };
 		B12EB63B1CAA729800193FBA /* RadioCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B12EB63A1CAA729800193FBA /* RadioCarouselModel.m */; };
 		B12EB63E1CAA72A900193FBA /* RadioAlllistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B12EB63D1CAA72A900193FBA /* RadioAlllistModel.m */; };
@@ -160,6 +162,9 @@
 		B1054E6B1CA9283E005C0989 /* LeisureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeisureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1054E6F1CA9283E005C0989 /* LeisureUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeisureUITests.m; sourceTree = "<group>"; };
 		B1054E711CA9283E005C0989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B105F4A41CB354430016D89B /* RadioPlayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioPlayCell.h; sourceTree = "<group>"; };
+		B105F4A51CB354430016D89B /* RadioPlayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioPlayCell.m; sourceTree = "<group>"; };
+		B105F4A61CB354430016D89B /* RadioPlayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioPlayCell.xib; sourceTree = "<group>"; };
 		B12EB6341CAA670A00193FBA /* URLHeaderDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLHeaderDefine.h; sourceTree = "<group>"; };
 		B12EB6351CAA671600193FBA /* ConstansDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstansDefine.h; sourceTree = "<group>"; };
 		B12EB6361CAA673B00193FBA /* NetWorkRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkRequestManager.h; sourceTree = "<group>"; };
@@ -451,6 +456,9 @@
 				B1E8A90D1CB02AED001F0366 /* RadioDetailCell.xib */,
 				B19358D51CB26C9E00D9A8A7 /* RadioPlayMainView.h */,
 				B19358D61CB26C9E00D9A8A7 /* RadioPlayMainView.m */,
+				B105F4A41CB354430016D89B /* RadioPlayCell.h */,
+				B105F4A51CB354430016D89B /* RadioPlayCell.m */,
+				B105F4A61CB354430016D89B /* RadioPlayCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -833,6 +841,7 @@
 				B101834E1CA92C4D00E47F0D /* ProductViewController.xib in Resources */,
 				B101837B1CA92DC300E47F0D /* TopicInfoViewController.xib in Resources */,
 				B10183581CA92D7300E47F0D /* RadioViewController.xib in Resources */,
+				B105F4A81CB354430016D89B /* RadioPlayCell.xib in Resources */,
 				B101836C1CA92DA200E47F0D /* ReadDetailViewController.xib in Resources */,
 				B10183671CA92D9600E47F0D /* ReadViewController.xib in Resources */,
 				B101835D1CA92D7F00E47F0D /* RadioDetailViewController.xib in Resources */,
@@ -950,6 +959,7 @@
 				B101836B1CA92DA200E47F0D /* ReadDetailViewController.m in Sources */,
 				B10183E01CA950D000E47F0D /* UIBarButtonItem+Custom.m in Sources */,
 				B1F26D1F1CACC2D700497F5D /* MenuSearchBar.m in Sources */,
+				B105F4A71CB354430016D89B /* RadioPlayCell.m in Sources */,
 				B10183751CA92DB900E47F0D /* TopicViewController.m in Sources */,
 				B12EB6491CAA9E5200193FBA /* ReadCarouselModel.m in Sources */,
 				B10182C91CA92A5800E47F0D /* BaseModel.m in Sources */,

@@ -29,6 +29,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 /** tableView的头部 */
 @property (nonatomic, strong) RadioHeaderView *headView;
+/** 请求数据参数 */
+@property (nonatomic, assign) NSInteger start;
 
 @end
 
@@ -82,6 +84,12 @@ static NSString * const RadioCellID = @"radioCell";
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
             
+            // 清空全部数据
+            [self.alllistArray removeAllObjects];
+            [self.imgArray removeAllObjects];
+            [self.carouselArray removeAllObjects];
+            [self.hotArray removeAllObjects];
+            
             // 获取滚动列表数据
             NSArray *carouselArr = dataDict[@"data"][@"carousel"];
             for (NSDictionary *dic in carouselArr) {
@@ -108,6 +116,12 @@ static NSString * const RadioCellID = @"radioCell";
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
+                // 结束上拉刷新
+                [self.tableView.mj_header endRefreshing];
+                
+                // 显示下拉刷新
+                self.tableView.mj_footer.hidden = NO;
+                
                 // 创建滚动视图
                 [self createCycleScrollView];
                 
@@ -120,6 +134,46 @@ static NSString * const RadioCellID = @"radioCell";
         });
     } error:^(NSError *error) {
         SQLog(@"电台界面加载失败");
+    }];
+}
+
+/**
+ *  加载更多数据
+ */
+- (void)loadMoreData {
+    _start += 9;
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    parDic[@"auth"] = @"XZU7RH7m1861DC8Z8H8HvkTJxQMGoPLGO9zo4XDA0cWP22NdFSh9d7fo";
+    parDic[@"client"] = @"1";
+    parDic[@"deviceid"] = @"6D4DD967-5EB2-40E2-A202-37E64F3BEA31";
+    parDic[@"limit"] = @"9";
+    parDic[@"start"] = @(_start);
+    [NetWorkRequestManager requestWithType:POST urlString:RADIOMLISTORE_URL parDic:parDic finish:^(NSData *data) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+        
+        // 获取电台主题列表数据
+        NSArray *alllistArr = dict[@"data"][@"list"];
+        for (NSDictionary *dic in alllistArr) {
+            RadioAlllistModel *model = [[RadioAlllistModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            model.total = [dict[@"data"][@"total"] integerValue];
+            [self.alllistArray addObject:model];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            RadioAlllistModel *model = self.alllistArray[self.alllistArray.count - 1];
+            if (model.total == self.alllistArray.count) { // 如果已经获取到全部数据，上拉刷新变成提示没有更多信息
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            } else { // 否则只是结束刷新
+                // 结束刷新
+                [self.tableView.mj_footer endRefreshing];
+            }
+            
+            // 刷新列表
+            [self.tableView reloadData];
+        });
+    } error:^(NSError *error) {
+        SQLog(@"error is %@", error);
     }];
 }
 
@@ -188,11 +242,19 @@ static NSString * const RadioCellID = @"radioCell";
     
     // 初始化headView
     _headView = [[RadioHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 300)];
+    
     // 设置tableView的headview
     _tableView.tableHeaderView = _headView;
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([RadioTableViewCell class]) bundle:nil] forCellReuseIdentifier:RadioCellID];
+    
+    // 添加上拉、下拉刷新
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    
+    // 隐藏上拉刷新
+    _tableView.mj_footer.hidden = YES;
     
     // 添加tableView
     [self.view addSubview:_tableView];

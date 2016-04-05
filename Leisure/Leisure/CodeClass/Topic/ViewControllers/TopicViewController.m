@@ -42,10 +42,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *hotTableView;
 /** 请求参数 */
 @property (nonatomic, strong) NSMutableDictionary *params;
-/** 判断是否已经加载过最新数据 */
-@property (nonatomic, assign) BOOL isAddtime;
-/** 判断是否已经加载过热门数据 */
-@property (nonatomic, assign) BOOL isHot;
 
 @end
 
@@ -86,8 +82,8 @@ static NSString * const TopicCellID = @"topicCell";
     [NetWorkRequestManager requestWithType:POST urlString:TOPICLIST_URL parDic:params finish:^(NSData *data) {
         if (self.params != params) return ;
         
-        if (0 ==_startHot) [self.hotListArray removeAllObjects];
-        if (0 == _startAddtime) [self.addtimeListArray removeAllObjects];
+        if (0 ==_startHot && sortType == 1) [self.hotListArray removeAllObjects];
+        if (0 == _startAddtime && sortType == 0) [self.addtimeListArray removeAllObjects];
         
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
         
@@ -115,7 +111,6 @@ static NSString * const TopicCellID = @"topicCell";
         // 回到主线程
         dispatch_async(dispatch_get_main_queue(), ^{
             if (0 == sortType) {
-                _isAddtime = 1;
                 // 显示footer
                 self.addtimeTableView.mj_footer.hidden = NO;
                 // 结束刷新
@@ -123,7 +118,6 @@ static NSString * const TopicCellID = @"topicCell";
                 [self.addtimeTableView.mj_footer endRefreshing];
                 [self.addtimeTableView reloadData];
             } else {
-                _isHot = 1;
                 // 显示footer
                 self.hotTableView.mj_footer.hidden = NO;
                 // 结束刷新
@@ -156,7 +150,7 @@ static NSString * const TopicCellID = @"topicCell";
 
 - (void)leftButtonClick {
     if (_leftBtn.selected) return;
-    if (!_isAddtime) {
+    if (!self.addtimeListArray.count) {
         // 进入刷新状态
         [self.addtimeTableView.mj_header beginRefreshing];
         [self loadAddtimeData];
@@ -172,7 +166,7 @@ static NSString * const TopicCellID = @"topicCell";
 
 - (void)rightButtonClick {
     if (_rightBtn.selected) return ;
-    if (!_isHot) {
+    if (!self.hotListArray.count) {
         // 进入刷新状态
         [self.hotTableView.mj_header beginRefreshing];
         [self loadHotData];

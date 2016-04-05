@@ -17,6 +17,10 @@
 @property (nonatomic, strong) NSString *musicVisit;
 /** 标题 */
 @property (nonatomic, copy) NSString *title;
+/** 作者名字 */
+@property (nonatomic, copy) NSString *uname;
+/** 电台总数 */
+@property (nonatomic, assign) NSInteger total;
 @property (nonatomic, copy) NSString *musicUrl;
 @property (nonatomic, assign) bool isnew;
 @property (nonatomic, copy) NSString *tingid;

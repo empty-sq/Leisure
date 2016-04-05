@@ -38,10 +38,6 @@
 @property (nonatomic, assign) NSInteger startAddtime;
 /** 加载人们数据起始位置 */
 @property (nonatomic, assign) NSInteger startHot;
-/** 判断是否已经加载过最新数据 */
-@property (nonatomic, assign) BOOL isAddtime;
-/** 判断是否已经加载过热门数据 */
-@property (nonatomic, assign) BOOL isHot;
 /** 请求参数 */
 @property (nonatomic, strong) NSMutableDictionary *params;
 
@@ -92,8 +88,8 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
         if (self.params != parDic) return ;
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
         
-        if (0 ==_startHot) [self.hotDetailListArray removeAllObjects];
-        if (0 == _startAddtime) [self.addtimeDetailListArray removeAllObjects];
+        if (0 ==_startHot && sortType == 1) [self.hotDetailListArray removeAllObjects];
+        if (0 == _startAddtime && sortType == 0) [self.addtimeDetailListArray removeAllObjects];
         
         // 获取数据列表
         NSArray *listArray = dataDict[@"data"][@"list"];
@@ -111,7 +107,6 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
         dispatch_async(dispatch_get_main_queue(), ^{
             // 刷新数据
             if (0 == sortType) {
-                _isAddtime = 1;
                 // 显示footer
                 self.addtimeTableView.mj_footer.hidden = NO;
                 // 结束刷新
@@ -119,7 +114,6 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
                 [self.addtimeTableView.mj_footer endRefreshing];
                 [self.addtimeTableView reloadData];
             } else {
-                _isHot = 1;
                 // 显示footer
                 self.hotTableView.mj_footer.hidden = NO;
                 // 结束刷新
@@ -249,7 +243,7 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
 
 - (void)leftButtonClick {
     if (_leftButton.selected) return;
-    if (!_isAddtime) {
+    if (!self.addtimeDetailListArray.count) {
         // 进入刷新状态
         [self.addtimeTableView.mj_header beginRefreshing];
         [self loadAddtimeData];
@@ -265,7 +259,7 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
 
 - (void)rightButtonClick {
     if (_rightButton.selected) return ;
-    if (!_isHot) {
+    if (!self.hotDetailListArray.count) {
         // 进入刷新状态
         [self.hotTableView.mj_header beginRefreshing];
         [self loadHotData];

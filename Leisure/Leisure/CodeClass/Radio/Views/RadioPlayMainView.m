@@ -8,9 +8,24 @@
 
 #import "RadioPlayMainView.h"
 
-#define kMargin kScreenWidth / 7.0
+
+
+@interface RadioPlayMainView ()
+
+@property (nonatomic, strong) PlayerManager *manager;
+
+@end
 
 @implementation RadioPlayMainView
+
+#define kMargin kScreenWidth / 7.0
+
+- (PlayerManager *)manager {
+    if (!_manager) {
+        _manager = [PlayerManager defaultManager];
+    }
+    return _manager;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -19,7 +34,8 @@
         
         CGFloat titleY = CGRectGetMaxY(_coverImageView.frame) + 30;
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, titleY, kScreenWidth, 30)];
-        _titleLabel.font = [UIFont systemFontOfSize:20.0];
+        _titleLabel.font = [UIFont systemFontOfSize:16.0];
+        _titleLabel.numberOfLines = 0;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_titleLabel];
         
@@ -40,7 +56,15 @@
         CGFloat btnW = kScreenWidth / 4;
         CGFloat btnX = (btnW - 30) / 2;
         CGFloat btnY = self.height - 85;
+        
         _playBtn = [UIButton buttonWithFrame:CGRectMake(btnX, btnY, 30, 30) image:@"liebiao"];
+        if (self.manager.playType == PlayTypeList) {
+            [_playBtn setImage:[UIImage imageNamed:@"liebiao"] forState:UIControlStateNormal];
+        } else if (self.manager.playType == PlayTypeRandom) {
+            [_playBtn setImage:[UIImage imageNamed:@"suiji"] forState:UIControlStateNormal];
+        } else {
+            [_playBtn setImage:[UIImage imageNamed:@"danqu"] forState:UIControlStateNormal];
+        }
         [self addSubview:_playBtn];
         
         _likeBtn = [UIButton buttonWithFrame:CGRectMake(btnW + btnX, btnY, 30, 30) image:@"aixin"];
@@ -57,9 +81,6 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [_titleLabel sizeToFit];
-    CGFloat labelX = (kScreenWidth - _titleLabel.width) / 2;
-    _titleLabel.frame = CGRectMake(labelX, _titleLabel.y, _titleLabel.width, _titleLabel.height);
 }
 
 - (void)setModel:(RadioDetailListModel *)model {

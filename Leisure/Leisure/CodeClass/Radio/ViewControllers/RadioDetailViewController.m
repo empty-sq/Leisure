@@ -24,6 +24,8 @@
 @property (nonatomic, strong) NSMutableArray *playListArray;
 /** tableView的headView */
 @property (nonatomic, strong) RadioDetailHeaderView *headView;
+/** 从第几条开始请求数据 */
+@property (nonatomic, assign) NSInteger start;
 
 @end
 
@@ -46,8 +48,9 @@ static NSString * const DetailCellID = @"detailTableViewCell";
     return _playListArray;
 }
 
+#pragma mark -加载数据
 /**
- *  请求数据
+ *  加载数据
  */
 - (void)loadData {
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
@@ -58,6 +61,10 @@ static NSString * const DetailCellID = @"detailTableViewCell";
         // 创建线程，异步处理数据
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+            
+            // 下拉刷新，清空数组
+            [self.detailListArray removeAllObjects];
+            [self.playListArray removeAllObjects];
             
             NSArray *listArray = dict[@"data"][@"list"];
             for (NSDictionary *dic in listArray) {
@@ -73,7 +80,11 @@ static NSString * const DetailCellID = @"detailTableViewCell";
             [model setValuesForKeysWithDictionary:headDict];
             
             dispatch_async(dispatch_get_main_queue(), ^{
+                // 给NavigationItem一个标题
                 _headView.model = model;
+                
+                // 结束刷新
+                [self.tableView.mj_header endRefreshing];
                 
                 // 添加自定义导航栏
                 [self addCustomNavigationBar];
@@ -86,6 +97,48 @@ static NSString * const DetailCellID = @"detailTableViewCell";
         });
     } error:^(NSError *error) {
         SQLog(@"error : %@", error);
+    }];
+}
+
+/**
+ *  加载更多数据
+ */
+- (void)loadMoreData {
+    _start += 10;
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    parDic[@"auth"] = @"XZU7RH7m1861DC8Z8H8HvkTJxQMGoPLGO9zo4XDA0cWP22NdFSh9d7fo";
+    parDic[@"client"] = @"1";
+    parDic[@"deviceid"] = @"6D4DD967-5EB2-40E2-A202-37E64F3BEA31";
+    parDic[@"limit"] = @"10";
+    parDic[@"radioid"] = @"56012217723125e2668b45d0";
+    parDic[@"start"] = @(_start);
+    [NetWorkRequestManager requestWithType:POST urlString:RADIODETAILMORE_URL parDic:parDic finish:^(NSData *data) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
+        NSArray *array = dict[@"data"][@"list"];
+        for (NSDictionary *dic in array) {
+            RadioDetailListModel *model = [[RadioDetailListModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            // 获取总用有几条数据
+            model.total = [dict[@"data"][@"total"] integerValue];
+            [self.detailListArray addObject:model];
+            // 播放列表数据源
+            [self.playListArray addObject:dic[@"musicUrl"]];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            RadioDetailListModel *model = self.detailListArray[self.detailListArray.count - 1];
+            if (model.total == self.detailListArray.count) { // 如果已经获取到全部数据，上拉刷新变成提示没有更多信息
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            } else { // 否则结束刷新
+                // 结束刷新
+                [self.tableView.mj_footer endRefreshing];
+            }
+            
+            // 刷新数据
+            [self.tableView reloadData];
+        });
+    } error:^(NSError *error) {
+        SQLog(@"error is %@", error);
     }];
 }
 
@@ -119,6 +172,10 @@ static NSString * const DetailCellID = @"detailTableViewCell";
     // 初始化tableView的headview
     _headView = [[RadioDetailHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 240)];
     _tableView.tableHeaderView = _headView;
+    
+    // 添加上拉、下拉刷新
+    _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     
     // 注册Cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([RadioDetailCell class]) bundle:nil] forCellReuseIdentifier:DetailCellID];
@@ -160,6 +217,7 @@ static NSString * const DetailCellID = @"detailTableViewCell";
     RadioDetailListModel *model = self.detailListArray[indexPath.row];
     RadioPlayViewController *playVC = [[RadioPlayViewController alloc] init];
     playVC.model = model;
+    playVC.index = indexPath.row;
     playVC.listDataArray = self.detailListArray;
     [self.navigationController pushViewController:playVC animated:YES];
 }

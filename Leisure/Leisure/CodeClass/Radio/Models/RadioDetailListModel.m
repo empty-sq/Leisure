@@ -15,6 +15,9 @@
         _imgUrl = value[@"imgUrl"];
         _imgTitle = value[@"title"];
     }
+    if ([key isEqualToString:@"userInfo"]) {
+        _uname = value[@"uname"];
+    }
 }
 
 @end

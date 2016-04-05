@@ -18,6 +18,7 @@
 #import "ConstansDefine.h"
 #import "NetWorkRequestManager.h"
 #import "CustomNavigationBar.h"
+#import "PlayerManager.h"
 #import <UIImageView+WebCache.h>
 #import <MJRefresh/MJRefresh.h>
 

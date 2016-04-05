@@ -24,5 +24,7 @@
 @property (nonatomic, copy) NSString *icon;
 /** 电台id */
 @property (nonatomic, copy) NSString *radioid;
+/** 总电台数 */
+@property (nonatomic, assign) NSInteger total;
 
 @end

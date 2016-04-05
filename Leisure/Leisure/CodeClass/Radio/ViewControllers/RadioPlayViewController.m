@@ -9,13 +9,16 @@
 #import "RadioPlayViewController.h"
 #import "PlayerManager.h"
 #import "RadioPlayMainView.h"
+#import "RadioPlayCell.h"
 
-@interface RadioPlayViewController ()<UIScrollViewDelegate>
+@interface RadioPlayViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 /** 音乐轮播 */
 @property (nonatomic, strong) UIScrollView *scrollView;
 /** 页码 */
 @property (nonatomic, strong) UIPageControl *pageControl;
+/** 音乐列表 */
+@property (nonatomic, strong) UITableView *tableView;
 /** 音乐播放器管理者 */
 @property (nonatomic, strong) PlayerManager *manager;
 /** 播放信息界面 */
@@ -26,10 +29,14 @@
 @property (nonatomic, assign) BOOL isLike;
 /** 单曲列表随机播放 */
 @property (nonatomic, assign) int count;
+/** 自定义Bar */
+@property (nonatomic, strong) CustomNavigationBar *bar;
 
 @end
 
 @implementation RadioPlayViewController
+
+static NSString * const RadioPlayCellID = @"RadioPlayCell";
 
 #pragma mark -懒加载
 /**
@@ -91,6 +98,15 @@
     [_scrollView setContentOffset:CGPointMake(kScreenWidth, 0)];
     [self.view addSubview:_scrollView];
     
+    // 设置音乐播放列表界面
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, _scrollView.height - 40) style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    // 注册tableViewCell
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([RadioPlayCell class]) bundle:nil] forCellReuseIdentifier:RadioPlayCellID];
+    _tableView.rowHeight = 58;
+    [self.scrollView addSubview:_tableView];
+    
     // 设置音乐播放信息界面
     _playMainView = [[RadioPlayMainView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, _scrollView.height)];
     _playMainView.model = _model;
@@ -132,15 +148,15 @@
  *  改变播放状态
  */
 - (void)playChange {
-    if (_count == 0) {
+    if (self.manager.playType == PlayTypeList) {
         [_playMainView.playBtn setImage:[UIImage imageNamed:@"suiji"] forState:UIControlStateNormal];
-        _count = 1;
-    } else if (_count == 1) {
+        self.manager.playType = PlayTypeRandom;
+    } else if (self.manager.playType == PlayTypeRandom) {
         [_playMainView.playBtn setImage:[UIImage imageNamed:@"danqu"] forState:UIControlStateNormal];
-        _count = 2;
+        self.manager.playType = PlayTypeSingle;
     } else {
         [_playMainView.playBtn setImage:[UIImage imageNamed:@"liebiao"] forState:UIControlStateNormal];
-        _count = 0;
+        self.manager.playType = PlayTypeList;
     }
 }
 
@@ -176,6 +192,7 @@
  */
 - (void)lastBtnClick {
     [self.manager lastMusic];
+    [self setAllViewWithIndex:self.manager.playIndex];
 }
 
 /**
@@ -196,13 +213,17 @@
  */
 - (void)nextBtnClick {
     [self.manager nextMusic];
+    [self setAllViewWithIndex:self.manager.playIndex];
 }
 
 /**
  *  重置所有的界面
  */
 - (void)setAllViewWithIndex:(NSInteger)index {
-    
+    RadioDetailListModel *model = _listDataArray[self.manager.playIndex];
+    _playMainView.model = model;
+   _bar.titleLabel.text = model.title;
+    [_bar.titleLabel sizeToFit];
 }
 
 #pragma mark -自定义导航栏，点击方法
@@ -210,10 +231,10 @@
  *  添加自定义导航栏
  */
 - (void)addCustomNavigationBar {
-    CustomNavigationBar *bar = [[CustomNavigationBar alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
-    [bar.menuButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    bar.titleLabel.text = self.model.title;
-    [self.view addSubview:bar];
+    _bar = [[CustomNavigationBar alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
+    [_bar.menuButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    _bar.titleLabel.text = self.model.title;
+    [self.view addSubview:_bar];
 }
 
 - (void)back {
@@ -238,19 +259,23 @@
     [self loadData];
 }
 
+#pragma mark -<UITableViewDataSource, UITableViewDelegate>
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.listDataArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RadioPlayCell *cell = [tableView dequeueReusableCellWithIdentifier:RadioPlayCellID forIndexPath:indexPath];
+    cell.model = self.listDataArray[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
