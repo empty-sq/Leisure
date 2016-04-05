@@ -12,8 +12,8 @@
 
 /** 标题 */
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-/** 作者名字 */
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+/** 选中时出现的颜色 */
+@property (weak, nonatomic) IBOutlet UIImageView *selectedImageVIew;
 
 @end
 
@@ -26,13 +26,22 @@
 }
 
 - (void)awakeFromNib {
-    // Initialization code
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    self.selectedImageVIew.hidden = !selected;
+}
 
-    // Configure the view for the selected state
+/**
+ *  可以在这个方法中监听cell的选中和取消选中
+ */
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    // 重新调整内部textLabel的frame
+    self.textLabel.y = 2;
+    self.textLabel.height = self.contentView.height - 4;
 }
 
 @end

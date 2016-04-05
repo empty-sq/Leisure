@@ -293,6 +293,7 @@ static NSString * const RadioCellID = @"radioCell";
     RadioAlllistModel *model = self.alllistArray[indexPath.row];
     RadioDetailViewController *radioDetailVC = [[RadioDetailViewController alloc] init];
     radioDetailVC.radioid = model.radioid;
+    radioDetailVC.uname = model.uname;
     [self.navigationController pushViewController:radioDetailVC animated:YES];
 }
 

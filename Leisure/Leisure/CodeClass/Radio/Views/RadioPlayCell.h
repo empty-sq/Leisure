@@ -11,8 +11,8 @@
 
 @interface RadioPlayCell : UITableViewCell
 
-/** 选中时出现的颜色 */
-@property (weak, nonatomic) IBOutlet UIImageView *selectedImageView;
+/** 作者名字 */
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (nonatomic, strong) RadioDetailListModel *model;
 
 @end

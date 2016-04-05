@@ -14,7 +14,7 @@
 @property (nonatomic, strong) RadioDetailListModel *model;
 /** 音乐播放列表 */
 @property (nonatomic, strong) NSArray *listDataArray;
-/** 下标 */
+/** 音乐的下标 */
 @property (nonatomic, assign) NSInteger index;
 
 @end

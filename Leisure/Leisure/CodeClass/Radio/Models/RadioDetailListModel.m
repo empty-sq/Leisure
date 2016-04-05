@@ -14,9 +14,7 @@
     if ([key isEqualToString:@"playInfo"]) {
         _imgUrl = value[@"imgUrl"];
         _imgTitle = value[@"title"];
-    }
-    if ([key isEqualToString:@"userInfo"]) {
-        _uname = value[@"uname"];
+        _webview_url = value[@"webview_url"];
     }
 }
 

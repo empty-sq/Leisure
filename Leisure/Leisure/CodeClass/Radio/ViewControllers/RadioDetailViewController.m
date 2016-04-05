@@ -20,12 +20,18 @@
 @property (nonatomic, strong) UITableView *tableView;
 /** 电台主题详情列表 */
 @property (nonatomic, strong) NSMutableArray *detailListArray;
+/** 全部数据 */
+@property (nonatomic, strong) NSMutableArray *allArray;
+/** 全部音乐 */
+@property (nonatomic, strong) NSMutableArray *allPlayArray;
 /** 播放列表 */
 @property (nonatomic, strong) NSMutableArray *playListArray;
 /** tableView的headView */
 @property (nonatomic, strong) RadioDetailHeaderView *headView;
 /** 从第几条开始请求数据 */
 @property (nonatomic, assign) NSInteger start;
+/** 加载全部数据下标 */
+@property (nonatomic, assign) NSInteger allStart;
 
 @end
 
@@ -48,6 +54,20 @@ static NSString * const DetailCellID = @"detailTableViewCell";
     return _playListArray;
 }
 
+- (NSMutableArray *)allArray {
+    if (!_allArray) {
+        self.allArray = [NSMutableArray array];
+    }
+    return _allArray;
+}
+
+- (NSMutableArray *)allPlayArray {
+    if (!_allPlayArray) {
+        self.allPlayArray = [NSMutableArray array];
+    }
+    return _allPlayArray;
+}
+
 #pragma mark -加载数据
 /**
  *  加载数据
@@ -65,14 +85,19 @@ static NSString * const DetailCellID = @"detailTableViewCell";
             // 下拉刷新，清空数组
             [self.detailListArray removeAllObjects];
             [self.playListArray removeAllObjects];
+            [self.allArray removeAllObjects];
+            [self.allPlayArray removeAllObjects];
             
             NSArray *listArray = dict[@"data"][@"list"];
             for (NSDictionary *dic in listArray) {
                 RadioDetailListModel *listModel = [[RadioDetailListModel alloc] init];
                 [listModel setValuesForKeysWithDictionary:dic];
+                listModel.uname = self.uname;
                 [self.detailListArray addObject:listModel];
+                [self.allArray addObject:listModel];
                 // 播放列表数据源
                 [self.playListArray addObject:dic[@"musicUrl"]];
+                [self.allPlayArray addObject:dic[@"musicUrl"]];
             }
             
             NSDictionary *headDict = dict[@"data"][@"radioInfo"];
@@ -118,6 +143,7 @@ static NSString * const DetailCellID = @"detailTableViewCell";
         for (NSDictionary *dic in array) {
             RadioDetailListModel *model = [[RadioDetailListModel alloc] init];
             [model setValuesForKeysWithDictionary:dic];
+            model.uname = self.uname;
             // 获取总用有几条数据
             model.total = [dict[@"data"][@"total"] integerValue];
             [self.detailListArray addObject:model];
@@ -127,7 +153,6 @@ static NSString * const DetailCellID = @"detailTableViewCell";
         
         dispatch_async(dispatch_get_main_queue(), ^{
             RadioDetailListModel *model = self.detailListArray[self.detailListArray.count - 1];
-            SQLog(@"count = %ld, all = %ld",self.detailListArray.count, model.total);
             if (model.total == self.detailListArray.count) { // 如果已经获取到全部数据，上拉刷新变成提示没有更多信息
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             } else { // 否则结束刷新
@@ -137,6 +162,47 @@ static NSString * const DetailCellID = @"detailTableViewCell";
             
             // 刷新数据
             [self.tableView reloadData];
+        });
+    } error:^(NSError *error) {
+        SQLog(@"error is %@", error);
+    }];
+}
+
+/**
+ *  加载全部数据
+ */
+- (void)loadAllData {
+    _allStart += 10;
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    parDic[@"auth"] = @"XZU7RH7m1861DC8Z8H8HvkTJxQMGoPLGO9zo4XDA0cWP22NdFSh9d7fo";
+    parDic[@"client"] = @"1";
+    parDic[@"deviceid"] = @"6D4DD967-5EB2-40E2-A202-37E64F3BEA31";
+    parDic[@"limit"] = @"10";
+    parDic[@"radioid"] = _radioid;
+    parDic[@"start"] = @(_allStart);
+    [NetWorkRequestManager requestWithType:POST urlString:RADIODETAILMORE_URL parDic:parDic finish:^(NSData *data) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
+        NSArray *array = dict[@"data"][@"list"];
+        for (NSDictionary *dic in array) {
+            RadioDetailListModel *model = [[RadioDetailListModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            model.uname = self.uname;
+            // 获取总用有几条数据
+            model.total = [dict[@"data"][@"total"] integerValue];
+            [self.allArray addObject:model];
+            // 播放列表数据源
+            [self.allPlayArray addObject:dic[@"musicUrl"]];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            RadioDetailListModel *model = self.allArray[self.allArray.count - 1];
+            if (model.total == self.detailListArray.count) {
+                // 刷新数据
+                [self.tableView reloadData];
+            }
+            else { // 否则继续加载数据
+                [self loadAllData];
+            }
         });
     } error:^(NSError *error) {
         SQLog(@"error is %@", error);
@@ -192,6 +258,9 @@ static NSString * const DetailCellID = @"detailTableViewCell";
     
     // 加载数据
     [self loadData];
+    
+    // 加载全部数据
+    [self loadAllData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -215,11 +284,13 @@ static NSString * const DetailCellID = @"detailTableViewCell";
  *  点击cell执行的方法
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    self.detailListArray = self.allArray;
+    [self.tableView.mj_footer endRefreshingWithNoMoreData];
     RadioDetailListModel *model = self.detailListArray[indexPath.row];
     RadioPlayViewController *playVC = [[RadioPlayViewController alloc] init];
     playVC.model = model;
+    playVC.listDataArray = self.allArray;
     playVC.index = indexPath.row;
-    playVC.listDataArray = self.detailListArray;
     [self.navigationController pushViewController:playVC animated:YES];
 }
 

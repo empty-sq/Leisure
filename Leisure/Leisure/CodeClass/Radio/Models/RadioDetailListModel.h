@@ -21,6 +21,8 @@
 @property (nonatomic, copy) NSString *uname;
 /** 电台总数 */
 @property (nonatomic, assign) NSInteger total;
+/** 网页地址 */
+@property (nonatomic, copy) NSString *webview_url;
 @property (nonatomic, copy) NSString *musicUrl;
 @property (nonatomic, assign) bool isnew;
 @property (nonatomic, copy) NSString *tingid;

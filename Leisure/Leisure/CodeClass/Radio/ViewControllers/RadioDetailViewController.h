@@ -12,6 +12,9 @@
 
 @interface RadioDetailViewController : BaseViewController
 
+/** 电台的id */
 @property (nonatomic, copy) NSString *radioid;
+/** 作者的名字 */
+@property (nonatomic, copy) NSString *uname;
 
 @end

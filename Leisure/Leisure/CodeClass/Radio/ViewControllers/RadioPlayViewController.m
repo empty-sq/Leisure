@@ -10,6 +10,7 @@
 #import "PlayerManager.h"
 #import "RadioPlayMainView.h"
 #import "RadioPlayCell.h"
+#import <UMSocial.h>
 
 @interface RadioPlayViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -31,6 +32,8 @@
 @property (nonatomic, assign) int count;
 /** 自定义Bar */
 @property (nonatomic, strong) CustomNavigationBar *bar;
+/** 显示网页信息 */
+@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
@@ -73,6 +76,7 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
         [musicArray addObject:model.musicUrl];
     }
     self.manager.musicArray = musicArray;
+    self.manager.playIndex = _index;
     [self.manager play];
     
     NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
@@ -86,7 +90,7 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     }];
 }
 
-#pragma mak -添加轮播图
+#pragma mak -添加轮播，完成布局，并实现方法
 - (void)setupScrollView {
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 101)];
     _scrollView.contentSize = CGSizeMake(kScreenWidth * 4, kScreenHeight - 64 - 101);
@@ -99,22 +103,16 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     [self.view addSubview:_scrollView];
     
     // 设置音乐播放列表界面
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, _scrollView.height - 40) style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    // 注册tableViewCell
-    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([RadioPlayCell class]) bundle:nil] forCellReuseIdentifier:RadioPlayCellID];
-    _tableView.rowHeight = 58;
-    [self.scrollView addSubview:_tableView];
+    [self setupMusicTableView];
     
     // 设置音乐播放信息界面
-    _playMainView = [[RadioPlayMainView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, _scrollView.height)];
-    _playMainView.model = _model;
-    [_playMainView.likeBtn addTarget:self action:@selector(change) forControlEvents:UIControlEventTouchUpInside];
-    [_playMainView.playBtn addTarget:self action:@selector(playChange) forControlEvents:UIControlEventTouchUpInside];
-    [_playMainView.timeSlider addTarget:self action:@selector(changePlayProgress:) forControlEvents:UIControlEventValueChanged];
-    [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(playerPlay) userInfo:nil repeats:YES];
-    [self.scrollView addSubview:_playMainView];
+    [self setupMusicPlay];
+    
+    // 添加网页界面
+    [self setupMusicWebView];
+    
+    // 添加页码
+    [self setupPageControl];
     
     // 添加播放下一首下一首按钮
     UIButton *lastButton = [UIButton buttonWithFrame:CGRectMake(50, kScreenHeight - 60, 30, 30) image:@"上一首" target:self action:@selector(lastBtnClick)];
@@ -129,6 +127,87 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     nextButton.layer.cornerRadius = 15;
     nextButton.layer.masksToBounds = YES;
     [self.view addSubview:nextButton];
+}
+
+/**
+ *  上一首
+ */
+- (void)lastBtnClick {
+    [self.manager lastMusic];
+    [self setAllViewWithIndex:self.manager.playIndex];
+}
+
+/**
+ *  播放暂停
+ */
+- (void)playBtnClick {
+    if (self.manager.playerState == PlayerStatePlay) {
+        [self.manager pause];
+        [_playBtn setImage:[UIImage imageNamed:@"播放"] forState:UIControlStateNormal];
+    } else {
+        [self.manager play];
+        [_playBtn setImage:[UIImage imageNamed:@"暂停"] forState:UIControlStateNormal];
+    }
+}
+
+/**
+ *  下一首
+ */
+- (void)nextBtnClick {
+    [self.manager nextMusic];
+    [self setAllViewWithIndex:self.manager.playIndex];
+}
+
+/**
+ *  重置所有的界面
+ */
+- (void)setAllViewWithIndex:(NSInteger)index {
+    RadioDetailListModel *model = _listDataArray[self.manager.playIndex];
+    _playMainView.model = model;
+    _bar.titleLabel.text = model.title;
+    [_bar.titleLabel sizeToFit];
+    
+    [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.manager.playIndex inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+    
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.webview_url]]];
+}
+
+/**
+ *  根据滑动视图偏移量获取对应页码
+ */
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // 页面滚动一半频宽才改变页码;
+    _pageControl.currentPage = (int)(scrollView.contentOffset.x / kScreenWidth + 0.5);
+}
+
+#pragma mark -设置音乐播放列表界面
+/**
+ *  设置音乐播放列表界面
+ */
+- (void)setupMusicTableView {
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, kScreenWidth, _scrollView.height - 70) style:UITableViewStylePlain];
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    // 注册tableViewCell
+    [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([RadioPlayCell class]) bundle:nil] forCellReuseIdentifier:RadioPlayCellID];
+    [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:_index inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+    _tableView.rowHeight = 58;
+    [self.scrollView addSubview:_tableView];
+}
+
+#pragma mark -设置音乐播放界面
+/**
+ *  设置音乐播放界面，实现方法
+ */
+- (void)setupMusicPlay {
+    _playMainView = [[RadioPlayMainView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, _scrollView.height)];
+    _playMainView.model = _model;
+    [_playMainView.likeBtn addTarget:self action:@selector(change) forControlEvents:UIControlEventTouchUpInside];
+    [_playMainView.playBtn addTarget:self action:@selector(playChange) forControlEvents:UIControlEventTouchUpInside];
+    [_playMainView.timeSlider addTarget:self action:@selector(changePlayProgress:) forControlEvents:UIControlEventValueChanged];
+    [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(playerPlay) userInfo:nil repeats:YES];
+    [self.scrollView addSubview:_playMainView];
 }
 
 /**
@@ -187,43 +266,28 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     [self.manager seekToNewTime:slider.value];
 }
 
+#pragma mark -设置网页信息
 /**
- *  上一首
+ *  设置网页信息
  */
-- (void)lastBtnClick {
-    [self.manager lastMusic];
-    [self setAllViewWithIndex:self.manager.playIndex];
+- (void)setupMusicWebView {
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(kScreenWidth * 2, 30, kScreenWidth, _scrollView.height - 70)];
+    RadioDetailListModel *model = _listDataArray[_index];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.webview_url]]];
+    [_scrollView addSubview:_webView];
 }
 
+#pragma mark -设置页码
 /**
- *  播放暂停
+ *  设置页码
  */
-- (void)playBtnClick {
-    if (self.manager.playerState == PlayerStatePlay) {
-        [self.manager pause];
-        [_playBtn setImage:[UIImage imageNamed:@"播放"] forState:UIControlStateNormal];
-    } else {
-        [self.manager play];
-        [_playBtn setImage:[UIImage imageNamed:@"暂停"] forState:UIControlStateNormal];
-    }
-}
-
-/**
- *  下一首
- */
-- (void)nextBtnClick {
-    [self.manager nextMusic];
-    [self setAllViewWithIndex:self.manager.playIndex];
-}
-
-/**
- *  重置所有的界面
- */
-- (void)setAllViewWithIndex:(NSInteger)index {
-    RadioDetailListModel *model = _listDataArray[self.manager.playIndex];
-    _playMainView.model = model;
-   _bar.titleLabel.text = model.title;
-    [_bar.titleLabel sizeToFit];
+- (void)setupPageControl {
+    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake((kScreenWidth - 100) / 2, 74, 100, 20)];
+    _pageControl.numberOfPages = 4;
+    _pageControl.currentPage = 1;
+    _pageControl.pageIndicatorTintColor = [UIColor grayColor];
+    _pageControl.currentPageIndicatorTintColor = [UIColor greenColor];
+    [self.view addSubview:_pageControl];
 }
 
 #pragma mark -自定义导航栏，点击方法
@@ -235,12 +299,23 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     [_bar.menuButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     _bar.titleLabel.text = self.model.title;
     [self.view addSubview:_bar];
+    
+    UIButton *shareBtn = [UIButton buttonWithFrame:CGRectMake(kScreenWidth - 100, 8, 28, 28) image:@"fenxiang" target:self action:@selector(shareClick)];
+    [_bar addSubview:shareBtn];
 }
 
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+/**
+ *  分享
+ */
+- (void)shareClick {
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"568a3499e0f55a3a3f000047" shareText:@"友盟社会化分享让您快速实现分享等社会化功能，http://umeng.com/social" shareImage:[UIImage imageNamed:@"icon"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatSession,UMShareToWechatTimeline, UMShareToTencent, nil] delegate:nil];
+}
+
+#pragma mark -viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 关闭控制器自动布局scrollView功能
@@ -271,7 +346,10 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    
+    [self.manager changeMusicWithIndex:indexPath.row];
+    [self setAllViewWithIndex:indexPath.row];
+    [self.manager play];
+    [_playBtn setImage:[UIImage imageNamed:@"暂停"] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {
