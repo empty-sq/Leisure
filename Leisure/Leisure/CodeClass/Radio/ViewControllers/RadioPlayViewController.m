@@ -10,6 +10,8 @@
 #import "PlayerManager.h"
 #import "RadioPlayMainView.h"
 #import "RadioPlayCell.h"
+#import "RadioPlayOtherModel.h"
+#import "RadioPlayOtherView.h"
 #import <UMSocial.h>
 
 @interface RadioPlayViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -34,6 +36,10 @@
 @property (nonatomic, strong) CustomNavigationBar *bar;
 /** 显示网页信息 */
 @property (nonatomic, strong) UIWebView *webView;
+/** 作者详情类 */
+@property (nonatomic, strong) RadioPlayOtherModel *playModel;
+/** 音乐其他页面 */
+@property (nonatomic, strong) RadioPlayOtherView *playOtherView;
 
 @end
 
@@ -84,7 +90,20 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     parDic[@"tingid"] = _model.tingid;
     [NetWorkRequestManager requestWithType:POST urlString:RADIOPLAYERINFO_URL parDic:parDic finish:^(NSData *data) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+        _playModel = [[RadioPlayOtherModel alloc] init];
+        [_playModel setValuesForKeysWithDictionary:dict[@"data"]];
         
+        NSMutableArray *moreArray = [[NSMutableArray alloc] initWithCapacity:0];
+        NSArray *array = dict[@"data"][@"moreting"];
+        for (NSDictionary *dic in array) {
+            RadioDetailListModel *model = [[RadioDetailListModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            [moreArray addObject:model.coverimg];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_playOtherView setPlayOtherViewWithModel:_playModel imageArray:moreArray];
+        });
     } error:^(NSError *error) {
         SQLog(@"error is %@", error);
     }];
@@ -110,6 +129,9 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     
     // 添加网页界面
     [self setupMusicWebView];
+    
+    // 添加其他界面
+    [self setupMusicOtherView];
     
     // 添加页码
     [self setupPageControl];
@@ -167,7 +189,7 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     _bar.titleLabel.text = model.title;
     [_bar.titleLabel sizeToFit];
     
-    [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.manager.playIndex inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+    [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.manager.playIndex inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.webview_url]]];
 }
@@ -275,6 +297,12 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     RadioDetailListModel *model = _listDataArray[_index];
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.webview_url]]];
     [_scrollView addSubview:_webView];
+}
+
+#pragma mark -设置其他界面
+- (void)setupMusicOtherView {
+    _playOtherView = [[RadioPlayOtherView alloc] initWithFrame:CGRectMake(kScreenWidth * 3, 30, kScreenWidth, _scrollView.height - 70)];
+    [_scrollView addSubview:_playOtherView];
 }
 
 #pragma mark -设置页码

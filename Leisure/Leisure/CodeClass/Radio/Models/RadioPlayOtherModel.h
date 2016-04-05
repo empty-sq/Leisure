@@ -20,8 +20,10 @@
 @property (nonatomic, copy) NSString *ting_contentid;
 @property (nonatomic, copy) NSString *tingid;
 
-@property (nonatomic, strong) NSNumber *uid;
-@property (nonatomic, copy) NSString *icon;
-@property (nonatomic, copy) NSString *uname;
+@property (nonatomic, copy) NSString *authorIcon;
+@property (nonatomic, copy) NSString *authorUname;
+
+@property (nonatomic, copy) NSString *userIcon;
+@property (nonatomic, copy) NSString *username;
 
 @end

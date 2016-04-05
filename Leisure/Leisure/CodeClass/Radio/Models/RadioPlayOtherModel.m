@@ -10,4 +10,15 @@
 
 @implementation RadioPlayOtherModel
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    if ([key isEqualToString:@"authorinfo"]) {
+        _authorIcon = value[@"icon"];
+        _authorUname = value[@"uname"];
+    }
+    if ([key isEqualToString:@"userinfo"]) {
+        _userIcon = value[@"icon"];
+        _username = value[@"uname"];
+    }
+}
+
 @end
