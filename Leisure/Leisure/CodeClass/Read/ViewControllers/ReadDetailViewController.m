@@ -105,6 +105,7 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
             // 刷新数据
             if (0 == sortType) {
                 // 显示footer
@@ -148,9 +149,11 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     
     self.addtimeTableView.mj_footer.hidden = YES;
     
-    // 进入刷新状态
-    [self.addtimeTableView.mj_header beginRefreshing];
+    // 刷新数据
     [self loadAddtimeData];
+    
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
 }
 
 /**
@@ -245,7 +248,8 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     if (_leftButton.selected) return;
     if (!self.addtimeDetailListArray.count) {
         // 进入刷新状态
-        [self.addtimeTableView.mj_header beginRefreshing];
+        [SVProgressHUD show];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
         [self loadAddtimeData];
     }
     sortType = 0;
@@ -261,7 +265,8 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     if (_rightButton.selected) return ;
     if (!self.hotDetailListArray.count) {
         // 进入刷新状态
-        [self.hotTableView.mj_header beginRefreshing];
+        [SVProgressHUD show];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
         [self loadHotData];
     }
     sortType = 1;

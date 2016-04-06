@@ -93,6 +93,7 @@ static NSString * const ReadFooterViewID = @"ReadFooterView";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
             // 刷新数据
             [_collectionView reloadData];
         });
@@ -149,6 +150,8 @@ static NSString * const ReadFooterViewID = @"ReadFooterView";
     [_collectionView registerClass:[ReadHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ReadHeaderViewID];
     [_collectionView registerClass:[ReadFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:ReadFooterViewID];
     
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
 }
 
 #pragma mark - UICollectionViewDelegate、UICollectionViewDataSource

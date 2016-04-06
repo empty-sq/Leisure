@@ -49,7 +49,7 @@
     [_musicArray removeAllObjects];
     
     // 重新赋值
-    _musicArray = [musicArray mutableCopy];
+    _musicArray = musicArray;
     
     // 根据列表中的播放位置取出播放资源，创建播放单元
     AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:musicArray[_playIndex]]];

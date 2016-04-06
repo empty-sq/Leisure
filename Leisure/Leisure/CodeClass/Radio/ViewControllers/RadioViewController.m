@@ -116,6 +116,7 @@ static NSString * const RadioCellID = @"radioCell";
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
                 // 结束上拉刷新
                 [self.tableView.mj_header endRefreshing];
                 
@@ -258,6 +259,9 @@ static NSString * const RadioCellID = @"radioCell";
     
     // 添加tableView
     [self.view addSubview:_tableView];
+    
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
 }
 
 - (void)viewDidLoad {

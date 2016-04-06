@@ -59,6 +59,7 @@ static NSString * const ProductCellID = @"ProductCell";
         
         // 返回主线程
         dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
             // 显示下拉刷新
             _tableView.mj_footer.hidden = NO;
             // 结束刷新
@@ -90,10 +91,11 @@ static NSString * const ProductCellID = @"ProductCell";
     _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     _tableView.mj_footer.hidden = YES;
-    [_tableView.mj_header beginRefreshing];
     
     [self.view addSubview:_tableView];
     
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
 }
 
 - (void)loadNewData {

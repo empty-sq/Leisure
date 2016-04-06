@@ -110,6 +110,7 @@ static NSString * const TopicCellID = @"topicCell";
         
         // 回到主线程
         dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
             if (0 == sortType) {
                 // 显示footer
                 self.addtimeTableView.mj_footer.hidden = NO;
@@ -152,7 +153,6 @@ static NSString * const TopicCellID = @"topicCell";
     if (_leftBtn.selected) return;
     if (!self.addtimeListArray.count) {
         // 进入刷新状态
-        [self.addtimeTableView.mj_header beginRefreshing];
         [self loadAddtimeData];
     }
     sortType = 0;
@@ -167,8 +167,9 @@ static NSString * const TopicCellID = @"topicCell";
 - (void)rightButtonClick {
     if (_rightBtn.selected) return ;
     if (!self.hotListArray.count) {
+        [SVProgressHUD show];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
         // 进入刷新状态
-        [self.hotTableView.mj_header beginRefreshing];
         [self loadHotData];
     }
     sortType = 1;
@@ -204,6 +205,9 @@ static NSString * const TopicCellID = @"topicCell";
     // 请求条数
     _limit = 10;
     
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    
     // 上拉刷新
     self.addtimeTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadAddtimeData)];
     self.hotTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadHotData)];
@@ -215,7 +219,6 @@ static NSString * const TopicCellID = @"topicCell";
     self.addtimeTableView.mj_footer.hidden = YES;
     
     // 进入刷新状态
-    [self.addtimeTableView.mj_header beginRefreshing];
     [self loadAddtimeData];
 }
 
@@ -276,7 +279,6 @@ static NSString * const TopicCellID = @"topicCell";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
