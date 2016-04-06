@@ -12,7 +12,6 @@
 #import "RadioPlayCell.h"
 #import "RadioPlayOtherModel.h"
 #import "RadioPlayOtherView.h"
-#import <UMSocial.h>
 
 @interface RadioPlayViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -328,8 +327,8 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     _bar.titleLabel.text = self.model.title;
     [self.view addSubview:_bar];
     
-    UIButton *shareBtn = [UIButton buttonWithFrame:CGRectMake(kScreenWidth - 100, 8, 28, 28) image:@"fenxiang" target:self action:@selector(shareClick)];
-    [_bar addSubview:shareBtn];
+//    UIButton *shareBtn = [UIButton buttonWithFrame:CGRectMake(kScreenWidth - 100, 8, 28, 28) image:@"fenxiang" target:self action:@selector(shareClick)];
+//    [_bar addSubview:shareBtn];
 }
 
 - (void)back {
@@ -339,9 +338,9 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
 /**
  *  分享
  */
-- (void)shareClick {
-    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"568a3499e0f55a3a3f000047" shareText:@"友盟社会化分享让您快速实现分享等社会化功能，http://umeng.com/social" shareImage:[UIImage imageNamed:@"icon"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatSession,UMShareToWechatTimeline, UMShareToTencent, nil] delegate:nil];
-}
+//- (void)shareClick {
+//    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"568a3499e0f55a3a3f000047" shareText:@"友盟社会化分享让您快速实现分享等社会化功能，http://umeng.com/social" shareImage:[UIImage imageNamed:@"icon"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatSession,UMShareToWechatTimeline, UMShareToTencent, nil] delegate:nil];
+//}
 
 #pragma mark -viewDidLoad
 - (void)viewDidLoad {

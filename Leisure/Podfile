@@ -1,8 +1,6 @@
 platform :ios, "9.0"
 
-pod "AFNetworking"
 pod "MJRefresh"
 pod "SDWebImage"
-pod "UMengSocial"
 pod "SVProgressHUD"
 pod 'SDCycleScrollView','~> 1.61'
