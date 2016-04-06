@@ -76,11 +76,11 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
 #pragma mark -加载数据
 - (void)loadData {
     // 添加音乐播放器自动播放音乐
-    NSMutableArray *musicArray = [NSMutableArray array];
+    NSMutableArray *musicArray = [[NSMutableArray alloc] initWithCapacity:0];
     for (RadioDetailListModel *model in _listDataArray) {
         [musicArray addObject:model.musicUrl];
     }
-    self.manager.musicArray = musicArray;
+    self.manager.musicArray = [musicArray mutableCopy];
     self.manager.playIndex = _index;
     [self.manager play];
     

@@ -153,7 +153,7 @@ static NSString * const DetailCellID = @"detailTableViewCell";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            RadioDetailListModel *model = self.detailListArray[0];
+            RadioDetailListModel *model = self.detailListArray[self.detailListArray.count - 1];
             if (model.total == self.detailListArray.count) { // 如果已经获取到全部数据，上拉刷新变成提示没有更多信息
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             } else { // 否则结束刷新
@@ -172,43 +172,43 @@ static NSString * const DetailCellID = @"detailTableViewCell";
 /**
  *  加载全部数据
  */
-//- (void)loadAllData {
-//    _allStart += 10;
-//    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
-//    parDic[@"auth"] = @"XZU7RH7m1861DC8Z8H8HvkTJxQMGoPLGO9zo4XDA0cWP22NdFSh9d7fo";
-//    parDic[@"client"] = @"1";
-//    parDic[@"deviceid"] = @"6D4DD967-5EB2-40E2-A202-37E64F3BEA31";
-//    parDic[@"limit"] = @"10";
-//    parDic[@"radioid"] = _radioid;
-//    parDic[@"start"] = @(_allStart);
-//    [NetWorkRequestManager requestWithType:POST urlString:RADIODETAILMORE_URL parDic:parDic finish:^(NSData *data) {
-//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
-//        NSArray *array = dict[@"data"][@"list"];
-//        for (NSDictionary *dic in array) {
-//            RadioDetailListModel *model = [[RadioDetailListModel alloc] init];
-//            [model setValuesForKeysWithDictionary:dic];
-//            model.uname = self.uname;
-//            // 获取总用有几条数据
-//            model.total = [dict[@"data"][@"total"] integerValue];
-//            [self.allArray addObject:model];
-//            // 播放列表数据源
-//            [self.allPlayArray addObject:dic[@"musicUrl"]];
-//        }
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            RadioDetailListModel *model = self.allArray[self.allArray.count - 1];
-//            if (model.total == self.detailListArray.count) {
-//                // 刷新数据
-//                [self.tableView reloadData];
-//            }
-//            else { // 否则继续加载数据
-//                [self loadAllData];
-//            }
-//        });
-//    } error:^(NSError *error) {
-//        SQLog(@"error is %@", error);
-//    }];
-//}
+- (void)loadAllData {
+    _allStart += 10;
+    NSMutableDictionary *parDic = [NSMutableDictionary dictionary];
+    parDic[@"auth"] = @"XZU7RH7m1861DC8Z8H8HvkTJxQMGoPLGO9zo4XDA0cWP22NdFSh9d7fo";
+    parDic[@"client"] = @"1";
+    parDic[@"deviceid"] = @"6D4DD967-5EB2-40E2-A202-37E64F3BEA31";
+    parDic[@"limit"] = @"10";
+    parDic[@"radioid"] = _radioid;
+    parDic[@"start"] = @(_allStart);
+    [NetWorkRequestManager requestWithType:POST urlString:RADIODETAILMORE_URL parDic:parDic finish:^(NSData *data) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
+        NSArray *array = dict[@"data"][@"list"];
+        for (NSDictionary *dic in array) {
+            RadioDetailListModel *model = [[RadioDetailListModel alloc] init];
+            [model setValuesForKeysWithDictionary:dic];
+            model.uname = self.uname;
+            // 获取总用有几条数据
+            model.total = [dict[@"data"][@"total"] integerValue];
+            [self.allArray addObject:model];
+            // 播放列表数据源
+            [self.allPlayArray addObject:dic[@"musicUrl"]];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            RadioDetailListModel *model = self.allArray[self.allArray.count - 1];
+            if (model.total == self.detailListArray.count) {
+                // 刷新数据
+                [self.tableView reloadData];
+            }
+            else { // 否则继续加载数据
+                [self loadAllData];
+            }
+        });
+    } error:^(NSError *error) {
+        SQLog(@"error is %@", error);
+    }];
+}
 
 #pragma mark -自定义导航栏，点击方法
 /**
