@@ -57,6 +57,9 @@ static NSString * const MeunCellID = @"TableViewCell";
 - (void)setupTableView {
     // 添加表头
     _headView = [[MeunHeaderView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth * 2 / 3, 160)];
+    if (![[UserInfoManager getUserAuth] isEqualToString:@" "]) {
+        [_headView.loginButton setTitle:[UserInfoManager getUserName] forState:UIControlStateNormal];
+    }
     [_headView.loginButton addTarget:self action:@selector(loginButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_headView];
     
