@@ -15,7 +15,8 @@
 #import "ProductViewController.h"
 #import "MeunHeaderView.h"
 #import "MeunFooterView.h"
-
+#import "LoginRegisterViewController.h"
+#import "UserInfoManager.h"
 @interface MeunViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 /** 菜单列表数据 */
@@ -35,8 +36,18 @@ static NSString * const MeunCellID = @"TableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 注册观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(returnAction:) name:@"username" object:nil];
+    
     // 添加tableView
     [self setupTableView];
+}
+
+/**
+ *  传值
+ */
+- (void)returnAction:(NSNotification *)name {
+    [_headView.loginButton setTitle:name.userInfo[@"username"] forState:UIControlStateNormal];
 }
 
 #pragma mark -添加tableView、实现点击事件
@@ -72,11 +83,14 @@ static NSString * const MeunCellID = @"TableViewCell";
  *  登录按钮
  */
 - (void)loginButtonClick {
+    LoginRegisterViewController *loginVC = [[LoginRegisterViewController alloc] init];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    DrawerViewController *vc = (DrawerViewController *)window.rootViewController;
+    [vc presentViewController:loginVC animated:YES completion:nil];
     
 }
 
 #pragma mark -<UITableViewDelegate, UITableViewDataSource>
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.list.count;
 }
@@ -113,6 +127,8 @@ static NSString * const MeunCellID = @"TableViewCell";
     // 隐藏系统自带的导航栏
     navigationController.navigationBarHidden = YES;
     [menuController setRootController:navigationController animated:YES];
+    NSString *name = [UserInfoManager getUserName];
+    [_headView.loginButton setTitle:name forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

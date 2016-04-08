@@ -23,7 +23,8 @@
         [_iconButton setImage:kImage forState:UIControlStateNormal];
         [self addSubview:_iconButton];
         
-        _loginButton = [[UIButton alloc] initWithFrame:CGRectMake(_iconButton.right + kMargin, _iconButton.top + 10, 100, 30)];
+        _loginButton = [[UIButton alloc] initWithFrame:CGRectMake(_iconButton.right + kMargin, _iconButton.top + 10, self.width - _loginButton.x, 30)];
+        _loginButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_loginButton setTitle:@"登录/注册" forState:UIControlStateNormal];
         [self addSubview:_loginButton];
         

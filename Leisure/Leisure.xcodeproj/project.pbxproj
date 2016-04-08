@@ -61,6 +61,11 @@
 		B17E13421CAD5403003B7E8A /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B17E13401CAD5403003B7E8A /* ProductTableViewCell.m */; };
 		B17E13431CAD5403003B7E8A /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17E13411CAD5403003B7E8A /* ProductTableViewCell.xib */; };
 		B19358D71CB26C9E00D9A8A7 /* RadioPlayMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = B19358D61CB26C9E00D9A8A7 /* RadioPlayMainView.m */; };
+		B19ED2211CB7A15300272E3D /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B19ED2201CB7A15300272E3D /* UserInfoManager.m */; };
+		B19ED2251CB7A4E600272E3D /* LoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19ED2231CB7A4E600272E3D /* LoginRegisterViewController.m */; };
+		B19ED2261CB7A4E600272E3D /* LoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B19ED2241CB7A4E600272E3D /* LoginRegisterViewController.xib */; };
+		B19ED2291CB7A88600272E3D /* VerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B19ED2281CB7A88600272E3D /* VerticalButton.m */; };
+		B19ED22C1CB7A8B700272E3D /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B19ED22B1CB7A8B700272E3D /* CustomTextField.m */; };
 		B1AFF8A11CAE0C4D0092665A /* TopicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AFF8A01CAE0C4D0092665A /* TopicTableViewCell.m */; };
 		B1CFFDC01CB1311000D64089 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CFFDBF1CB1311000D64089 /* PlayerManager.m */; };
 		B1CFFDC31CB154FD00D64089 /* RadioPlayOtherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CFFDC21CB154FD00D64089 /* RadioPlayOtherModel.m */; };
@@ -208,6 +213,15 @@
 		B17E13411CAD5403003B7E8A /* ProductTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		B19358D51CB26C9E00D9A8A7 /* RadioPlayMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioPlayMainView.h; sourceTree = "<group>"; };
 		B19358D61CB26C9E00D9A8A7 /* RadioPlayMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioPlayMainView.m; sourceTree = "<group>"; };
+		B19ED21F1CB7A15300272E3D /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
+		B19ED2201CB7A15300272E3D /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
+		B19ED2221CB7A4E600272E3D /* LoginRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRegisterViewController.h; sourceTree = "<group>"; };
+		B19ED2231CB7A4E600272E3D /* LoginRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRegisterViewController.m; sourceTree = "<group>"; };
+		B19ED2241CB7A4E600272E3D /* LoginRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginRegisterViewController.xib; sourceTree = "<group>"; };
+		B19ED2271CB7A88600272E3D /* VerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalButton.h; sourceTree = "<group>"; };
+		B19ED2281CB7A88600272E3D /* VerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalButton.m; sourceTree = "<group>"; };
+		B19ED22A1CB7A8B700272E3D /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		B19ED22B1CB7A8B700272E3D /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		B1AFF89F1CAE0C4D0092665A /* TopicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTableViewCell.h; sourceTree = "<group>"; };
 		B1AFF8A01CAE0C4D0092665A /* TopicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicTableViewCell.m; sourceTree = "<group>"; };
 		B1CFFDBE1CB1311000D64089 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerManager.h; sourceTree = "<group>"; };
@@ -587,6 +601,8 @@
 				B12EB6371CAA673B00193FBA /* NetWorkRequestManager.m */,
 				B1CFFDBE1CB1311000D64089 /* PlayerManager.h */,
 				B1CFFDBF1CB1311000D64089 /* PlayerManager.m */,
+				B19ED21F1CB7A15300272E3D /* UserInfoManager.h */,
+				B19ED2201CB7A15300272E3D /* UserInfoManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -701,6 +717,9 @@
 				B1F26D0C1CACC1B200497F5D /* MeunViewController.h */,
 				B1F26D0D1CACC1B200497F5D /* MeunViewController.m */,
 				B1F26D0E1CACC1B200497F5D /* MeunViewController.xib */,
+				B19ED2221CB7A4E600272E3D /* LoginRegisterViewController.h */,
+				B19ED2231CB7A4E600272E3D /* LoginRegisterViewController.m */,
+				B19ED2241CB7A4E600272E3D /* LoginRegisterViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -721,6 +740,10 @@
 				B1F26D1B1CACC25300497F5D /* MeunFooterView.m */,
 				B1F26D1D1CACC2D700497F5D /* MenuSearchBar.h */,
 				B1F26D1E1CACC2D700497F5D /* MenuSearchBar.m */,
+				B19ED2271CB7A88600272E3D /* VerticalButton.h */,
+				B19ED2281CB7A88600272E3D /* VerticalButton.m */,
+				B19ED22A1CB7A8B700272E3D /* CustomTextField.h */,
+				B19ED22B1CB7A8B700272E3D /* CustomTextField.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -851,6 +874,7 @@
 				B10183671CA92D9600E47F0D /* ReadViewController.xib in Resources */,
 				B101835D1CA92D7F00E47F0D /* RadioDetailViewController.xib in Resources */,
 				B10183761CA92DB900E47F0D /* TopicViewController.xib in Resources */,
+				B19ED2261CB7A4E600272E3D /* LoginRegisterViewController.xib in Resources */,
 				B1F26D131CACC1B200497F5D /* MeunViewController.xib in Resources */,
 				B1E8A90F1CB02AED001F0366 /* RadioDetailCell.xib in Resources */,
 			);
@@ -939,6 +963,7 @@
 				B17E133E1CAD181C003B7E8A /* UIButton+Custom.m in Sources */,
 				B1E6C2D21CAC0F3F0008EE51 /* ReadHeaderView.m in Sources */,
 				B10183701CA92DAB00E47F0D /* ReadInfoViewController.m in Sources */,
+				B19ED2211CB7A15300272E3D /* UserInfoManager.m in Sources */,
 				B10183611CA92D8A00E47F0D /* RadioPlayViewController.m in Sources */,
 				B12EB63E1CAA72A900193FBA /* RadioAlllistModel.m in Sources */,
 				B17E133B1CAD14FE003B7E8A /* ReadInfoModel.m in Sources */,
@@ -956,6 +981,8 @@
 				B10183661CA92D9600E47F0D /* ReadViewController.m in Sources */,
 				B1E8A9071CAFE9AF001F0366 /* RadioDetailHeaderView.m in Sources */,
 				B1F26D191CACC24500497F5D /* MeunHeaderView.m in Sources */,
+				B19ED2251CB7A4E600272E3D /* LoginRegisterViewController.m in Sources */,
+				B19ED2291CB7A88600272E3D /* VerticalButton.m in Sources */,
 				B101835C1CA92D7F00E47F0D /* RadioDetailViewController.m in Sources */,
 				B101837A1CA92DC300E47F0D /* TopicInfoViewController.m in Sources */,
 				B1E8A9031CAFAE4E001F0366 /* RadioTableViewCell.m in Sources */,
@@ -970,6 +997,7 @@
 				B10182C91CA92A5800E47F0D /* BaseModel.m in Sources */,
 				B105F4AB1CB3D3ED0016D89B /* RadioPlayOtherView.m in Sources */,
 				B151C2921CABAEF100555E76 /* TopicListModel.m in Sources */,
+				B19ED22C1CB7A8B700272E3D /* CustomTextField.m in Sources */,
 				B12EB63B1CAA729800193FBA /* RadioCarouselModel.m in Sources */,
 				B1CFFDC31CB154FD00D64089 /* RadioPlayOtherModel.m in Sources */,
 				B1E6C2CB1CABF0F00008EE51 /* BaseNavigationController.m in Sources */,
@@ -1117,8 +1145,10 @@
 			baseConfigurationReference = D30DD0F0774615369D0672F9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = Leisure/CodeClass/Others/PrefixHeader.pch;
 				INFOPLIST_FILE = Leisure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CN.SQ.Leisure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1130,8 +1160,10 @@
 			baseConfigurationReference = 3120B342AF5714B19EC94514 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = Leisure/CodeClass/Others/PrefixHeader.pch;
 				INFOPLIST_FILE = Leisure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CN.SQ.Leisure;
 				PRODUCT_NAME = "$(TARGET_NAME)";

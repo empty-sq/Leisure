@@ -38,7 +38,7 @@
 - (void)setWidth:(CGFloat)width {
     CGRect frame = self.frame;
     frame.size.width = width;
-    self.frame = self.frame;
+    self.frame = frame;
 }
 - (CGFloat)width {
     return self.frame.size.width;
