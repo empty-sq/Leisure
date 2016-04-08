@@ -83,10 +83,24 @@ static NSString * const MeunCellID = @"TableViewCell";
  *  登录按钮
  */
 - (void)loginButtonClick {
-    LoginRegisterViewController *loginVC = [[LoginRegisterViewController alloc] init];
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    DrawerViewController *vc = (DrawerViewController *)window.rootViewController;
-    [vc presentViewController:loginVC animated:YES completion:nil];
+    if (![[UserInfoManager getUserAuth] isEqualToString:@" "]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"登出" message:@"你确定要退出登录?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [UserInfoManager cancelUserAuth];
+            [UserInfoManager cancelUserID];
+            [_headView.loginButton addTarget:self action:@selector(loginButtonClick) forControlEvents:UIControlEventTouchUpInside];
+            [_headView.loginButton setTitle:@"登录/注册" forState:UIControlStateNormal];
+        }];
+        UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [alert addAction:action1];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        LoginRegisterViewController *loginVC = [[LoginRegisterViewController alloc] init];
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        DrawerViewController *vc = (DrawerViewController *)window.rootViewController;
+        [vc presentViewController:loginVC animated:YES completion:nil];
+    }
     
 }
 
