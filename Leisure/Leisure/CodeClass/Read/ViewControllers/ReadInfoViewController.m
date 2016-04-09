@@ -7,8 +7,13 @@
 //
 
 #import "ReadInfoViewController.h"
+#import "ReadInfoModel.h"
+#import "CommentViewController.h"
+#import "LoginRegisterViewController.h"
 
 @interface ReadInfoViewController ()
+
+@property (nonatomic, strong) ReadInfoModel *readInfo;
 
 @end
 
@@ -25,10 +30,33 @@
     parDict[@"contentid"] = _ID;
     [NetWorkRequestManager requestWithType:POST urlString:READCONTENT_URL parDic:parDict finish:^(NSData *data) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSDictionary *dataDict = dict[@"data"];
-        SQLog(@"%@", dataDict);
+        self.readInfo = [[ReadInfoModel alloc] init];
+        [self.readInfo setValuesForKeysWithDictionary:dict[@"data"]];
+        
+        ReadInfoCounterModel *counter = [[ReadInfoCounterModel alloc] init];
+        [counter setValuesForKeysWithDictionary:dict[@"data"][@"counterList"]];
+        
+        ReadShareinfoModel *shareInfo = [[ReadShareinfoModel alloc] init];
+        [shareInfo setValuesForKeysWithDictionary:dict[@"data"][@"shareinfo"]];
+        
+        self.readInfo.counter = counter;
+        self.readInfo.shareInfo = shareInfo;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+            UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)];
+            //修改后的效果
+            //把原来的html通过importStyleWithHtmlString进行替换，修改html的布局
+            NSString *newString = [NSString importStyleWithHtmlString:self.readInfo.html];
+            //baseURL可以让界面加载的时候按照本地样式去加载
+            NSURL *baseURL = [NSURL fileURLWithPath:[NSBundle mainBundle].bundlePath];
+            
+            [webView loadHTMLString:newString baseURL:baseURL];
+            [self.view addSubview:webView];
+        });
     } error:^(NSError *error) {
         SQLog(@"error is %@", error);
+        [SVProgressHUD dismiss];
     }];
 }
 
@@ -41,19 +69,28 @@
     CustomNavigationBar *navBar = [[CustomNavigationBar alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 44)];
     [navBar.menuButton addTarget:self action:@selector(back) forControlEvents:(UIControlEventTouchUpInside)];
     
-    UIButton *setButton = [UIButton buttonWithFrame:CGRectMake(kScreenWidth - 180, 12, 15, 15) image:@"字体"];
-    [navBar addSubview:setButton];
+    UIButton *shareBtn = [UIButton buttonWithFrame:CGRectMake(kScreenWidth - 90, 12, 20, 20) image:@"fenxiang"];
+    [navBar addSubview:shareBtn];
     
-    UIButton *commentButton = [UIButton buttonWithFrame:CGRectMake(setButton.right + 30, setButton.top, setButton.width, setButton.height) image:@"评论2"];
-    [navBar addSubview:commentButton];
+    UIButton *msgBtn = [UIButton buttonWithFrame:CGRectMake(shareBtn.right + 10, shareBtn.top, shareBtn.width, shareBtn.height) image:@"cpinglun"];
+    [msgBtn addTarget:self action:@selector(commentClick) forControlEvents:UIControlEventTouchUpInside];
+    [navBar addSubview:msgBtn];
     
-    UIButton *likeButton = [UIButton buttonWithFrame:CGRectMake(setButton.right + 75, setButton.top, setButton.width, setButton.height) image:@"喜欢2"];
+    UIButton *likeButton = [UIButton buttonWithFrame:CGRectMake(shareBtn.right + 40, shareBtn.top, shareBtn.width, shareBtn.height) image:@"shoucang"];
     [navBar addSubview:likeButton];
     
-    UIButton *otherButton = [UIButton buttonWithFrame:CGRectMake(setButton.right + 120, setButton.top, 30, setButton.height) image:@"其他"];
-    [navBar addSubview:otherButton];
-    
     [self.view addSubview:navBar];
+}
+
+- (void)commentClick {
+    if (![[UserInfoManager getUserID] isEqualToString:@" "]) {
+        CommentViewController *commentVC = [[CommentViewController alloc] init];
+        commentVC.contentid = _ID;
+        [self.navigationController pushViewController:commentVC animated:YES];
+    } else {
+        LoginRegisterViewController *loginVC = [[LoginRegisterViewController alloc] init];
+        [self presentViewController:loginVC animated:YES completion:nil];
+    }
 }
 
 - (void)back {
@@ -62,6 +99,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
     // 添加自定义NavigationBar
     [self addNavigationBar];

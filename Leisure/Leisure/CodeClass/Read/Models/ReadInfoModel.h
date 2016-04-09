@@ -7,14 +7,19 @@
 //
 
 #import "BaseModel.h"
+#import "ReadInfoCounterModel.h"
+#import "ReadShareinfoModel.h"
 
 @interface ReadInfoModel : BaseModel
 
 @property (nonatomic, assign) BOOL isfav;
 @property (nonatomic, assign) BOOL islike;
-@property (nonatomic, strong) NSNumber *typeID;
-@property (nonatomic, strong) NSString *typeName;
-@property (nonatomic, strong) NSString *contentid;
-@property (nonatomic, strong) NSString *html;
+@property (nonatomic, copy) NSString *typeID;
+@property (nonatomic, copy) NSString *typeName;
+@property (nonatomic, copy) NSString *contentid;
+@property (nonatomic, copy) NSString *html;
+
+@property (nonatomic, strong) ReadInfoCounterModel *counter;
+@property (nonatomic, strong) ReadShareinfoModel *shareInfo;
 
 @end

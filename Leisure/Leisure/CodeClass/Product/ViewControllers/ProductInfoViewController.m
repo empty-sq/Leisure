@@ -8,6 +8,8 @@
 
 #import "ProductInfoViewController.h"
 #import "ProductCommentlistModel.h"
+#import "CommentViewController.h"
+#import "LoginRegisterViewController.h"
 
 @interface ProductInfoViewController ()
 
@@ -39,11 +41,13 @@
  *  加载数据
  */
 - (void)loadData {
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"contentid"] = self.contentid;
     [NetWorkRequestManager requestWithType:POST urlString:SHOPINFO_URL parDic:params finish:^(NSData *data) {
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
-        
+        SQLog(@"%@", dataDict);
         // 获取评论列表数据
         NSArray *commentListArr = dataDict[@"data"][@"commentlist"];
         
@@ -66,11 +70,20 @@
         
         // 回到主线程
         dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+            UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)];
+            //修改后的效果
+            //把原来的html通过importStyleWithHtmlString进行替换，修改html的布局
+//            NSString *newString = [NSString importStyleWithHtmlString:self.readInfo.html];
+            //baseURL可以让界面加载的时候按照本地样式去加载
+//            NSURL *baseURL = [NSURL fileURLWithPath:[NSBundle mainBundle].bundlePath];
             
+//            [webView loadHTMLString:newString baseURL:baseURL];
+            [self.view addSubview:webView];
         });
         
     } error:^(NSError *error) {
-        
+        [SVProgressHUD dismiss];
     }];
 }
 
@@ -83,22 +96,30 @@
     [navBar.menuButton addTarget:self action:@selector(back) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:navBar];
     
-    UIButton *commentButton = [UIButton buttonWithFrame:CGRectMake(kScreenWidth - 135, 14, 20, 15) image:@"评论2" target:self action:@selector(comment)];
-    [navBar addSubview:commentButton];
+    UIButton *shareBtn = [UIButton buttonWithFrame:CGRectMake(kScreenWidth - 90, 12, 20, 20) image:@"fenxiang"];
+    [navBar addSubview:shareBtn];
     
-    UIButton *likeButton = [UIButton buttonWithFrame:CGRectMake(commentButton.right + 30, commentButton.top, commentButton.width, commentButton.height) image:@"喜欢2"];
+    UIButton *msgBtn = [UIButton buttonWithFrame:CGRectMake(shareBtn.right + 10, shareBtn.top, shareBtn.width, shareBtn.height) image:@"cpinglun"];
+    [msgBtn addTarget:self action:@selector(commentClick) forControlEvents:UIControlEventTouchUpInside];
+    [navBar addSubview:msgBtn];
+    
+    UIButton *likeButton = [UIButton buttonWithFrame:CGRectMake(shareBtn.right + 40, shareBtn.top, shareBtn.width, shareBtn.height) image:@"shoucang"];
     [navBar addSubview:likeButton];
-    
-    UIButton *otherButton = [UIButton buttonWithFrame:CGRectMake(commentButton.right + 75, commentButton.top, 30, commentButton.height) image:@"其他"];
-    [navBar addSubview:otherButton];
 }
 
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)comment {
-    
+- (void)commentClick {
+    if (![[UserInfoManager getUserID] isEqualToString:@" "]) {
+        CommentViewController *commentVC = [[CommentViewController alloc] init];
+        commentVC.contentid = _contentid;
+        [self.navigationController pushViewController:commentVC animated:YES];
+    } else {
+        LoginRegisterViewController *loginVC = [[LoginRegisterViewController alloc] init];
+        [self presentViewController:loginVC animated:YES completion:nil];
+    }
 }
 
 - (void)viewDidLoad {
@@ -113,17 +134,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

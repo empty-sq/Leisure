@@ -307,7 +307,22 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     }
     ReadInfoViewController *infoVC = [[ReadInfoViewController alloc] init];
     infoVC.ID = model.contentid;
-    [self.navigationController pushViewController:infoVC animated:YES];
+    [self.navigationController pushViewController:infoVC animated:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (_rightButton.selected) {
+        // 改变ScrollView偏移量;
+        [_rootScrollView setContentOffset:CGPointMake(kScreenWidth, 0) animated:YES];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (_rightButton.selected) {
+        // 改变ScrollView偏移量;
+        [_rootScrollView setContentOffset:CGPointMake(kScreenWidth, 0) animated:YES];
+    }
 }
 
 @end

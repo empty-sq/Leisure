@@ -17,6 +17,8 @@
 @property (nonatomic, copy) NSString *content;
 /** 评论id */
 @property (nonatomic, copy) NSString *contentid;
+/** 页面 */
+@property (nonatomic, copy) NSString *html;
 
 /** 评论的用户信息 */
 @property (nonatomic, strong) ProductUserInfoModel *userInfo;

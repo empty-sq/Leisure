@@ -13,10 +13,12 @@
 #import "UIBarButtonItem+Custom.h"
 #import "UIImage+Custom.h"
 #import "UIButton+Custom.h"
+#import "NSString+HTML.h"
 
 #import "URLHeaderDefine.h"
 #import "ConstansDefine.h"
 #import "NetWorkRequestManager.h"
+#import "UserInfoManager.h"
 #import "CustomNavigationBar.h"
 #import "PlayerManager.h"
 #import <UIImageView+WebCache.h>

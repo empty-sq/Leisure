@@ -316,7 +316,14 @@ static NSString * const TopicCellID = @"topicCell";
     } else {
         model = self.hotListArray[indexPath.row];
     }
-    [self.navigationController pushViewController:infoVC animated:YES];
+    [self.navigationController pushViewController:infoVC animated:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (_rightBtn.selected) {
+        // 改变ScrollView偏移量;
+        [_rootScrollView setContentOffset:CGPointMake(kScreenWidth, 0) animated:YES];
+    }
 }
 
 @end

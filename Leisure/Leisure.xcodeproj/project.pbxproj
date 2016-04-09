@@ -41,6 +41,19 @@
 		B105F4A71CB354430016D89B /* RadioPlayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B105F4A51CB354430016D89B /* RadioPlayCell.m */; };
 		B105F4A81CB354430016D89B /* RadioPlayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B105F4A61CB354430016D89B /* RadioPlayCell.xib */; };
 		B105F4AB1CB3D3ED0016D89B /* RadioPlayOtherView.m in Sources */ = {isa = PBXBuildFile; fileRef = B105F4AA1CB3D3ED0016D89B /* RadioPlayOtherView.m */; };
+		B112C1C31CB7EB9D00BF58FB /* ReadInfoCounterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B112C1C21CB7EB9D00BF58FB /* ReadInfoCounterModel.m */; };
+		B112C1C61CB7EBE900BF58FB /* ReadShareinfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B112C1C51CB7EBE900BF58FB /* ReadShareinfoModel.m */; };
+		B112C1C91CB7ED1200BF58FB /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = B112C1C81CB7ED1200BF58FB /* NSString+HTML.m */; };
+		B112C1CE1CB7F4A000BF58FB /* NSString+Html.m in Sources */ = {isa = PBXBuildFile; fileRef = B112C1CC1CB7F4A000BF58FB /* NSString+Html.m */; };
+		B112C1CF1CB7F4A000BF58FB /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = B112C1CD1CB7F4A000BF58FB /* style.css */; };
+		B112C1D81CB7F9EC00BF58FB /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B112C1D61CB7F9EC00BF58FB /* CommentViewController.m */; };
+		B112C1D91CB7F9EC00BF58FB /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B112C1D71CB7F9EC00BF58FB /* CommentViewController.xib */; };
+		B112C1DD1CB7FAAB00BF58FB /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B112C1DB1CB7FAAB00BF58FB /* CommentCell.m */; };
+		B112C1DE1CB7FAAB00BF58FB /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B112C1DC1CB7FAAB00BF58FB /* CommentCell.xib */; };
+		B112C1E11CB7FC9100BF58FB /* CommentUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B112C1E01CB7FC9100BF58FB /* CommentUserModel.m */; };
+		B112C1E41CB7FCBA00BF58FB /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B112C1E31CB7FCBA00BF58FB /* CommentModel.m */; };
+		B1180E021CB8A16400283876 /* KeyBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1180E011CB8A16400283876 /* KeyBoardView.m */; };
+		B1180E051CB8B40C00283876 /* ProductInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1180E041CB8B40C00283876 /* ProductInfoModel.m */; };
 		B12EB6381CAA673B00193FBA /* NetWorkRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B12EB6371CAA673B00193FBA /* NetWorkRequestManager.m */; };
 		B12EB63B1CAA729800193FBA /* RadioCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B12EB63A1CAA729800193FBA /* RadioCarouselModel.m */; };
 		B12EB63E1CAA72A900193FBA /* RadioAlllistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B12EB63D1CAA72A900193FBA /* RadioAlllistModel.m */; };
@@ -173,6 +186,29 @@
 		B105F4A61CB354430016D89B /* RadioPlayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioPlayCell.xib; sourceTree = "<group>"; };
 		B105F4A91CB3D3ED0016D89B /* RadioPlayOtherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioPlayOtherView.h; sourceTree = "<group>"; };
 		B105F4AA1CB3D3ED0016D89B /* RadioPlayOtherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioPlayOtherView.m; sourceTree = "<group>"; };
+		B112C1C11CB7EB9D00BF58FB /* ReadInfoCounterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadInfoCounterModel.h; sourceTree = "<group>"; };
+		B112C1C21CB7EB9D00BF58FB /* ReadInfoCounterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadInfoCounterModel.m; sourceTree = "<group>"; };
+		B112C1C41CB7EBE900BF58FB /* ReadShareinfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadShareinfoModel.h; sourceTree = "<group>"; };
+		B112C1C51CB7EBE900BF58FB /* ReadShareinfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadShareinfoModel.m; sourceTree = "<group>"; };
+		B112C1C71CB7ED1200BF58FB /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		B112C1C81CB7ED1200BF58FB /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		B112C1CB1CB7F4A000BF58FB /* NSString+Html.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Html.h"; sourceTree = "<group>"; };
+		B112C1CC1CB7F4A000BF58FB /* NSString+Html.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Html.m"; sourceTree = "<group>"; };
+		B112C1CD1CB7F4A000BF58FB /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		B112C1D51CB7F9EC00BF58FB /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentViewController.h; path = Leisure/CodeClass/Read/ViewControllers/CommentViewController.h; sourceTree = SOURCE_ROOT; };
+		B112C1D61CB7F9EC00BF58FB /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentViewController.m; path = Leisure/CodeClass/Read/ViewControllers/CommentViewController.m; sourceTree = SOURCE_ROOT; };
+		B112C1D71CB7F9EC00BF58FB /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommentViewController.xib; path = Leisure/CodeClass/Read/ViewControllers/CommentViewController.xib; sourceTree = SOURCE_ROOT; };
+		B112C1DA1CB7FAAB00BF58FB /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		B112C1DB1CB7FAAB00BF58FB /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		B112C1DC1CB7FAAB00BF58FB /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		B112C1DF1CB7FC9100BF58FB /* CommentUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentUserModel.h; sourceTree = "<group>"; };
+		B112C1E01CB7FC9100BF58FB /* CommentUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentUserModel.m; sourceTree = "<group>"; };
+		B112C1E21CB7FCBA00BF58FB /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		B112C1E31CB7FCBA00BF58FB /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		B1180E001CB8A16400283876 /* KeyBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyBoardView.h; sourceTree = "<group>"; };
+		B1180E011CB8A16400283876 /* KeyBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyBoardView.m; sourceTree = "<group>"; };
+		B1180E031CB8B40C00283876 /* ProductInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductInfoModel.h; sourceTree = "<group>"; };
+		B1180E041CB8B40C00283876 /* ProductInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductInfoModel.m; sourceTree = "<group>"; };
 		B12EB6341CAA670A00193FBA /* URLHeaderDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLHeaderDefine.h; sourceTree = "<group>"; };
 		B12EB6351CAA671600193FBA /* ConstansDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstansDefine.h; sourceTree = "<group>"; };
 		B12EB6361CAA673B00193FBA /* NetWorkRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkRequestManager.h; sourceTree = "<group>"; };
@@ -387,6 +423,8 @@
 				B151C28B1CAB858900555E76 /* ProductCommentlistModel.m */,
 				B151C28D1CAB868100555E76 /* ProductUserInfoModel.h */,
 				B151C28E1CAB868100555E76 /* ProductUserInfoModel.m */,
+				B1180E031CB8B40C00283876 /* ProductInfoModel.h */,
+				B1180E041CB8B40C00283876 /* ProductInfoModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -503,6 +541,14 @@
 				B12EB64E1CAA9FAA00193FBA /* ReadDetailListModel.m */,
 				B17E13391CAD14FE003B7E8A /* ReadInfoModel.h */,
 				B17E133A1CAD14FE003B7E8A /* ReadInfoModel.m */,
+				B112C1C11CB7EB9D00BF58FB /* ReadInfoCounterModel.h */,
+				B112C1C21CB7EB9D00BF58FB /* ReadInfoCounterModel.m */,
+				B112C1C41CB7EBE900BF58FB /* ReadShareinfoModel.h */,
+				B112C1C51CB7EBE900BF58FB /* ReadShareinfoModel.m */,
+				B112C1DF1CB7FC9100BF58FB /* CommentUserModel.h */,
+				B112C1E01CB7FC9100BF58FB /* CommentUserModel.m */,
+				B112C1E21CB7FCBA00BF58FB /* CommentModel.h */,
+				B112C1E31CB7FCBA00BF58FB /* CommentModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -519,6 +565,9 @@
 				B101836D1CA92DAB00E47F0D /* ReadInfoViewController.h */,
 				B101836E1CA92DAB00E47F0D /* ReadInfoViewController.m */,
 				B101836F1CA92DAB00E47F0D /* ReadInfoViewController.xib */,
+				B112C1D51CB7F9EC00BF58FB /* CommentViewController.h */,
+				B112C1D61CB7F9EC00BF58FB /* CommentViewController.m */,
+				B112C1D71CB7F9EC00BF58FB /* CommentViewController.xib */,
 			);
 			path = ViewCOntrollers;
 			sourceTree = "<group>";
@@ -535,6 +584,11 @@
 				B1F26D261CACF8FE00497F5D /* ReadTableViewCell.h */,
 				B1F26D271CACF8FE00497F5D /* ReadTableViewCell.m */,
 				B1F26D281CACF8FE00497F5D /* ReadTableViewCell.xib */,
+				B112C1DA1CB7FAAB00BF58FB /* CommentCell.h */,
+				B112C1DB1CB7FAAB00BF58FB /* CommentCell.m */,
+				B112C1DC1CB7FAAB00BF58FB /* CommentCell.xib */,
+				B1180E001CB8A16400283876 /* KeyBoardView.h */,
+				B1180E011CB8A16400283876 /* KeyBoardView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -610,6 +664,7 @@
 		B10183CB1CA934BE00E47F0D /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				B112C1CA1CB7F4A000BF58FB /* HTML */,
 				B1E6C2CC1CABF0F70008EE51 /* NavigationController */,
 				B10183D91CA94BFE00E47F0D /* Category */,
 				B10183CC1CA934BE00E47F0D /* AppDelegate.h */,
@@ -632,6 +687,8 @@
 				B1F26D241CACC66500497F5D /* UIImage+Custom.m */,
 				B17E133C1CAD181C003B7E8A /* UIButton+Custom.h */,
 				B17E133D1CAD181C003B7E8A /* UIButton+Custom.m */,
+				B112C1C71CB7ED1200BF58FB /* NSString+HTML.h */,
+				B112C1C81CB7ED1200BF58FB /* NSString+HTML.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -696,6 +753,16 @@
 				B1054E711CA9283E005C0989 /* Info.plist */,
 			);
 			path = LeisureUITests;
+			sourceTree = "<group>";
+		};
+		B112C1CA1CB7F4A000BF58FB /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				B112C1CB1CB7F4A000BF58FB /* NSString+Html.h */,
+				B112C1CC1CB7F4A000BF58FB /* NSString+Html.m */,
+				B112C1CD1CB7F4A000BF58FB /* style.css */,
+			);
+			path = HTML;
 			sourceTree = "<group>";
 		};
 		B1E6C2CC1CABF0F70008EE51 /* NavigationController */ = {
@@ -869,10 +936,13 @@
 				B101834E1CA92C4D00E47F0D /* ProductViewController.xib in Resources */,
 				B101837B1CA92DC300E47F0D /* TopicInfoViewController.xib in Resources */,
 				B10183581CA92D7300E47F0D /* RadioViewController.xib in Resources */,
+				B112C1DE1CB7FAAB00BF58FB /* CommentCell.xib in Resources */,
+				B112C1D91CB7F9EC00BF58FB /* CommentViewController.xib in Resources */,
 				B105F4A81CB354430016D89B /* RadioPlayCell.xib in Resources */,
 				B101836C1CA92DA200E47F0D /* ReadDetailViewController.xib in Resources */,
 				B10183671CA92D9600E47F0D /* ReadViewController.xib in Resources */,
 				B101835D1CA92D7F00E47F0D /* RadioDetailViewController.xib in Resources */,
+				B112C1CF1CB7F4A000BF58FB /* style.css in Resources */,
 				B10183761CA92DB900E47F0D /* TopicViewController.xib in Resources */,
 				B19ED2261CB7A4E600272E3D /* LoginRegisterViewController.xib in Resources */,
 				B1F26D131CACC1B200497F5D /* MeunViewController.xib in Resources */,
@@ -954,6 +1024,7 @@
 				B10183DC1CA94C1D00E47F0D /* UIView+Custom.m in Sources */,
 				B12EB64C1CAA9EBB00193FBA /* ReadListModel.m in Sources */,
 				B1E6C2E01CAC207F0008EE51 /* CustomNavigationBar.m in Sources */,
+				B1180E021CB8A16400283876 /* KeyBoardView.m in Sources */,
 				B1E6C2DD1CAC137B0008EE51 /* ReadCollectionViewCell.m in Sources */,
 				B1E8A90E1CB02AED001F0366 /* RadioDetailCell.m in Sources */,
 				B12EB6441CAA72BC00193FBA /* RadioDetailListModel.m in Sources */,
@@ -971,6 +1042,7 @@
 				B101834D1CA92C4D00E47F0D /* ProductViewController.m in Sources */,
 				B1F26D081CACBBDE00497F5D /* FactoryCollectionViewCell.m in Sources */,
 				B10183521CA92D5F00E47F0D /* ProductInfoViewController.m in Sources */,
+				B112C1C91CB7ED1200BF58FB /* NSString+HTML.m in Sources */,
 				B12EB6411CAA72B200193FBA /* RadioDetailInfoModel.m in Sources */,
 				B1E6C2D51CAC0FDE0008EE51 /* ReadFooterView.m in Sources */,
 				B151C2891CAB7E6500555E76 /* ProductListModel.m in Sources */,
@@ -978,6 +1050,7 @@
 				B10183D01CA934BE00E47F0D /* main.m in Sources */,
 				B1F26D161CACC21900497F5D /* BaseView.m in Sources */,
 				B12EB6381CAA673B00193FBA /* NetWorkRequestManager.m in Sources */,
+				B1180E051CB8B40C00283876 /* ProductInfoModel.m in Sources */,
 				B10183661CA92D9600E47F0D /* ReadViewController.m in Sources */,
 				B1E8A9071CAFE9AF001F0366 /* RadioDetailHeaderView.m in Sources */,
 				B1F26D191CACC24500497F5D /* MeunHeaderView.m in Sources */,
@@ -985,19 +1058,25 @@
 				B19ED2291CB7A88600272E3D /* VerticalButton.m in Sources */,
 				B101835C1CA92D7F00E47F0D /* RadioDetailViewController.m in Sources */,
 				B101837A1CA92DC300E47F0D /* TopicInfoViewController.m in Sources */,
+				B112C1C31CB7EB9D00BF58FB /* ReadInfoCounterModel.m in Sources */,
 				B1E8A9031CAFAE4E001F0366 /* RadioTableViewCell.m in Sources */,
 				B1F26D121CACC1B200497F5D /* MeunViewController.m in Sources */,
+				B112C1E11CB7FC9100BF58FB /* CommentUserModel.m in Sources */,
 				B1E8A8FF1CAE7C6A001F0366 /* RadioHeaderView.m in Sources */,
 				B101836B1CA92DA200E47F0D /* ReadDetailViewController.m in Sources */,
 				B10183E01CA950D000E47F0D /* UIBarButtonItem+Custom.m in Sources */,
 				B1F26D1F1CACC2D700497F5D /* MenuSearchBar.m in Sources */,
+				B112C1D81CB7F9EC00BF58FB /* CommentViewController.m in Sources */,
 				B105F4A71CB354430016D89B /* RadioPlayCell.m in Sources */,
 				B10183751CA92DB900E47F0D /* TopicViewController.m in Sources */,
+				B112C1C61CB7EBE900BF58FB /* ReadShareinfoModel.m in Sources */,
 				B12EB6491CAA9E5200193FBA /* ReadCarouselModel.m in Sources */,
 				B10182C91CA92A5800E47F0D /* BaseModel.m in Sources */,
 				B105F4AB1CB3D3ED0016D89B /* RadioPlayOtherView.m in Sources */,
 				B151C2921CABAEF100555E76 /* TopicListModel.m in Sources */,
+				B112C1E41CB7FCBA00BF58FB /* CommentModel.m in Sources */,
 				B19ED22C1CB7A8B700272E3D /* CustomTextField.m in Sources */,
+				B112C1CE1CB7F4A000BF58FB /* NSString+Html.m in Sources */,
 				B12EB63B1CAA729800193FBA /* RadioCarouselModel.m in Sources */,
 				B1CFFDC31CB154FD00D64089 /* RadioPlayOtherModel.m in Sources */,
 				B1E6C2CB1CABF0F00008EE51 /* BaseNavigationController.m in Sources */,
@@ -1012,6 +1091,7 @@
 				B1F26D251CACC66500497F5D /* UIImage+Custom.m in Sources */,
 				B1CFFDC01CB1311000D64089 /* PlayerManager.m in Sources */,
 				B1F26D291CACF8FE00497F5D /* ReadTableViewCell.m in Sources */,
+				B112C1DD1CB7FAAB00BF58FB /* CommentCell.m in Sources */,
 				B151C2951CABB04D00555E76 /* TopicCounterListModel.m in Sources */,
 				B12EB6461CAA9A5200193FBA /* Foundation+Log.m in Sources */,
 			);
