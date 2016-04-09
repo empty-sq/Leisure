@@ -150,6 +150,7 @@ static NSString * const ProductCellID = @"ProductCell";
     ProductInfoViewController *infoVC = [[ProductInfoViewController alloc] init];
     ProductListModel *model = _listArray[indexPath.row];
     infoVC.contentid = model.contentid;
+    infoVC.titleName = model.title;
     [self.navigationController pushViewController:infoVC animated:YES];
 }
 

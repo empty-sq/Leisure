@@ -12,5 +12,7 @@
 
 /** 商品id */
 @property (nonatomic, copy) NSString *contentid;
+/** 标题 */
+@property (nonatomic, copy) NSString *titleName;
 
 @end
