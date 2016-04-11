@@ -35,7 +35,6 @@
 		B10183DC1CA94C1D00E47F0D /* UIView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183DB1CA94C1D00E47F0D /* UIView+Custom.m */; };
 		B10183E01CA950D000E47F0D /* UIBarButtonItem+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = B10183DF1CA950D000E47F0D /* UIBarButtonItem+Custom.m */; };
 		B1054E571CA9283E005C0989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1054E561CA9283E005C0989 /* Assets.xcassets */; };
-		B1054E5A1CA9283E005C0989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1054E581CA9283E005C0989 /* LaunchScreen.storyboard */; };
 		B1054E651CA9283E005C0989 /* LeisureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1054E641CA9283E005C0989 /* LeisureTests.m */; };
 		B1054E701CA9283E005C0989 /* LeisureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1054E6F1CA9283E005C0989 /* LeisureUITests.m */; };
 		B105F4A71CB354430016D89B /* RadioPlayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B105F4A51CB354430016D89B /* RadioPlayCell.m */; };
@@ -86,6 +85,7 @@
 		B1E090C91CBB9F2D003C2F5F /* UserCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E090C71CBB9F2D003C2F5F /* UserCollectViewController.m */; };
 		B1E090CA1CBB9F2D003C2F5F /* UserCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1E090C81CBB9F2D003C2F5F /* UserCollectViewController.xib */; };
 		B1E090CD1CBBA322003C2F5F /* ReadDetailDB.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E090CC1CBBA322003C2F5F /* ReadDetailDB.m */; };
+		B1E090CF1CBBD77E003C2F5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E090CE1CBBD77E003C2F5F /* LaunchScreen.storyboard */; };
 		B1E6C2CB1CABF0F00008EE51 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */; };
 		B1E6C2D21CAC0F3F0008EE51 /* ReadHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D11CAC0F3F0008EE51 /* ReadHeaderView.m */; };
 		B1E6C2D51CAC0FDE0008EE51 /* ReadFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D41CAC0FDE0008EE51 /* ReadFooterView.m */; };
@@ -177,7 +177,6 @@
 		B10183DF1CA950D000E47F0D /* UIBarButtonItem+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Custom.m"; sourceTree = "<group>"; };
 		B1054E471CA9283E005C0989 /* Leisure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leisure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1054E561CA9283E005C0989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B1054E591CA9283E005C0989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1054E5B1CA9283E005C0989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1054E601CA9283E005C0989 /* LeisureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeisureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1054E641CA9283E005C0989 /* LeisureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeisureTests.m; sourceTree = "<group>"; };
@@ -275,6 +274,7 @@
 		B1E090C81CBB9F2D003C2F5F /* UserCollectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectViewController.xib; sourceTree = "<group>"; };
 		B1E090CB1CBBA322003C2F5F /* ReadDetailDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDetailDB.h; sourceTree = "<group>"; };
 		B1E090CC1CBBA322003C2F5F /* ReadDetailDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDetailDB.m; sourceTree = "<group>"; };
+		B1E090CE1CBBD77E003C2F5F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1E6C2C91CABF0F00008EE51 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		B1E6C2D01CAC0F3F0008EE51 /* ReadHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadHeaderView.h; sourceTree = "<group>"; };
@@ -737,7 +737,6 @@
 				B10182B31CA92A2D00E47F0D /* CodeClass */,
 				B10182C51CA92A2D00E47F0D /* Document */,
 				B10182C61CA92A2D00E47F0D /* Tools */,
-				B1054E581CA9283E005C0989 /* LaunchScreen.storyboard */,
 				B1054E4A1CA9283E005C0989 /* Supporting Files */,
 			);
 			path = Leisure;
@@ -746,6 +745,7 @@
 		B1054E4A1CA9283E005C0989 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B1E090CE1CBBD77E003C2F5F /* LaunchScreen.storyboard */,
 				B1054E561CA9283E005C0989 /* Assets.xcassets */,
 				B1054E5B1CA9283E005C0989 /* Info.plist */,
 			);
@@ -943,7 +943,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B10183531CA92D5F00E47F0D /* ProductInfoViewController.xib in Resources */,
-				B1054E5A1CA9283E005C0989 /* LaunchScreen.storyboard in Resources */,
 				B10183711CA92DAB00E47F0D /* ReadInfoViewController.xib in Resources */,
 				B10182CE1CA92A9700E47F0D /* BaseViewController.xib in Resources */,
 				B17E13431CAD5403003B7E8A /* ProductTableViewCell.xib in Resources */,
@@ -952,6 +951,7 @@
 				B1F26D2A1CACF8FE00497F5D /* ReadTableViewCell.xib in Resources */,
 				B1F26D021CACB80200497F5D /* BaseTableViewCell.xib in Resources */,
 				B101834E1CA92C4D00E47F0D /* ProductViewController.xib in Resources */,
+				B1E090CF1CBBD77E003C2F5F /* LaunchScreen.storyboard in Resources */,
 				B101837B1CA92DC300E47F0D /* TopicInfoViewController.xib in Resources */,
 				B10183581CA92D7300E47F0D /* RadioViewController.xib in Resources */,
 				B112C1DE1CB7FAAB00BF58FB /* CommentCell.xib in Resources */,
@@ -1149,17 +1149,6 @@
 			targetProxy = B1054E6C1CA9283E005C0989 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B1054E581CA9283E005C0989 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B1054E591CA9283E005C0989 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B1054E721CA9283E005C0989 /* Debug */ = {

@@ -273,7 +273,7 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     // 设置空间属性
     _playMainView.timeSlider.value = currentTime;
     _playMainView.timeSlider.maximumValue = totalTime;
-    _playMainView.endTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld",surplusTime / 60, surplusTime % 60];
+    _playMainView.endTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d",surplusTime / 60, surplusTime % 60];
     
     if (totalTime && !surplusTime) { // 判断播放器是否播放结束，播放结束调用方法
         [self.manager playerDidFinish];

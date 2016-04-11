@@ -69,7 +69,6 @@ static NSString * const ReadFooterViewID = @"ReadFooterView";
     [NetWorkRequestManager requestWithType:POST urlString:READLIST_URL parDic:parDic finish:^(NSData *data) {
         // 解析数据
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
-        SQLog(@"%@", dataDict);
         // 获取阅读首页的轮播图的数据源
         NSArray *carouselArray = dataDict[@"data"][@"carousel"];
         for (NSDictionary *dict in carouselArray) {
