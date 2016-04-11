@@ -10,10 +10,13 @@
 #import "ReadInfoModel.h"
 #import "CommentViewController.h"
 #import "LoginRegisterViewController.h"
+#import "ReadDetailDB.h"
+#import "DrawerViewController.h"
 
 @interface ReadInfoViewController ()
 
 @property (nonatomic, strong) ReadInfoModel *readInfo;
+//@property (no)
 
 @end
 
@@ -76,12 +79,54 @@
     [msgBtn addTarget:self action:@selector(commentClick) forControlEvents:UIControlEventTouchUpInside];
     [navBar addSubview:msgBtn];
     
-    UIButton *likeButton = [UIButton buttonWithFrame:CGRectMake(shareBtn.right + 40, shareBtn.top, shareBtn.width, shareBtn.height) image:@"shoucang"];
+    UIButton *likeButton = [UIButton buttonWithFrame:CGRectMake(shareBtn.right + 40, shareBtn.top, shareBtn.width, shareBtn.height) image:@"cshoucang"];
+    [likeButton addTarget:self action:@selector(collectClick:) forControlEvents:UIControlEventTouchUpInside];
     [navBar addSubview:likeButton];
     
     [self.view addSubview:navBar];
+    
+    // 查询本条信息是否已经存储，如果已经存储，按钮显示已经收藏状态
+    ReadDetailDB *db = [[ReadDetailDB alloc] init];
+    NSArray *array = [db findWithUserID:[UserInfoManager getUserID]];
+    for (ReadDetailListModel *model in array) {
+        if ([model.title isEqualToString:self.model.title]) {
+            [likeButton setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
+            break;
+        }
+    }
 }
 
+/**
+ *  收藏按钮点击事件
+ */
+- (void)collectClick:(UIButton *)button {
+    if (![[UserInfoManager getUserID] isEqualToString:@" "]) { // 如果用户已经登录，直接收藏
+        // 创建数据表
+        ReadDetailDB *db = [[ReadDetailDB alloc] init];
+        [db createDataTable];
+        // 查询数据是否存储，如果存储就取消存储
+        NSArray *array = [db findWithUserID:[UserInfoManager getUserID]];
+        for (ReadDetailListModel *model in array) {
+            if ([model.title isEqualToString:_model.title]) {
+                [db deleteDetailWithTitle:self.model.title];
+                [button setBackgroundImage:[UIImage imageNamed:@"cshoucang"] forState:UIControlStateNormal];
+                return;
+            }
+        }
+        // 否则，调用保存方法进行存储
+        [db saveDetailModel:self.model];
+        [button setBackgroundImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
+    } else {
+        LoginRegisterViewController *loginVC = [[LoginRegisterViewController alloc] init];
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        DrawerViewController *vc = (DrawerViewController *)window.rootViewController;
+        [vc presentViewController:loginVC animated:YES completion:nil];
+    }
+}
+
+/**
+ *  评论按钮点击事件
+ */
 - (void)commentClick {
     if (![[UserInfoManager getUserID] isEqualToString:@" "]) {
         CommentViewController *commentVC = [[CommentViewController alloc] init];
@@ -100,7 +145,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
     [SVProgressHUD show];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     
@@ -113,17 +157,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

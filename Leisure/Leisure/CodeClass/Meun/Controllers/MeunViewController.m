@@ -17,6 +17,7 @@
 #import "MeunFooterView.h"
 #import "LoginRegisterViewController.h"
 #import "UserInfoManager.h"
+#import "UserCollectViewController.h"
 @interface MeunViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 /** 菜单列表数据 */
@@ -61,6 +62,7 @@ static NSString * const MeunCellID = @"TableViewCell";
         [_headView.loginButton setTitle:[UserInfoManager getUserName] forState:UIControlStateNormal];
     }
     [_headView.loginButton addTarget:self action:@selector(loginButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [_headView.favoButton addTarget:self action:@selector(favoBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_headView];
     
     /** 添加列表数据 */
@@ -80,6 +82,20 @@ static NSString * const MeunCellID = @"TableViewCell";
     // 添加表尾
     _footerView = [[MeunFooterView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 60, kScreenWidth * 2 / 3, 60)];
     [self.view addSubview:_footerView];
+}
+
+/**
+ *  收藏按钮
+ */
+- (void)favoBtnClick {
+    if (![[UserInfoManager getUserAuth] isEqualToString:@" "]) {
+        UserCollectViewController *userVC = [[UserCollectViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:userVC];
+        [self presentViewController:nav animated:YES completion:nil];
+    } else {
+        LoginRegisterViewController *loginVC = [[LoginRegisterViewController alloc] init];
+        [self presentViewController:loginVC animated:YES completion:nil];
+    }
 }
 
 /**

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 SQ. All rights reserved.
 //
 
-#import "CommentCell.h"
+#import "CommentCell.h"/Users/empty/Desktop/project/Leisure/Leisure/Leisure/CodeClass/Meun/Controllers/UserCollectViewController.m
 
 @interface CommentCell ()
 

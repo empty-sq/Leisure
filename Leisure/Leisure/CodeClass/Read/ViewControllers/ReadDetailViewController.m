@@ -307,6 +307,7 @@ static NSString * const ReadDetailCellID = @"ReadDetailListCell";
     }
     ReadInfoViewController *infoVC = [[ReadInfoViewController alloc] init];
     infoVC.ID = model.contentid;
+    infoVC.model = model;
     [self.navigationController pushViewController:infoVC animated:NO];
 }
 

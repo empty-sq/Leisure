@@ -82,6 +82,10 @@
 		B1AFF8A11CAE0C4D0092665A /* TopicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AFF8A01CAE0C4D0092665A /* TopicTableViewCell.m */; };
 		B1CFFDC01CB1311000D64089 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CFFDBF1CB1311000D64089 /* PlayerManager.m */; };
 		B1CFFDC31CB154FD00D64089 /* RadioPlayOtherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1CFFDC21CB154FD00D64089 /* RadioPlayOtherModel.m */; };
+		B1E090C51CBB9838003C2F5F /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E090C41CBB9838003C2F5F /* DBManager.m */; };
+		B1E090C91CBB9F2D003C2F5F /* UserCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E090C71CBB9F2D003C2F5F /* UserCollectViewController.m */; };
+		B1E090CA1CBB9F2D003C2F5F /* UserCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1E090C81CBB9F2D003C2F5F /* UserCollectViewController.xib */; };
+		B1E090CD1CBBA322003C2F5F /* ReadDetailDB.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E090CC1CBBA322003C2F5F /* ReadDetailDB.m */; };
 		B1E6C2CB1CABF0F00008EE51 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */; };
 		B1E6C2D21CAC0F3F0008EE51 /* ReadHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D11CAC0F3F0008EE51 /* ReadHeaderView.m */; };
 		B1E6C2D51CAC0FDE0008EE51 /* ReadFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E6C2D41CAC0FDE0008EE51 /* ReadFooterView.m */; };
@@ -264,6 +268,13 @@
 		B1CFFDBF1CB1311000D64089 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerManager.m; sourceTree = "<group>"; };
 		B1CFFDC11CB154FD00D64089 /* RadioPlayOtherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioPlayOtherModel.h; sourceTree = "<group>"; };
 		B1CFFDC21CB154FD00D64089 /* RadioPlayOtherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioPlayOtherModel.m; sourceTree = "<group>"; };
+		B1E090C31CBB9838003C2F5F /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		B1E090C41CBB9838003C2F5F /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		B1E090C61CBB9F2D003C2F5F /* UserCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCollectViewController.h; sourceTree = "<group>"; };
+		B1E090C71CBB9F2D003C2F5F /* UserCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCollectViewController.m; sourceTree = "<group>"; };
+		B1E090C81CBB9F2D003C2F5F /* UserCollectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectViewController.xib; sourceTree = "<group>"; };
+		B1E090CB1CBBA322003C2F5F /* ReadDetailDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDetailDB.h; sourceTree = "<group>"; };
+		B1E090CC1CBBA322003C2F5F /* ReadDetailDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDetailDB.m; sourceTree = "<group>"; };
 		B1E6C2C91CABF0F00008EE51 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		B1E6C2CA1CABF0F00008EE51 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		B1E6C2D01CAC0F3F0008EE51 /* ReadHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadHeaderView.h; sourceTree = "<group>"; };
@@ -549,6 +560,8 @@
 				B112C1E01CB7FC9100BF58FB /* CommentUserModel.m */,
 				B112C1E21CB7FCBA00BF58FB /* CommentModel.h */,
 				B112C1E31CB7FCBA00BF58FB /* CommentModel.m */,
+				B1E090CB1CBBA322003C2F5F /* ReadDetailDB.h */,
+				B1E090CC1CBBA322003C2F5F /* ReadDetailDB.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -657,6 +670,8 @@
 				B1CFFDBF1CB1311000D64089 /* PlayerManager.m */,
 				B19ED21F1CB7A15300272E3D /* UserInfoManager.h */,
 				B19ED2201CB7A15300272E3D /* UserInfoManager.m */,
+				B1E090C31CBB9838003C2F5F /* DBManager.h */,
+				B1E090C41CBB9838003C2F5F /* DBManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -787,6 +802,9 @@
 				B19ED2221CB7A4E600272E3D /* LoginRegisterViewController.h */,
 				B19ED2231CB7A4E600272E3D /* LoginRegisterViewController.m */,
 				B19ED2241CB7A4E600272E3D /* LoginRegisterViewController.xib */,
+				B1E090C61CBB9F2D003C2F5F /* UserCollectViewController.h */,
+				B1E090C71CBB9F2D003C2F5F /* UserCollectViewController.m */,
+				B1E090C81CBB9F2D003C2F5F /* UserCollectViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -942,6 +960,7 @@
 				B101836C1CA92DA200E47F0D /* ReadDetailViewController.xib in Resources */,
 				B10183671CA92D9600E47F0D /* ReadViewController.xib in Resources */,
 				B101835D1CA92D7F00E47F0D /* RadioDetailViewController.xib in Resources */,
+				B1E090CA1CBB9F2D003C2F5F /* UserCollectViewController.xib in Resources */,
 				B112C1CF1CB7F4A000BF58FB /* style.css in Resources */,
 				B10183761CA92DB900E47F0D /* TopicViewController.xib in Resources */,
 				B19ED2261CB7A4E600272E3D /* LoginRegisterViewController.xib in Resources */,
@@ -1037,6 +1056,7 @@
 				B19ED2211CB7A15300272E3D /* UserInfoManager.m in Sources */,
 				B10183611CA92D8A00E47F0D /* RadioPlayViewController.m in Sources */,
 				B12EB63E1CAA72A900193FBA /* RadioAlllistModel.m in Sources */,
+				B1E090CD1CBBA322003C2F5F /* ReadDetailDB.m in Sources */,
 				B17E133B1CAD14FE003B7E8A /* ReadInfoModel.m in Sources */,
 				B1E6C2E31CAC322D0008EE51 /* BaseCollectionViewCell.m in Sources */,
 				B101834D1CA92C4D00E47F0D /* ProductViewController.m in Sources */,
@@ -1046,6 +1066,7 @@
 				B12EB6411CAA72B200193FBA /* RadioDetailInfoModel.m in Sources */,
 				B1E6C2D51CAC0FDE0008EE51 /* ReadFooterView.m in Sources */,
 				B151C2891CAB7E6500555E76 /* ProductListModel.m in Sources */,
+				B1E090C51CBB9838003C2F5F /* DBManager.m in Sources */,
 				B10182CD1CA92A9700E47F0D /* BaseViewController.m in Sources */,
 				B10183D01CA934BE00E47F0D /* main.m in Sources */,
 				B1F26D161CACC21900497F5D /* BaseView.m in Sources */,
@@ -1094,6 +1115,7 @@
 				B112C1DD1CB7FAAB00BF58FB /* CommentCell.m in Sources */,
 				B151C2951CABB04D00555E76 /* TopicCounterListModel.m in Sources */,
 				B12EB6461CAA9A5200193FBA /* Foundation+Log.m in Sources */,
+				B1E090C91CBB9F2D003C2F5F /* UserCollectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 #import "ReadFooterView.h"
 #import "ReadCollectionViewCell.h"
 #import "ReadHeaderView.h"
+#import "ReadInfoViewController.h"
 #import <SDCycleScrollView.h>
 
 @interface ReadViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, SDCycleScrollViewDelegate>
@@ -68,7 +69,7 @@ static NSString * const ReadFooterViewID = @"ReadFooterView";
     [NetWorkRequestManager requestWithType:POST urlString:READLIST_URL parDic:parDic finish:^(NSData *data) {
         // 解析数据
         NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
-        
+        SQLog(@"%@", dataDict);
         // 获取阅读首页的轮播图的数据源
         NSArray *carouselArray = dataDict[@"data"][@"carousel"];
         for (NSDictionary *dict in carouselArray) {
@@ -202,6 +203,18 @@ static NSString * const ReadFooterViewID = @"ReadFooterView";
     scrollView.autoScrollTimeInterval = 5;
     scrollView.delegate = self;
     [_headerView addSubview:scrollView];
+}
+
+/**
+ *  点击图片回调
+ */
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
+    ReadCarouselModel *model = self.carouselArray[index];
+    // 获取详情内容ID，跳转到详情界面
+    NSArray *array = [model.url componentsSeparatedByString:@"/"];
+    ReadInfoViewController *infoVC = [[ReadInfoViewController alloc] init];
+    infoVC.ID = [array lastObject];
+    [self.navigationController pushViewController:infoVC animated:YES];
 }
 
 @end

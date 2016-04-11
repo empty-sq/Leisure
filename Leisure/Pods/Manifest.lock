@@ -1,22 +1,27 @@
 PODS:
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
   - MJRefresh (3.1.0)
-  - SDCycleScrollView (1.61):
+  - SDCycleScrollView (1.62):
     - SDWebImage (~> 3.7)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
-  - SVProgressHUD (2.0.2)
+  - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
+  - FMDB
   - MJRefresh
   - SDCycleScrollView (~> 1.61)
   - SDWebImage
   - SVProgressHUD
 
 SPEC CHECKSUMS:
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
-  SDCycleScrollView: a002d85b30cfa9d0ac74069cd3973ca19ff4f22f
+  SDCycleScrollView: ae016cb4cc4036523917f146ede6f7b11d408f6a
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  SVProgressHUD: e4020e23badbd7cc61bc4a80d3c1da57f166a978
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
 COCOAPODS: 0.39.0

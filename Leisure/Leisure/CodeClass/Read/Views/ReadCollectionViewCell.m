@@ -19,11 +19,13 @@
         
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, kHeight - 20, 30, 20)];
         _nameLabel.numberOfLines = 0;
+        _nameLabel.textColor = [UIColor whiteColor];
         _nameLabel.font = [UIFont systemFontOfSize:15.0];
         [self addSubview:_nameLabel];
         
         _ennameLabel = [[UILabel alloc] initWithFrame:CGRectMake(_nameLabel.right, kHeight - 15, 30, 10)];
         _ennameLabel.numberOfLines = 0;
+        _ennameLabel.textColor = [UIColor whiteColor];
         _ennameLabel.font = [UIFont systemFontOfSize:12.0];
         [self addSubview:_ennameLabel];
     }
