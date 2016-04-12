@@ -10,6 +10,7 @@
 #import "ReadViewController.h"
 #import "MeunViewController.h"
 #import "DrawerViewController.h"
+#import "DownloadManager.h"
 
 @interface AppDelegate ()
 
@@ -50,6 +51,12 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    // 如果用户没有操作暂停按钮完成断点数据的保存，这时就需要对断点数据进行自动保存
+    NSArray *arr = [[DownloadManager defaultManager] findAllDownload];
+    for (Download *download in arr) {
+        [download pause];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

@@ -62,6 +62,8 @@
 		B12EB6491CAA9E5200193FBA /* ReadCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B12EB6481CAA9E5200193FBA /* ReadCarouselModel.m */; };
 		B12EB64C1CAA9EBB00193FBA /* ReadListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B12EB64B1CAA9EBB00193FBA /* ReadListModel.m */; };
 		B12EB64F1CAA9FAA00193FBA /* ReadDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B12EB64E1CAA9FAA00193FBA /* ReadDetailListModel.m */; };
+		B13B24901CBD0AEC00AF07FC /* Download.m in Sources */ = {isa = PBXBuildFile; fileRef = B13B248F1CBD0AEC00AF07FC /* Download.m */; };
+		B13B24931CBD0B5800AF07FC /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B13B24921CBD0B5800AF07FC /* DownloadManager.m */; };
 		B151C2891CAB7E6500555E76 /* ProductListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B151C2881CAB7E6500555E76 /* ProductListModel.m */; };
 		B151C28C1CAB858900555E76 /* ProductCommentlistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B151C28B1CAB858900555E76 /* ProductCommentlistModel.m */; };
 		B151C28F1CAB868100555E76 /* ProductUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B151C28E1CAB868100555E76 /* ProductUserInfoModel.m */; };
@@ -231,6 +233,10 @@
 		B12EB64B1CAA9EBB00193FBA /* ReadListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadListModel.m; sourceTree = "<group>"; };
 		B12EB64D1CAA9FAA00193FBA /* ReadDetailListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDetailListModel.h; sourceTree = "<group>"; };
 		B12EB64E1CAA9FAA00193FBA /* ReadDetailListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDetailListModel.m; sourceTree = "<group>"; };
+		B13B248E1CBD0AEC00AF07FC /* Download.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Download.h; sourceTree = "<group>"; };
+		B13B248F1CBD0AEC00AF07FC /* Download.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Download.m; sourceTree = "<group>"; };
+		B13B24911CBD0B5800AF07FC /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
+		B13B24921CBD0B5800AF07FC /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		B151C2871CAB7E6500555E76 /* ProductListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductListModel.h; sourceTree = "<group>"; };
 		B151C2881CAB7E6500555E76 /* ProductListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductListModel.m; sourceTree = "<group>"; };
 		B151C28A1CAB858900555E76 /* ProductCommentlistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCommentlistModel.h; sourceTree = "<group>"; };
@@ -672,6 +678,10 @@
 				B19ED2201CB7A15300272E3D /* UserInfoManager.m */,
 				B1E090C31CBB9838003C2F5F /* DBManager.h */,
 				B1E090C41CBB9838003C2F5F /* DBManager.m */,
+				B13B248E1CBD0AEC00AF07FC /* Download.h */,
+				B13B248F1CBD0AEC00AF07FC /* Download.m */,
+				B13B24911CBD0B5800AF07FC /* DownloadManager.h */,
+				B13B24921CBD0B5800AF07FC /* DownloadManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1096,10 +1106,12 @@
 				B105F4AB1CB3D3ED0016D89B /* RadioPlayOtherView.m in Sources */,
 				B151C2921CABAEF100555E76 /* TopicListModel.m in Sources */,
 				B112C1E41CB7FCBA00BF58FB /* CommentModel.m in Sources */,
+				B13B24901CBD0AEC00AF07FC /* Download.m in Sources */,
 				B19ED22C1CB7A8B700272E3D /* CustomTextField.m in Sources */,
 				B112C1CE1CB7F4A000BF58FB /* NSString+Html.m in Sources */,
 				B12EB63B1CAA729800193FBA /* RadioCarouselModel.m in Sources */,
 				B1CFFDC31CB154FD00D64089 /* RadioPlayOtherModel.m in Sources */,
+				B13B24931CBD0B5800AF07FC /* DownloadManager.m in Sources */,
 				B1E6C2CB1CABF0F00008EE51 /* BaseNavigationController.m in Sources */,
 				B19358D71CB26C9E00D9A8A7 /* RadioPlayMainView.m in Sources */,
 				B12EB64F1CAA9FAA00193FBA /* ReadDetailListModel.m in Sources */,

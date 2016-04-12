@@ -14,5 +14,6 @@
 /** 作者名字 */
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (nonatomic, strong) RadioDetailListModel *model;
+@property (weak, nonatomic) IBOutlet UIButton *download;
 
 @end

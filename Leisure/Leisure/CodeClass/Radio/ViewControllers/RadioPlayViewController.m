@@ -12,6 +12,7 @@
 #import "RadioPlayCell.h"
 #import "RadioPlayOtherModel.h"
 #import "RadioPlayOtherView.h"
+#import "DownloadManager.h"
 
 @interface RadioPlayViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -154,6 +155,8 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
  *  上一首
  */
 - (void)lastBtnClick {
+    [self.manager play];
+    [_playBtn setImage:[UIImage imageNamed:@"暂停"] forState:UIControlStateNormal];
     [self.manager lastMusic];
     [self setAllViewWithIndex:self.manager.playIndex];
 }
@@ -175,6 +178,8 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
  *  下一首
  */
 - (void)nextBtnClick {
+    [self.manager play];
+    [_playBtn setImage:[UIImage imageNamed:@"暂停"] forState:UIControlStateNormal];
     [self.manager nextMusic];
     [self setAllViewWithIndex:self.manager.playIndex];
 }
@@ -224,11 +229,21 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
 - (void)setupMusicPlay {
     _playMainView = [[RadioPlayMainView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, _scrollView.height)];
     _playMainView.model = _model;
+    [_playMainView.downloadBtn addTarget:self action:@selector(downloadClick) forControlEvents:UIControlEventTouchUpInside];
     [_playMainView.likeBtn addTarget:self action:@selector(change) forControlEvents:UIControlEventTouchUpInside];
     [_playMainView.playBtn addTarget:self action:@selector(playChange) forControlEvents:UIControlEventTouchUpInside];
     [_playMainView.timeSlider addTarget:self action:@selector(changePlayProgress:) forControlEvents:UIControlEventValueChanged];
     [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(playerPlay) userInfo:nil repeats:YES];
     [self.scrollView addSubview:_playMainView];
+}
+
+/**
+ *  下载按钮
+ */
+- (void)downloadClick {
+    Download *download = [[Download alloc] initWithUrl:self.model.musicUrl];
+    [download start];
+    [[DownloadManager defaultManager] addDownloadWithUrl:self.model.musicUrl];
 }
 
 /**
@@ -273,7 +288,7 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     // 设置空间属性
     _playMainView.timeSlider.value = currentTime;
     _playMainView.timeSlider.maximumValue = totalTime;
-    _playMainView.endTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d",surplusTime / 60, surplusTime % 60];
+    _playMainView.endTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld",surplusTime / 60, surplusTime % 60];
     
     if (totalTime && !surplusTime) { // 判断播放器是否播放结束，播放结束调用方法
         [self.manager playerDidFinish];
@@ -369,7 +384,14 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RadioPlayCell *cell = [tableView dequeueReusableCellWithIdentifier:RadioPlayCellID forIndexPath:indexPath];
     cell.model = self.listDataArray[indexPath.row];
+    cell.tag = indexPath.row;
+    [cell.download addTarget:self action:@selector(downloadMusic:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
+}
+
+- (void)downloadMusic:(UIButton *)button {
+    RadioDetailListModel *model = self.listDataArray[button.tag];
+    [[DownloadManager defaultManager] addDownloadWithUrl:model.musicUrl];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

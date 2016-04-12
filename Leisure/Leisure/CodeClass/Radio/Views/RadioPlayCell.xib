@@ -20,7 +20,7 @@
                             <constraint firstAttribute="height" constant="16" id="7Aq-Vx-OKW"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGb-Ry-ZJc">
@@ -64,6 +64,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="download" destination="wqn-Y0-l9q" id="nca-n7-8j8"/>
                 <outlet property="selectedImageVIew" destination="eyE-85-0Es" id="0rh-x9-gWM"/>
                 <outlet property="titleLabel" destination="bXI-hn-CGh" id="0W4-dH-ubh"/>
                 <outlet property="usernameLabel" destination="AGb-Ry-ZJc" id="5JG-3o-GmG"/>
