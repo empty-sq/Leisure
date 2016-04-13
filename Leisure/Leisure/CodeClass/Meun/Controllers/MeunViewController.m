@@ -18,6 +18,8 @@
 #import "LoginRegisterViewController.h"
 #import "UserInfoManager.h"
 #import "UserCollectViewController.h"
+#import "UserDownloadRadioViewController.h"
+
 @interface MeunViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 /** 菜单列表数据 */
@@ -61,6 +63,7 @@ static NSString * const MeunCellID = @"TableViewCell";
     if (![[UserInfoManager getUserAuth] isEqualToString:@" "]) {
         [_headView.loginButton setTitle:[UserInfoManager getUserName] forState:UIControlStateNormal];
     }
+    [_headView.downloadButton addTarget:self action:@selector(downloadClick) forControlEvents:UIControlEventTouchUpInside];
     [_headView.loginButton addTarget:self action:@selector(loginButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_headView.favoButton addTarget:self action:@selector(favoBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_headView];
@@ -82,6 +85,15 @@ static NSString * const MeunCellID = @"TableViewCell";
     // 添加表尾
     _footerView = [[MeunFooterView alloc] initWithFrame:CGRectMake(0, kScreenHeight - 60, kScreenWidth * 2 / 3, 60)];
     [self.view addSubview:_footerView];
+}
+
+/**
+ *  下载列表
+ */
+- (void)downloadClick {
+    UserDownloadRadioViewController *download = [[UserDownloadRadioViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:download];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 /**

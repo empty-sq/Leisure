@@ -30,4 +30,10 @@
 @property (nonatomic, copy) NSString *imgUrl;
 @property (nonatomic, copy) NSString *imgTitle;
 
+/** 额外属性 **/
+/** 电台本地地址 */
+@property (nonatomic, copy) NSString *path;
+/** 是否下载完成 */
+@property (nonatomic, assign) NSInteger isDownload;
+
 @end

@@ -13,6 +13,7 @@
 #import "RadioPlayOtherModel.h"
 #import "RadioPlayOtherView.h"
 #import "DownloadManager.h"
+#import "RadioDetailListDB.h"
 
 @interface RadioPlayViewController ()<UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -190,9 +191,14 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
 - (void)setAllViewWithIndex:(NSInteger)index {
     RadioDetailListModel *model = _listDataArray[self.manager.playIndex];
     _playMainView.model = model;
+    _playMainView.downloadBtn.width = 30;
+    if (model.isDownload) {
+        [_playMainView.downloadBtn setImage:[UIImage imageNamed:@"finish"] forState:UIControlStateNormal];
+    } else {
+       [_playMainView.downloadBtn setImage:[UIImage imageNamed:@"xiazai"] forState:UIControlStateNormal];
+    }
     _bar.titleLabel.text = model.title;
     [_bar.titleLabel sizeToFit];
-    
     [_tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.manager.playIndex inSection:0] animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.webview_url]]];
@@ -229,7 +235,7 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
 - (void)setupMusicPlay {
     _playMainView = [[RadioPlayMainView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, _scrollView.height)];
     _playMainView.model = _model;
-    [_playMainView.downloadBtn addTarget:self action:@selector(downloadClick) forControlEvents:UIControlEventTouchUpInside];
+    [_playMainView.downloadBtn addTarget:self action:@selector(downloadClick:) forControlEvents:UIControlEventTouchUpInside];
     [_playMainView.likeBtn addTarget:self action:@selector(change) forControlEvents:UIControlEventTouchUpInside];
     [_playMainView.playBtn addTarget:self action:@selector(playChange) forControlEvents:UIControlEventTouchUpInside];
     [_playMainView.timeSlider addTarget:self action:@selector(changePlayProgress:) forControlEvents:UIControlEventValueChanged];
@@ -240,10 +246,41 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
 /**
  *  下载按钮
  */
-- (void)downloadClick {
-    Download *download = [[Download alloc] initWithUrl:self.model.musicUrl];
+- (void)downloadClick:(UIButton *)button {
+    // 创建一个下载对象，并且用下载管理器管理
+    Download *download = [[DownloadManager defaultManager] addDownloadWithUrl:self.model.musicUrl];
+    
+    // 开始下载
     [download start];
-    [[DownloadManager defaultManager] addDownloadWithUrl:self.model.musicUrl];
+    
+    // 监控进度
+    download.downloading = ^(float progress) {
+        [button setTitle:[NSString stringWithFormat:@"%.0f%%", progress * 100] forState:UIControlStateNormal];
+        button.width = 40;
+        [button setImage:nil forState:UIControlStateNormal];
+    };
+    
+    // 下载完成
+    download.downloadFinish = ^(NSString *url, NSString *savePath) {
+        // 1、UI变化
+        [button setTitle:@"" forState:UIControlStateNormal];
+        button.width = 30;
+        [button setImage:[UIImage imageNamed:@"finish"] forState:UIControlStateNormal];
+        RadioDetailListModel *model = self.listDataArray[self.manager.playIndex];
+        model.isDownload = 1;
+        
+        // 2、数据保存 数据模型、本地音频路径
+        // 2.1 存电台详情列表数据
+        RadioDetailListDB *db = [[RadioDetailListDB alloc] init];
+        [db createDataTable];
+        [db saveDataWithModel:model andPath:savePath];
+        
+        // 2.2 存playInfo
+        
+        // 3、移除下载对象
+        [[DownloadManager defaultManager] removeDownloadWithUrl:url];
+        SQLog(@"%@", savePath);
+    };
 }
 
 /**
@@ -292,6 +329,7 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
     
     if (totalTime && !surplusTime) { // 判断播放器是否播放结束，播放结束调用方法
         [self.manager playerDidFinish];
+        [self setAllViewWithIndex:self.manager.playIndex];
     }
 }
 

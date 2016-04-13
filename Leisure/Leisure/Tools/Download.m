@@ -102,7 +102,7 @@ didFinishDownloadingToURL:(NSURL *)location {
     NSLog(@"file = %@", file);
     
     // 下载完成后通过block将文件的网络路径和本地路径传出
-//    self.downloadFinish(self.url, file);
+    self.downloadFinish(self.url, file);
 }
 
 /**
@@ -115,9 +115,8 @@ didFinishDownloadingToURL:(NSURL *)location {
 - (void)URLSession:(NSURLSession *)session downloadTask:(nonnull NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     // 获取下载进度
     float progress = 1.0 * totalBytesWritten / totalBytesExpectedToWrite;
-    SQLog(@"%.2f%%", progress);
     // 将进度值传出
-//    self.downloading(progress);
+    self.downloading(progress);
 }
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask

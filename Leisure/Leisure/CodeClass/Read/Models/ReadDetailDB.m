@@ -29,7 +29,7 @@
         // 创建新的数据表
         NSString * sql = [NSString stringWithFormat:@"CREATE TABLE %@ (readID INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL, userID text, title text, contentID text, content text, name text, coverimg text)", READDETAILTABLE];
         BOOL res = [_dataBase executeUpdate:sql];
-        if (!res) {
+        if (res) {
             SQLog(@"数据表创建成功");
         } else {
             SQLog(@"数据表创建失败");
@@ -41,6 +41,7 @@
  *  插入一条数据
  */
 - (void)saveDetailModel:(ReadDetailListModel *)model {
+//    SQLog(@"%@, %@, %@, %@, %@, %@", [UserInfoManager getUserID], model.title, model.contentid, model.content, model.name, model.coverimg);
     // 创建插入语句
     NSMutableString * query = [NSMutableString stringWithFormat:@"INSERT INTO %@ (userID,title,contentid,content, name, coverimg) values (?,?,?,?,?,?)", READDETAILTABLE];
     // 创建插入内容
@@ -63,7 +64,6 @@
     if (model.coverimg) {
         [arguments addObject:model.coverimg];
     }
-    SQLog(@"%@",query);
     SQLog(@"收藏一条数据");
     // 执行语句
     [_dataBase executeUpdate:query withArgumentsInArray:arguments];

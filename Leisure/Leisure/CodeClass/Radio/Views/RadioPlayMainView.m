@@ -41,6 +41,7 @@
         
         CGFloat silderY = CGRectGetMaxY(_titleLabel.frame) + 20;
         _timeSlider = [[UISlider alloc] initWithFrame:CGRectMake(kMargin, silderY, 5 * kMargin, 30)];
+        _timeSlider.continuous = NO;
         [self addSubview:_timeSlider];
         
         CGFloat endTimeX = CGRectGetMaxX(_timeSlider.frame) + 5;

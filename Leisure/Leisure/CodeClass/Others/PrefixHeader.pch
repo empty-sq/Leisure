@@ -50,7 +50,12 @@
 #define kColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 
 #pragma mark -数据库-
-#define SQLITENAME           @"leisure.sqlite" // 数据库名
-#define READDETAILTABLE      @"ReadDetail" // 阅读详情数据表
+/** 数据库名 */
+#define SQLITENAME           @"leisure.sqlite"
+/** 阅读详情数据表 */
+#define READDETAILTABLE      @"ReadDetail"  
+
+/** 电台详情表名 */
+#define RADIOETATLTABLE @"RadioDetail"
 
 #endif
