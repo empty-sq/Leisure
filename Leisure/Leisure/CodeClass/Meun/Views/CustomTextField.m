@@ -8,6 +8,13 @@
 
 #import "CustomTextField.h"
 
+@interface CustomTextField ()
+{
+    int _a;
+}
+
+@end
+
 static NSString * const SQPlacerholderColorKeyPath = @"_placeholderLabel.textColor";
 
 @implementation CustomTextField

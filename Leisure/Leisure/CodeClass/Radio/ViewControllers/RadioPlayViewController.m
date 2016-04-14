@@ -247,17 +247,23 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
  *  下载按钮
  */
 - (void)downloadClick:(UIButton *)button {
+    RadioDetailListModel *model = self.listDataArray[self.manager.playIndex];
+    model.isDownloading = 1;
     // 创建一个下载对象，并且用下载管理器管理
-    Download *download = [[DownloadManager defaultManager] addDownloadWithUrl:self.model.musicUrl];
+    Download *download = [[DownloadManager defaultManager] addDownloadWithUrl:model.musicUrl];
     
     // 开始下载
     [download start];
     
     // 监控进度
     download.downloading = ^(float progress) {
-        [button setTitle:[NSString stringWithFormat:@"%.0f%%", progress * 100] forState:UIControlStateNormal];
-        button.width = 40;
-        [button setImage:nil forState:UIControlStateNormal];
+        if (_playMainView.model.isDownloading) {
+            [button setTitle:[NSString stringWithFormat:@"%.0f%%", progress * 100] forState:UIControlStateNormal];
+            button.width = 40;
+            [button setImage:nil forState:UIControlStateNormal];
+        } else {
+            [button setTitle:@"下载" forState:UIControlStateNormal];
+        }
     };
     
     // 下载完成
@@ -266,7 +272,6 @@ static NSString * const RadioPlayCellID = @"RadioPlayCell";
         [button setTitle:@"" forState:UIControlStateNormal];
         button.width = 30;
         [button setImage:[UIImage imageNamed:@"finish"] forState:UIControlStateNormal];
-        RadioDetailListModel *model = self.listDataArray[self.manager.playIndex];
         model.isDownload = 1;
         
         // 2、数据保存 数据模型、本地音频路径

@@ -35,5 +35,7 @@
 @property (nonatomic, copy) NSString *path;
 /** 是否下载完成 */
 @property (nonatomic, assign) NSInteger isDownload;
+/** 是否正在下载 */
+@property (nonatomic, assign) NSInteger isDownloading;
 
 @end
